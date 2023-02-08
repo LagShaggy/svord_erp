@@ -7,13 +7,14 @@ const config = {
 	theme: {
 		extend: {
 			fontFamily: {
-				body: ['Poppins']
-			},
-		},
+				popp: ['Poppins'],
+				oswald: ['Oswald']
+			}
+		}
 	},
 
 	plugins: [require('flowbite/plugin')],
 	darkMode: 'class'
-}
+};
 
 module.exports = config;

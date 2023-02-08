@@ -1,19 +1,19 @@
 <script>
-	export let data
-	let { products } = data
-	$: ({ products } = data)
-	let suiticon = '/favicon.png'
+	import StorePanel from '$lib/StoreUI/StorePanel.svelte';
+
+	export let data;
+	let { products } = data;
+	$: ({ products } = data);
 </script>
 
-<h1 class="font-body">PRODUCTS</h1>
+<h1 class="font-oswald text-4xl font-medium">PRODUCTS</h1>
+<br />
 
-<table>
-	{#each products as product}
-		<tr>
-			<td>{product.name}</td><td>{product.data.colour}</td>
-		</tr>
-	{/each}
-</table>
+<div />
+
+<div>
+	<StorePanel />
+</div>
 
 <style>
 </style>
