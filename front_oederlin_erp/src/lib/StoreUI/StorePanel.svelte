@@ -17,7 +17,7 @@
 <!-- The userinterface of the Store-->
 <div>
 	<div class="container flex justify-end bg-blue-500">
-		<label>{col} Columns</label>
+		<label>{col} Items</label>
 		<input
 			class="ml-4"
 			type="range"
@@ -29,7 +29,7 @@
 </div>
 
 <div class="grid gap-4 md:grid-cols-3">
-	{#each Array(20) as _}
+	{#each Array(col) as _}
 		<StoreItem {item} />
 	{/each}
 </div>
