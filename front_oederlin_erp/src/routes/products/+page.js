@@ -6,5 +6,3 @@ export async function load() {
 		products: data ?? []
 	};
 }
-
-export const prerender = true;

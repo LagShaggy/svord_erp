@@ -6,5 +6,3 @@ export async function load() {
 		users: data ?? []
 	};
 }
-
-export const prerender = true;

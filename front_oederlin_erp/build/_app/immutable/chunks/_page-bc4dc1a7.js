@@ -1,1 +1,0 @@
-import{s as r}from"./supabaseClient-73cf1f8c.js";async function t(){const{data:e}=await r.from("users").select();return{users:e??[]}}const s=!0,o=Object.freeze(Object.defineProperty({__proto__:null,load:t,prerender:s},Symbol.toStringTag,{value:"Module"}));export{o as _,t as l,s as p};

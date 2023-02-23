@@ -6,7 +6,7 @@
 	$: ({ products } = data);
 </script>
 
-<h1 class="font-oswald text-4xl font-medium">PRODUCTS</h1>
+<h1 class="text-4xl">PRODUCTS</h1>
 <br />
 
 <div />
