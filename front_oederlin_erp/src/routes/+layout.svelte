@@ -10,6 +10,8 @@
 		DropdownItem,
 		Chevron
 	} from 'flowbite-svelte';
+
+	export const prerender = true;
 </script>
 
 <body>
