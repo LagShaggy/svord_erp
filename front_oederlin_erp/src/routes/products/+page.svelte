@@ -1,6 +1,8 @@
 <script>
 	import StorePanel from '$lib/StoreUI/StorePanel.svelte';
 
+	// sveltekit reactivity when something has changed.
+	/** @type {import('./$types').PageData} */
 	export let data;
 	let { products } = data;
 	$: ({ products } = data);
@@ -11,8 +13,8 @@
 
 <div />
 
-<div>
-	<StorePanel />
+<div class="justify-center">
+	<StorePanel {products} />
 </div>
 
 <style>

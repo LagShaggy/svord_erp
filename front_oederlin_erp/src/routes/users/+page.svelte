@@ -2,10 +2,7 @@
 	import { onMount } from 'svelte';
 	export let data;
 	let { users } = data;
-
-	onMount(async () => {
-		$: ({ users } = data);
-	});
+	$: ({ users } = data);
 </script>
 
 <div class="col-end-1">
