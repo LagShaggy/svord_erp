@@ -1,14 +1,19 @@
 <script>
-	import StorePanel from '$lib/StoreUI/StorePanel.svelte';
+	import StorePanel from '$lib/StoreUI/StorePanel.svelte'
 
-	// sveltekit reactivity when something has changed.
 	/** @type {import('./$types').PageData} */
-	export let data;
-	let { products } = data;
-	$: ({ products } = data);
+	export let data
+	let { products } = data
+	// sveltekit reactivity when something has changed.
+	$: ({ products } = data)
+
+	//head
+	export let title = 'PRODUCTS'
 </script>
 
-<h1 class="text-4xl">PRODUCTS</h1>
+<header>
+	<h1>{title}</h1>
+</header>
 <br />
 
 <div />

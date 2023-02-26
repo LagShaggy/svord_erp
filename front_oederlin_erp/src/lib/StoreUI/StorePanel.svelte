@@ -1,6 +1,7 @@
 <script>
 	import StoreItem from '$lib/StoreUI/StoreItem.svelte';
 	import Layout from '../../routes/+layout.svelte';
+	import StoreControll from './StoreControll.svelte';
 
 	//gets imported when instantiated
 	export let products = {};
@@ -34,11 +35,19 @@
 </div>
 -->
 
-<!-- The Grid-->
-<div class="grid gap-5 md:grid-cols-3">
-	{#each products as item}
-		<StoreItem {item} />
-	{/each}
+<div class="flex w-max">
+	<!-- The Grid-->
+	<div class="grid gap-5 md:grid-cols-3">
+		{#each products as item}
+			<StoreItem {item} />
+		{/each}
+	</div>
+	<!--Controll-->
+	<div class="w-10 bg-white">
+		<StoreControll>
+			Here The Controlls will be
+		</StoreControll>
+	</div>
 </div>
 
 <div class:done={todo.done} />
