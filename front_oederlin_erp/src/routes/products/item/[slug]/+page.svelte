@@ -27,12 +27,16 @@
 	<h1 class="">{item.name}</h1>
 </div>
 
-<div class="flex justify-around justify-items-start">
-	<div class="w-1/3">
+<div
+	class="flex flex-col justify-around justify-items-start sm:flex-row"
+>
+	<div
+		class="border-b border-neutral-800 border-opacity-40 sm:w-1/3"
+	>
 		<h2>Basic Information</h2>
 		<Description description={item.description} />
 	</div>
-	<div class="w-2/3 p-5">
+	<div class="p-5 sm:w-2/3">
 		<Tabs
 			style="underline"
 			defaultClass="flex space-x-2"
