@@ -1,20 +1,20 @@
 <script>
-	import StoreItem from '$lib/StoreUI/StoreItem.svelte';
-	import Layout from '../../routes/+layout.svelte';
-	import StoreControll from './StoreControll.svelte';
+	import StoreItem from '$lib/StoreUI/StoreItem.svelte'
+	import Layout from '../../routes/+layout.svelte'
+	import StoreControll from './StoreControll.svelte'
 
 	//gets imported when instantiated
-	export let products = {};
+	export let products = {}
 
 	// user preference module
-	let col = 3;
+	let col = 3
 
 	//misc
 	let todo = {
 		done: false
-	};
+	}
 
-	$: console.log(col);
+	$: console.log(col)
 </script>
 
 <!-- The userinterface of the Store-->
@@ -35,15 +35,17 @@
 </div>
 -->
 
-<div class="flex w-max">
+<div class="flex w-screen">
 	<!-- The Grid-->
-	<div class="grid gap-5 md:grid-cols-3">
+	<div
+		class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+	>
 		{#each products as item}
-			<StoreItem {item} />
+			<StoreItem class="mx-3" {item} />
 		{/each}
 	</div>
 	<!--Controll-->
-	<div class="w-10 bg-white">
+	<div class="w-1/2">
 		<StoreControll>
 			Here The Controlls will be
 		</StoreControll>

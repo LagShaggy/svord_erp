@@ -1,0 +1,1 @@
+import{s as t}from"./supabaseClient-73cf1f8c.js";import{p as a}from"./stores-494ce57e.js";console.log(a);async function r({params:e}){const{data:o}=await t.from("products").select().eq("id",e.slug);return{item:o[0]??[]}}const n=Object.freeze(Object.defineProperty({__proto__:null,load:r},Symbol.toStringTag,{value:"Module"}));export{n as _,r as l};

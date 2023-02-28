@@ -1,5 +1,5 @@
 <script>
-	import '../app.css';
+	import '../app.css'
 	import {
 		Navbar,
 		NavBrand,
@@ -9,18 +9,22 @@
 		Dropdown,
 		DropdownItem,
 		Chevron
-	} from 'flowbite-svelte';
+	} from 'flowbite-svelte'
 
 	//head
-	let title;
-	$: title = title + '- Oederlin Studio';
+	let title
+	$: title = title + '- Oederlin Studio'
 
 	//rendering
-	export const prerender = true;
-	export const ssr = false;
+	export const prerender = true
+	export const ssr = false
 </script>
 
-<Navbar class="sticky top-0" let:hidden let:toggle>
+<Navbar
+	class="sticky top-0 z-10 bg-slate-200 bg-opacity-90"
+	let:hidden
+	let:toggle
+>
 	<NavBrand href="/">
 		<img
 			src="/favicon.png"
@@ -28,18 +32,19 @@
 			alt="SwimSuit"
 		/>
 		<span
-			class="font-body self-center whitespace-nowrap text-xl font-semibold dark:text-white"
+			class="self-center whitespace-nowrap font-oswald text-2xl font-semibold dark:text-white"
 		>
-			Œderlin
+			œderlin
 		</span>
 	</NavBrand>
 	<NavHamburger on:click={toggle} />
 	<NavUl {hidden}>
 		<NavLi href="/" active={true}>Home</NavLi>
+		<NavLi href="/products">Products</NavLi>
+
 		<NavLi id="nav-menu1" class="cursor-pointer"
 			><Chevron aligned>Orders</Chevron></NavLi
 		>
-		<NavLi href="/products">Products</NavLi>
 		<NavLi href="/users">Users</NavLi>
 		<Dropdown triggeredBy="#nav-menu1" class="z-20 w-44">
 			<DropdownItem href="/orders/create"
@@ -52,18 +57,21 @@
 	</NavUl>
 </Navbar>
 
+<!--The pages get loaded here in <slot /> -->
 <div
-	class="max-w-8xl my-6 mx-auto h-screen pl-4 pr-4 font-oswald shadow-xl"
+	class="mx-auto h-min bg-slate-300 py-6 px-8 pb-16 font-oswald shadow-xl"
 >
 	<slot />
+	<div class="fixed bottom-12 right-12 ">SOME UTILITY</div>
 </div>
 
-<div class="h-screen bg-red-500">
-	SOME ELEMENT
-	<div />
-</div>
+<div hidden class="h-screen bg-red-500">SOME ELEMENT</div>
 
-<div class="fixed bottom-10 right-10">SOME ELEMENT</div>
+<!--The Footer -->
+<div class="my-auto flex h-52 justify-center bg-slate-200">
+	<div class="w-1/2">Some Information</div>
+	<div class="w-1/2">Company information</div>
+</div>
 
 <style>
 </style>

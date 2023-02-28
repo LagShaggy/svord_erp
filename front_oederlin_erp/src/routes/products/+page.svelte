@@ -18,7 +18,7 @@
 
 <div />
 
-<div class="justify-center">
+<div class="flex justify-center">
 	<StorePanel {products} />
 </div>
 
