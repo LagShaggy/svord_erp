@@ -1,11 +1,13 @@
 <script>
-	import Description from '$lib/Items/Description.svelte'
+	import JsonLister from '$lib/Items/JsonLister.svelte'
 	import { Badge, Tabs, TabItem } from 'flowbite-svelte'
 
 	/** @type {import('./$types').PageData} */
 	export let data
 	let { item } = data
 	$: ({ item } = data)
+
+	let variants = ['something', 'somethingElse']
 </script>
 
 <a class="absolute z-10" href="/products">
@@ -30,11 +32,19 @@
 <div
 	class="flex flex-col justify-around justify-items-start sm:flex-row"
 >
-	<div
-		class="border-b border-neutral-800 border-opacity-40 sm:w-1/3"
-	>
-		<h2>Basic Information</h2>
-		<Description description={item.description} />
+	<div class="sm:w-1/3">
+		<div class="mb-2">
+			<h2>Basic Information</h2>
+			<JsonLister description={item.description} />
+		</div>
+		<div class="border-b">
+			<h2>Variants</h2>
+			{#each variants as variant}
+				<p>
+					{variant}
+				</p>
+			{/each}
+		</div>
 	</div>
 	<div class="p-5 sm:w-2/3">
 		<Tabs

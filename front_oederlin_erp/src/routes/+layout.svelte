@@ -10,14 +10,6 @@
 		DropdownItem,
 		Chevron
 	} from 'flowbite-svelte'
-
-	//head
-	let title
-	$: title = title + '- Oederlin Studio'
-
-	//rendering
-	export const prerender = true
-	export const ssr = false
 </script>
 
 <Navbar
@@ -32,7 +24,7 @@
 			alt="SwimSuit"
 		/>
 		<span
-			class="self-center whitespace-nowrap font-oswald text-2xl font-semibold dark:text-white"
+			class="font-oswald self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
 		>
 			œderlin
 		</span>
@@ -59,18 +51,9 @@
 
 <!--The pages get loaded here in <slot /> -->
 <div
-	class="mx-auto h-min bg-slate-300 py-6 px-8 pb-16 font-oswald shadow-xl"
+	class="font-oswald mx-auto h-min bg-slate-300 py-6 px-8 pb-16 shadow-xl"
 >
 	<slot />
-	<div class="fixed bottom-12 right-12 ">SOME UTILITY</div>
-</div>
-
-<div hidden class="h-screen bg-red-500">SOME ELEMENT</div>
-
-<!--The Footer -->
-<div class="my-auto flex h-52 justify-center bg-slate-200">
-	<div class="w-1/2">Some Information</div>
-	<div class="w-1/2">Company information</div>
 </div>
 
 <style>
