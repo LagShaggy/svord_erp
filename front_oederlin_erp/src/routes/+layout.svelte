@@ -21,17 +21,16 @@
 		<img
 			src="/favicon.png"
 			class="mr-3 h-6 sm:h-9"
-			alt="SwimSuit"
+			alt="SwimSuit Icon"
 		/>
 		<span
-			class="font-oswald self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
+			class="self-center whitespace-nowrap font-oswald text-2xl font-semibold dark:text-white"
 		>
 			œderlin
 		</span>
 	</NavBrand>
 	<NavHamburger on:click={toggle} />
 	<NavUl {hidden}>
-		<NavLi href="/" active={true}>Home</NavLi>
 		<NavLi href="/products">Products</NavLi>
 
 		<NavLi id="nav-menu1" class="cursor-pointer"
@@ -51,7 +50,7 @@
 
 <!--The pages get loaded here in <slot /> -->
 <div
-	class="font-oswald mx-auto h-min bg-slate-300 py-6 px-8 pb-16 shadow-xl"
+	class="mx-auto h-min bg-slate-300 py-6 px-8 pb-16 font-oswald shadow-xl"
 >
 	<slot />
 </div>
