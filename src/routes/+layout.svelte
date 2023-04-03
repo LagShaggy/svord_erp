@@ -8,9 +8,13 @@
 		NavHamburger,
 		Dropdown,
 		DropdownItem,
-		Chevron
+		Chevron,
+		A
 	} from 'flowbite-svelte'
+	import Alert from '$lib/Banner/Alert.svelte'
 </script>
+
+<Alert />
 
 <Navbar
 	class="sticky top-0 z-10 bg-slate-200 bg-opacity-90"

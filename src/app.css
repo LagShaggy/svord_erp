@@ -13,9 +13,17 @@
 		@apply text-2xl;
 	}
 
+	h3 {
+		@apply text-xl;
+	}
+
 	h1,
 	h2 {
 		@apply font-oswald;
+	}
+
+	h3 {
+		@apply font-popp;
 	}
 
 	p {
