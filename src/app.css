@@ -16,6 +16,7 @@
 	h1,
 	h2 {
 		@apply font-oswald;
+		@apply mb-4;
 	}
 
 	p {
@@ -24,5 +25,9 @@
 		@apply text-sm;
 		@apply text-left;
 		@apply antialiased;
+	}
+
+	button {
+		@apply w-40 rounded-md border-2 hover:bg-slate-200;
 	}
 }

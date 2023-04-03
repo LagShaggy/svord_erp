@@ -1,41 +1,22 @@
 <script>
 	import { supabase } from '$lib/supabaseClient'
+	import AuthForm from './AuthForm.svelte'
 
-	let email = ''
-	let password = ''
-
-	async function signInWithEmail() {
+	async function signInWithEmail(email, password) {
+		alert('Child Submited:' + email + 'and' + password)
 		const { data, error } =
 			await supabase.auth.signInWithPassword({
 				email,
 				password
 			})
-		console.log(data, error)
 	}
+
+	const doublepwmode = true
 </script>
 
-<form
-	on:submit={signInWithEmail}
-	class="flex w-60 flex-col items-center justify-center"
+<AuthForm submit={signInWithEmail} doublepwmode
+	>Login</AuthForm
 >
-	<input type="email" class="input" bind:value={email} />
-	<input
-		type="password"
-		class="input"
-		bind:value={password}
-	/>
-
-	<button
-		type="submit"
-		class="mt-5 w-40 rounded-md border-2 hover:bg-slate-200"
-	>
-		Log in
-	</button>
-</form>
 
 <style>
-	.input {
-		@apply w-full;
-		@apply rounded;
-	}
 </style>
