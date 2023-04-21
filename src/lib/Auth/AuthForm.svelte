@@ -49,11 +49,12 @@
 		<label for="password">Password</label>
 		<input type="checkbox" bind:checked={show_password} />
 		<input
+			value=""
 			id="password"
 			{type}
 			class="input w-10"
 			placeholder="Password"
-			on:input={handlePassword}
+			on:input={(e) => (password = e.target.value)}
 		/>
 	</div>
 
@@ -71,7 +72,7 @@
 	{/if}
 
 	<button type="submit" class="button mx-auto mt-2">
-		Log in
+		<slot />
 	</button>
 </form>
 

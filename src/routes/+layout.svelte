@@ -8,8 +8,12 @@
 		NavHamburger,
 		Dropdown,
 		DropdownItem,
-		Chevron
+		Chevron,
+		Avatar,
+		DropdownHeader,
+		DropdownDivider
 	} from 'flowbite-svelte'
+	import Logout from '$lib/Auth/Logout.svelte'
 </script>
 
 <Navbar
@@ -29,21 +33,43 @@
 			œderlin
 		</span>
 	</NavBrand>
-	<NavHamburger on:click={toggle} />
+	<div class="flex items-center md:order-2">
+		<Avatar
+			id="avatar-menu"
+			src="/images/profile-picture-3.webp"
+		/>
+		<NavHamburger
+			on:click={toggle}
+			class1="w-full md:flex md:w-auto md:order-1"
+		/>
+	</div>
+	<Dropdown placement="bottom" triggeredBy="#avatar-menu">
+		<DropdownHeader>
+			<span class="block text-sm"> Bonnie Green </span>
+			<span class="block truncate text-sm font-medium">
+				name@flowbite.com
+			</span>
+		</DropdownHeader>
+		<DropdownItem>Dashboard</DropdownItem>
+		<DropdownItem>Settings</DropdownItem>
+		<DropdownItem>Earnings</DropdownItem>
+		<DropdownDivider />
+		<Logout />
+	</Dropdown>
 	<NavUl {hidden}>
 		<NavLi href="/products">Products</NavLi>
 
-		<NavLi id="nav-menu1" class="cursor-pointer"
-			><Chevron aligned>Orders</Chevron></NavLi
-		>
+		<NavLi id="nav-menu1" class="cursor-pointer">
+			<Chevron aligned>Orders</Chevron>
+		</NavLi>
 		<NavLi href="/users">Users</NavLi>
 		<Dropdown triggeredBy="#nav-menu1" class="z-20 w-44">
-			<DropdownItem href="/orders/create"
-				>Create</DropdownItem
-			>
-			<DropdownItem href="/orders/view"
-				>View All</DropdownItem
-			>
+			<DropdownItem href="/orders/create">
+				Create
+			</DropdownItem>
+			<DropdownItem href="/orders/view">
+				View All
+			</DropdownItem>
 		</Dropdown>
 	</NavUl>
 </Navbar>

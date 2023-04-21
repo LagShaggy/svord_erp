@@ -13,8 +13,6 @@
 	let todo = {
 		done: false
 	}
-
-	$: console.log(col)
 </script>
 
 <!-- The userinterface of the Store-->

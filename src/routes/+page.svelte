@@ -1,6 +1,6 @@
 <script>
 	//head
-	let title = 'Overview';
+	let title = 'Overview'
 </script>
 
 <svelte:head>

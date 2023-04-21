@@ -1,6 +1,15 @@
 <script>
 	import { supabase } from '$lib/supabaseClient'
 	import AuthForm from './AuthForm.svelte'
+	import { session } from '$lib/stores'
+	import { goto } from '$app/navigation'
+
+	let setStores = (res) => {
+		session.set({
+			loggedIn: true,
+			data: res.session
+		})
+	}
 
 	async function signIn(event) {
 		let { email, password } = event.detail
@@ -12,13 +21,12 @@
 			})
 
 		if (!error) {
-			const { session, user } = data
-			console.log(session, user)
+			setStores(data)
+			goto('/')
 		} else {
-			console.log(error)
+			alert(error)
 		}
 	}
-
 	const doublepwmode = false
 </script>
 
