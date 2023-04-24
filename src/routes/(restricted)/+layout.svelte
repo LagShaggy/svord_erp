@@ -1,5 +1,5 @@
 <script>
-	import '../app.css'
+	import '$src/app.css'
 	import {
 		Navbar,
 		NavBrand,
@@ -14,6 +14,26 @@
 		DropdownDivider
 	} from 'flowbite-svelte'
 	import Logout from '$lib/Auth/Logout.svelte'
+
+	import { session } from '$lib/stores'
+	import { goto } from '$app/navigation'
+	import { redirect } from '@sveltejs/kit'
+	import { browser } from '$app/environment'
+
+	let loggedIn = false
+	$: {
+		loggedIn = $session.loggedIn
+		if (!loggedIn) {
+			console.log(
+				'Authguard Logged In?',
+				loggedIn,
+				'To be redirected!'
+			)
+			if (browser) {
+				goto('/auth/login')
+			}
+		}
+	}
 </script>
 
 <Navbar

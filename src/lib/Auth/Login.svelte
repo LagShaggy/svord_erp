@@ -4,7 +4,7 @@
 	import { session } from '$lib/stores'
 	import { goto } from '$app/navigation'
 
-	let setStores = (res) => {
+	let setStore = (res) => {
 		session.set({
 			loggedIn: true,
 			data: res.session
@@ -21,7 +21,7 @@
 			})
 
 		if (!error) {
-			setStores(data)
+			setStore(data)
 			goto('/')
 		} else {
 			alert(error)

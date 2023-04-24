@@ -9,7 +9,6 @@ export const session = writable(
 
 		return () => {
 			console.log('user store deleted!')
-			set({ loggedIn: false, data: {} })
 		}
 	}
 )
