@@ -8,7 +8,8 @@ const config = {
 			fallback: '200.html'
 		}),
 		alias: {
-			$src: 'src/'
+			$src: 'src/',
+			$icons: 'src/lib/icons/'
 		}
 	},
 

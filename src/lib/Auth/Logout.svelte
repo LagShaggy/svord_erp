@@ -3,6 +3,7 @@
 	import { session } from '$lib/stores'
 	import { onDestroy, onMount } from 'svelte'
 	import { goto } from '$app/navigation'
+	import PowerIcon from '$icons/PowerIcon.svelte'
 
 	let showLogout = false
 	let unsubscribe = session.subscribe((value) => {
@@ -20,13 +21,18 @@
 			alert(error)
 		} else {
 			console.log('Logout button unsubscribing')
-			session.set({ loggedIn: false, data: {} })
+			session.set({
+				loggedIn: false,
+				data: { user: { email: '' } }
+			})
 			unsubscribe()
-			//goto('/auth/login')
 		}
 	}
 </script>
 
-<button class="button" on:click={signOut}>
-	Sign Out: {showLogout}
+<button
+	class="button flex justify-center"
+	on:click={signOut}
+>
+	<PowerIcon />
 </button>

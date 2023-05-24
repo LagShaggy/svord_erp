@@ -17,7 +17,6 @@
 
 	import { session } from '$lib/stores'
 	import { goto } from '$app/navigation'
-	import { redirect } from '@sveltejs/kit'
 	import { browser } from '$app/environment'
 
 	let loggedIn = false
@@ -54,10 +53,7 @@
 		</span>
 	</NavBrand>
 	<div class="flex items-center md:order-2">
-		<Avatar
-			id="avatar-menu"
-			src="/images/profile-picture-3.webp"
-		/>
+		<Avatar id="avatar-menu" src="user.svg" />
 		<NavHamburger
 			on:click={toggle}
 			class1="w-full md:flex md:w-auto md:order-1"
@@ -65,14 +61,19 @@
 	</div>
 	<Dropdown placement="bottom" triggeredBy="#avatar-menu">
 		<DropdownHeader>
-			<span class="block text-sm"> Bonnie Green </span>
+			<span class="block text-sm">
+				{'Bonnie Green'}
+			</span>
 			<span class="block truncate text-sm font-medium">
-				name@flowbite.com
+				{$session.data.user.email}
 			</span>
 		</DropdownHeader>
-		<DropdownItem>Dashboard</DropdownItem>
-		<DropdownItem>Settings</DropdownItem>
-		<DropdownItem>Earnings</DropdownItem>
+		<DropdownItem on:click={() => goto('/profile')}>
+			Profile
+		</DropdownItem>
+		<DropdownItem on:click={() => goto('/settings')}>
+			Settings
+		</DropdownItem>
 		<DropdownDivider />
 		<Logout />
 	</Dropdown>

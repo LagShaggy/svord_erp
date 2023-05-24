@@ -13,7 +13,6 @@
 
 	async function signIn(event) {
 		let { email, password } = event.detail
-		//alert('Child Submited:' + email + 'and' + password)
 		const { data, error } =
 			await supabase.auth.signInWithPassword({
 				email,
@@ -24,6 +23,7 @@
 			setStore(data)
 			goto('/')
 		} else {
+			console.log(error)
 			alert(error)
 		}
 	}
@@ -31,6 +31,8 @@
 </script>
 
 <AuthForm {doublepwmode} on:fire={signIn}>Login</AuthForm>
+
+{JSON.stringify($session.data)}
 
 <style>
 </style>

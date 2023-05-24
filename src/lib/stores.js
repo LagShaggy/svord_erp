@@ -3,10 +3,9 @@ import { writable } from 'svelte/store'
 // Auth Stores
 // Session
 export const session = writable(
-	{ loggedIn: false, data: {} },
+	{ loggedIn: false, data: { user: { email: '' } } },
 	(set) => {
 		console.log('user store created!')
-
 		return () => {
 			console.log('user store deleted!')
 		}
