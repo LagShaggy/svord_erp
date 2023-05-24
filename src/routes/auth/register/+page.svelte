@@ -1,1 +1,5 @@
-<h1>Register</h1>
+<script>
+	import Register from '$lib/Auth/Register.svelte'
+</script>
+
+<Register />

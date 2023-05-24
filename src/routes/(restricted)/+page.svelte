@@ -1,6 +1,7 @@
 <script>
+	import { session } from '$lib/stores'
 	//head
-	let title = 'Overview';
+	let title = 'Overview'
 </script>
 
 <svelte:head>
@@ -14,3 +15,5 @@
 <body>
 	<h2 class="center">THIS IS THE MAIN PAGE</h2>
 </body>
+
+{JSON.stringify($session.data)}

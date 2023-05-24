@@ -1,1 +1,5 @@
-<h1>Login</h1>
+<script>
+	import Login from '$lib/Auth/Login.svelte'
+</script>
+
+<Login />

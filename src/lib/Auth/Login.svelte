@@ -1,41 +1,38 @@
 <script>
 	import { supabase } from '$lib/supabaseClient'
+	import AuthForm from './AuthForm.svelte'
+	import { session } from '$lib/stores'
+	import { goto } from '$app/navigation'
 
-	let email = ''
-	let password = ''
+	let setStore = (res) => {
+		session.set({
+			loggedIn: true,
+			data: res.session
+		})
+	}
 
-	async function signInWithEmail() {
+	async function signIn(event) {
+		let { email, password } = event.detail
 		const { data, error } =
 			await supabase.auth.signInWithPassword({
 				email,
 				password
 			})
-		console.log(data, error)
+
+		if (!error) {
+			setStore(data)
+			goto('/')
+		} else {
+			console.log(error)
+			alert(error)
+		}
 	}
+	const doublepwmode = false
 </script>
 
-<form
-	on:submit={signInWithEmail}
-	class="flex w-60 flex-col items-center justify-center"
->
-	<input type="email" class="input" bind:value={email} />
-	<input
-		type="password"
-		class="input"
-		bind:value={password}
-	/>
+<AuthForm {doublepwmode} on:fire={signIn}>Login</AuthForm>
 
-	<button
-		type="submit"
-		class="mt-5 w-40 rounded-md border-2 hover:bg-slate-200"
-	>
-		Log in
-	</button>
-</form>
+{JSON.stringify($session.data)}
 
 <style>
-	.input {
-		@apply w-full;
-		@apply rounded;
-	}
 </style>
