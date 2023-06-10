@@ -1,5 +1,5 @@
-<script>
-	import { session } from '$lib/stores'
+<script lang="ts">
+	import { session } from '$src/lib/stores'
 	//head
 	let title = 'Overview'
 </script>
