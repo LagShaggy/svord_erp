@@ -8,10 +8,8 @@ const config = {
 			fallback: '200.html'
 		}),
 		alias: {
-			// these are the aliases and paths to them
-			$src: './src',
-			$util: './src/lib/util',
-			$hooks: './src/hooks'
+			$src: 'src/',
+			$icons: 'src/lib/icons/'
 		}
 	},
 

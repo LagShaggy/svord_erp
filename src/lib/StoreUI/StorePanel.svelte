@@ -1,6 +1,5 @@
-<script>
+<script lang="ts">
 	import StoreItem from '$lib/StoreUI/StoreItem.svelte'
-	import Layout from '../../routes/+layout.svelte'
 	import StoreControll from './StoreControll.svelte'
 
 	//gets imported when instantiated
@@ -13,8 +12,6 @@
 	let todo = {
 		done: false
 	}
-
-	$: console.log(col)
 </script>
 
 <!-- The userinterface of the Store-->

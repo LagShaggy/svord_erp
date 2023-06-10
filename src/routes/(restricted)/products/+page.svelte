@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 	import StorePanel from '$lib/StoreUI/StorePanel.svelte'
 
 	/** @type {import('./$types').PageData} */
-	export let data
+	export let data: any
 	let { products } = data
 	// sveltekit reactivity when something has changed.
 	$: ({ products } = data)

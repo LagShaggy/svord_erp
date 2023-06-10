@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
 	import JsonLister from '$lib/Items/JsonLister.svelte'
 	import { Badge, Tabs, TabItem } from 'flowbite-svelte'
 
 	/** @type {import('./$types').PageData} */
-	export let data
+	export let data: any
 	let { item } = data
 	$: ({ item } = data)
 
@@ -16,7 +16,8 @@
 		width="40"
 		height="40"
 		viewBox="0 0 24 24"
-		><path
+	>
+		<path
 			fill="currentColor"
 			d="m11.3 12l3.5-3.5c.4-.4.4-1 0-1.4c-.4-.4-1-.4-1.4 0l-4.2 4.2c-.4.4-.4 1 0 1.4l4.2 4.2c.2.2.4.3.7.3c.3 0 .5-.1.7-.3c.4-.4.4-1 0-1.4L11.3 12z"
 		/>
@@ -55,7 +56,7 @@
 			inactiveClasses="p-4 text-red-800 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-300"
 		>
 			<TabItem open title="News">
-				<p class="text-sm ">
+				<p class="text-sm">
 					<b>News:</b> Lorem ipsum dolor sit amet, consectetur
 					adipiscing elit, sed do eiusmod tempor incididunt ut
 					labore et dolore magna aliqua.

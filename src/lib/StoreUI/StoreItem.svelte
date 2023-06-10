@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
 	import { Group, Badge } from 'flowbite-svelte'
 	import { HtmlTag } from 'svelte/internal'
 
 	//gets imported when instantiated
-	export let item
+	export let item: any
 
 	//design
 

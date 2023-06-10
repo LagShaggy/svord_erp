@@ -1,5 +1,5 @@
-<script>
-	let suiticon = '/favicon.png';
+<script lang="ts">
+	let suiticon = '/favicon.png'
 </script>
 
 <h1>ORDERS</h1>

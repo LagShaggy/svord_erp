@@ -20,6 +20,7 @@
 	h1,
 	h2 {
 		@apply font-oswald;
+		@apply mb-4;
 	}
 
 	h3 {
@@ -32,5 +33,9 @@
 		@apply text-sm;
 		@apply text-left;
 		@apply antialiased;
+	}
+
+	button {
+		@apply rounded-md border-2 px-3 py-1 hover:bg-slate-200;
 	}
 }
