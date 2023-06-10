@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import StoreItem from '$lib/StoreUI/StoreItem.svelte'
 	import StoreControll from './StoreControll.svelte'
 

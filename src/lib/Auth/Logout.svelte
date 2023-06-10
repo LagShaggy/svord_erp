@@ -1,9 +1,8 @@
-<script>
-	import { supabase } from '$lib/supabaseClient'
-	import { session } from '$lib/stores'
+<script lang="ts">
+	import { supabase } from '$src/lib/supabaseClient'
+	import { session } from '$src/lib/stores'
 	import { onDestroy, onMount } from 'svelte'
 	import { goto } from '$app/navigation'
-	import PowerIcon from '$icons/PowerIcon.svelte'
 
 	let showLogout = false
 	let unsubscribe = session.subscribe((value) => {
@@ -34,5 +33,5 @@
 	class="button flex justify-center"
 	on:click={signOut}
 >
-	<PowerIcon />
+	Logout
 </button>

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { createEventDispatcher } from 'svelte'
 
 	const dispatch = createEventDispatcher()
@@ -13,10 +13,10 @@
 	let email = ''
 	let password = ''
 	let password2 = ''
-	const handlePassword = (e) => {
+	const handlePassword = (e: any) => {
 		password = e.target.value
 	}
-	const handlePassword2 = (e) => {
+	const handlePassword2 = (e: any) => {
 		password2 = e.target.value
 	}
 	// for reusability

@@ -1,8 +1,8 @@
-<script>
-	import { supabase } from '$lib/supabaseClient'
+<script lang="ts">
+	import { supabase } from '$src/lib/supabaseClient'
 	import AuthForm from './AuthForm.svelte'
 
-	async function signUp(event) {
+	async function signUp(event: any) {
 		let { email, password } = event.detail
 		//alert('Child Submited:' + email + 'and' + password)
 		const { data, error } = await supabase.auth.signUp({

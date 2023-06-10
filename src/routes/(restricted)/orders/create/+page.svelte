@@ -1,6 +1,6 @@
-<script>
-    /** @type {import('./$types').PageData} */
-    export let data;
+<script lang="ts">
+	/** @type {import('./$types').PageData} */
+	export let data
 </script>
 
-<h1> Create orders here</h1>
+<h1>Create orders here</h1>

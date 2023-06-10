@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import '$src/app.css'
 	import {
 		Navbar,
@@ -15,7 +15,7 @@
 	} from 'flowbite-svelte'
 	import Logout from '$lib/Auth/Logout.svelte'
 
-	import { session } from '$lib/stores'
+	import { session } from '$src/lib/stores'
 	import { goto } from '$app/navigation'
 	import { browser } from '$app/environment'
 

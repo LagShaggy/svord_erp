@@ -1,17 +1,17 @@
-<script>
-	import { supabase } from '$lib/supabaseClient'
+<script lang="ts">
+	import { supabase } from '$src/lib/supabaseClient'
 	import AuthForm from './AuthForm.svelte'
-	import { session } from '$lib/stores'
+	import { session } from '$src/lib/stores'
 	import { goto } from '$app/navigation'
 
-	let setStore = (res) => {
+	let setStore = (res: any) => {
 		session.set({
 			loggedIn: true,
 			data: res.session
 		})
 	}
 
-	async function signIn(event) {
+	async function signIn(event: any) {
 		let { email, password } = event.detail
 		const { data, error } =
 			await supabase.auth.signInWithPassword({

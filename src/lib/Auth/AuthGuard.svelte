@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation'
 	import { onDestroy, onMount } from 'svelte'
-	import { session } from '$lib/stores'
+	import { session } from '$src/lib/stores'
 
 	let pass = false
 
@@ -10,7 +10,5 @@
 	}
 	onMount(() => {})
 
-	onDestroy(() => {
-		unsubscribe()
-	})
+	onDestroy(() => {})
 </script>
