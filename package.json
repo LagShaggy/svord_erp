@@ -14,6 +14,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@capacitor/cli": "^5.0.5",
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^1.0.0",
 		"@sveltejs/adapter-static": "^1.0.0-next.50",
@@ -40,6 +41,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@capacitor/android": "^5.0.5",
+		"@capacitor/core": "^5.0.5",
+		"@capacitor/ios": "^5.0.5",
 		"@supabase/auth-helpers-sveltekit": "^0.8.7",
 		"@supabase/supabase-js": "^2.7.0",
 		"flowbite": "^1.6.3",
