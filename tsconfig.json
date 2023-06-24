@@ -12,9 +12,11 @@
 		"noImplicitAny": false,
 		"baseUrl": ".",
 		"paths": {
-			"$src": ["src"],
-			"$hooks": ["src/hooks"],
-			"$util": ["src/lib/util"]
+			"$lib": ["./src/lib"],
+			"$lib/*": ["./src/lib/*"],
+			"$src": ["./src"],
+			"$hooks": ["./src/hooks"],
+			"$util": ["./src/lib/util"]
 		}
 	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
