@@ -12,7 +12,7 @@ const config = {
 			$util: 'src/lib/util',
 			$hooks: 'src/hooks',
 			$src: 'src/',
-			$icons: 'src/lib/icons/'
+			$icons: 'src/lib/Icons/'
 		}
 	},
 

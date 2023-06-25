@@ -1,12 +1,10 @@
 <script>
-	import { alert } from '$src/stores.js'
+	import { alert } from '$lib/stores.js'
 	import { onDestroy, onMount } from 'svelte'
 
 	let alertInfo = $alert
 
-	const unsubscribe = alert.subscribe(
-		(/** @type {{}} */ value) => (alertInfo = value)
-	)
+	const unsubscribe = alert.subscribe((/** @type {{}} */ value) => (alertInfo = value))
 
 	onMount(() => {})
 
@@ -24,7 +22,7 @@
 {#if alertInfo}
 	<div
 		class="absolute top-6 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2
-		transform rounded-md border bg-{alertInfo.colour}-300 mt-3 p-2 px-5 py-1 
+		transform rounded-md border bg-{alertInfo.colour}-300 mt-3 p-2 px-5 py-1
 		text-center sm:mx-2"
 		on:click={destroy}
 		on:keydown={destroy}

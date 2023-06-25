@@ -1,26 +1,19 @@
 <script lang="ts">
 	import StorePanel from '$lib/StoreUI/StorePanel.svelte'
+	import BasePage from '$lib/UI/BasePage.svelte'
 
 	/** @type {import('./$types').PageData} */
 	export let data: any
 	let { products } = data
 	// sveltekit reactivity when something has changed.
 	$: ({ products } = data)
-
-	//head
-	export let title = 'PRODUCTS'
 </script>
 
-<header>
-	<h1>{title}</h1>
-</header>
-<br />
-
-<div />
-
-<div class="flex justify-center">
-	<StorePanel {products} />
-</div>
+<BasePage title={'PRODUCTS'}>
+	<div class="flex justify-center">
+		<StorePanel {products} />
+	</div>
+</BasePage>
 
 <style>
 </style>
