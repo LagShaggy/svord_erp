@@ -1,0 +1,17 @@
+<script lang="ts">
+	import { goto } from '$app/navigation'
+	import type { TabProps } from './types'
+
+	export let props: TabProps
+
+	const navigate = () => {
+		goto(props.redirect)
+	}
+</script>
+
+<button class="flex-grow p-1 bg-slate-300 rounded-md" on:click={navigate}>
+	<div class="flex flex-col items-center">
+		<img class="h-6 w-6" src={props.img} alt="prop" />
+		{props.name}
+	</div>
+</button>

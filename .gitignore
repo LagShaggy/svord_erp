@@ -9,3 +9,10 @@ build/
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vercel¨
+
+
+# Capacitor
+android
+ios
+
+
