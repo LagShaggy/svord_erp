@@ -1,5 +1,5 @@
 <script>
-	import { alert } from '$lib/stores.js'
+	import { alert } from '$lib/stores'
 	import { onDestroy, onMount } from 'svelte'
 
 	let alertInfo = $alert

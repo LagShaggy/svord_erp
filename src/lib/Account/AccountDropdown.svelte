@@ -1,33 +1,24 @@
 <script lang="ts">
 	import { goto } from '$app/navigation'
 	import Logout from '$lib/Auth/Logout.svelte'
-	import { slide } from 'svelte/transition'
-
-	let expanded: boolean = false
-	const handleExpand = () => {
-		expanded = !expanded
-	}
+	import { loggedIn } from '$lib/Auth/authStores'
+	import DropdownPannel from '$lib/UI/Dropdown/DropdownPannel.svelte'
+	import DropdownProvider from '$lib/UI/Dropdown/DropdownProvider.svelte'
+	import { CLIENT } from '$lib/routes'
 
 	const redirect = (path: string) => {
-		expanded = false
 		goto(path)
 	}
 </script>
 
-<div class="fixed top-3 right-3">
-	<div class="flex flex-col items-end">
-		<button
-			class="w-10 h-10 rounded-full border-1 bg-cyan-200 overflow-hidden"
-			on:click={handleExpand}
-		>
-			<img src="/icons/user.svg" alt="Profile picutre" class="w-full h-full object-cover" />
-		</button>
-		{#if expanded}
-			<div in:slide out:slide class="bg-white w-3/5">
-				<button on:click={() => redirect('/account')}>Profile</button>
-				<div>Some Option 2</div>
-				<Logout />
-			</div>
-		{/if}
-	</div>
-</div>
+{#if $loggedIn}
+	<DropdownProvider>
+		<div class="w-10 h-10 rounded-full border-1 bg-cyan-200 overflow-hidden">
+			<img src="/icons/user.svg" alt="Profile Picutre" class="w-full h-full object-cover" />
+		</div>
+		<DropdownPannel slot="pannel">
+			<button on:click={() => goto(CLIENT.PROFILE)}>Profile</button>
+			<Logout />
+		</DropdownPannel>
+	</DropdownProvider>
+{/if}
