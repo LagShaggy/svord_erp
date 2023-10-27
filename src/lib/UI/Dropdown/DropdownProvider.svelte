@@ -1,17 +1,14 @@
 <script lang="ts">
-	import DropdownPannel from './DropdownPannel.svelte'
+	import { writable } from 'svelte/store'
+	// import { clickOutside } from '../Behavior/clickOutside'
 
-	let expanded: boolean = false
+	let expanded = writable(false)
+
 	const handleExpand = () => {
-		expanded = !expanded
+		$expanded = !$expanded
 	}
 </script>
 
 <span class="relative">
-	<button on:click={() => handleExpand()}>
-		<slot />
-	</button>
-	{#if expanded}
-		<slot name="pannel" />
-	{/if}
+	<slot {expanded} {handleExpand} />
 </span>
