@@ -6,6 +6,7 @@
 	import DropdownProvider from '$lib/UI/Dropdown/DropdownProvider.svelte'
 	import DropdownButton from '$lib/UI/Dropdown/DropdownButton.svelte'
 	import { CLIENT } from '$lib/routes'
+	import Link from '$lib/UI/Primitive/Link.svelte'
 
 	const redirect = (path: string) => {
 		goto(path)
@@ -19,9 +20,9 @@
 				<img src="/icons/user.svg" alt="Profile Picutre" class="w-full h-full object-cover" />
 			</div>
 		</DropdownButton>
-		<DropdownPannel {expanded}>
-			<Button command={session.logout}>Logout</Button>
-			<Button command={session.logout}>Logout</Button>
+		<DropdownPannel {expanded} displaceCSS="top-10 right-10">
+			<Link path={CLIENT.PROFILE}>Profile</Link>
+			<Link path={CLIENT.ORG}>Organisation</Link>
 			<Button command={session.logout}>Logout</Button>
 			<Button command={session.logout}>Logout</Button>
 			<Button command={() => console.log('clicked')}>Click me</Button>

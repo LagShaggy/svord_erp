@@ -3,8 +3,9 @@
 	import type { Action } from 'svelte/action'
 	import { writable, type Writable } from 'svelte/store'
 	import { slide } from 'svelte/transition'
-	import type { Attribute } from 'svelte/types/compiler/interfaces'
+
 	export let expanded: Writable<boolean> = writable(false)
+	export let displaceCSS
 
 	interface Attributes {
 		'on:outside'?: (event: CustomEvent) => void
@@ -38,7 +39,7 @@
 		out:slide
 		use:clickOutsideOfParent
 		on:outside={closeDropdown}
-		class="bg-white w-28 absolute top-10 right-10"
+		class="bg-white w-28 absolute {displaceCSS}"
 	>
 		<slot />
 	</div>
