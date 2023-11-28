@@ -1,7 +1,13 @@
 <script lang="ts">
 	export let command = () => {}
+	export let submit = false
+	export let className: string = ''
 </script>
 
-<button class="button flex justify-center items-center" on:click={command}>
+<button
+	class="border border-comp-colour button rounded-full text-center {className}"
+	on:click={command}
+	type={submit ? 'submit' : null}
+>
 	<slot />
 </button>

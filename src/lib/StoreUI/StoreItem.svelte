@@ -1,7 +1,4 @@
 <script lang="ts">
-	import { Group, Badge } from 'flowbite-svelte'
-	import { HtmlTag } from 'svelte/internal'
-
 	//gets imported when instantiated
 	export let item: any
 
@@ -38,21 +35,11 @@
 					ID: {item.id}
 				</p>
 			</div>
-
-			<Badge
-				border
-				{color}
-				class="h-min whitespace-nowrap border-opacity-50 bg-opacity-50"
-			>
-				{item.quantity} Items available
-			</Badge>
 		</div>
 	</div>
 	<p class="text-left">
-		Lorem ipsum dolor sit amet consectetur adipisicing elit.
-		Obcaecati, ex expedita. Commodi minima dolorem at,
-		pariatur reiciendis quibusdam laborum ducimus nihil
-		voluptatum laboriosam accusantium, aliquid amet incidunt
-		suscipit minus. Nam?
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, ex expedita. Commodi minima
+		dolorem at, pariatur reiciendis quibusdam laborum ducimus nihil voluptatum laboriosam
+		accusantium, aliquid amet incidunt suscipit minus. Nam?
 	</p>
 </a>

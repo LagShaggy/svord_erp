@@ -1,4 +1,4 @@
-export const CLIENT = {
+export const ROUTES = {
 	HOME: '/',
 	PROFILE: '/profile',
 	ORG: '/organisation',
@@ -6,5 +6,17 @@ export const CLIENT = {
 		LOGIN: '/auth/login',
 		REGISTER: '/auth/register',
 		RESET: '/auth/reset'
+	}
+}
+
+export const API = {
+	AUTH: {
+		LOGIN: '?/login'
+	}
+}
+
+export const ACTIONS = {
+	AUTH: {
+		LOGIN: '?/login'
 	}
 }

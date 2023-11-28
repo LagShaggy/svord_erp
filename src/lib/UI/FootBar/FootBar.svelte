@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Tab from './Tab.svelte'
+	import Tab from './NavigationTab.svelte'
 	import type { TabProps } from './types'
 
 	const products: TabProps = {

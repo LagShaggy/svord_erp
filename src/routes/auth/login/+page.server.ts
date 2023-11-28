@@ -1,32 +1,29 @@
-import { session } from '$lib/Auth/authStores'
-import { supabase } from '$lib/supabase/supabaseClient'
 import { redirect } from '@sveltejs/kit'
 import type { Actions } from './$types'
-import { CLIENT } from '$lib/routes'
+import { ROUTES } from '$lib/routes'
 
 export const actions: Actions = {
-	login: async ({ request }) => {
-		const data = await request.formData()
+	login: async (event) => {
+		const {
+			request,
+			locals: { supabase }
+		} = event
 
-		const email = data.get('email') as string
-		const password = data.get('password') as string
+		const formdata = await request.formData()
 
-		console.log(email, password)
+		const email = formdata.get('email') as string
+		const password = formdata.get('password') as string
 
-		const loginReponse = await supabase.auth.signInWithPassword({
+		const { error } = await supabase.auth.signInWithPassword({
 			email,
 			password
 		})
 
-		if (loginReponse.error) {
-			console.log(loginReponse.error)
-			alert(loginReponse.error)
+		if (error) {
+			return { message: 'Login failed.' }
 		} else {
-			session.set({
-				session: loginReponse.data.session,
-				user: loginReponse.data.user
-			})
-			throw redirect(301, CLIENT.HOME)
+			console.log('auth successfull!')
+			throw redirect(301, ROUTES.HOME)
 		}
 	}
 }

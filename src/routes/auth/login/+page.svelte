@@ -1,13 +1,12 @@
 <script lang="ts">
-	import Login from '$lib/Auth/Login.svelte'
 	import type { ActionData } from './$types'
-	import Form from '$lib/UI/Form/Form.svelte'
+	import LoginForm from '$lib/UI/Forms/LoginForm.svelte'
+	import { API } from '$lib/routes'
 
 	export let form: ActionData
 
-	console.log(form)
+	console.log(form?.message)
+	const action = API.AUTH.LOGIN
 </script>
 
-<Login />
-
-<Form />
+<LoginForm {action} />
