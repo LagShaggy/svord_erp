@@ -1,0 +1,11 @@
+name,country,email,website,description,accepted_currencies
+"GreenTech Innovations","USA","contact@greentechinnovations.com","www.greentechinnovations.com","Sustainable energy solutions for the modern world.","USD;Euro"
+"Alpine Electronics","Switzerland","info@alpineelec.ch","www.alpineelec.ch","High-quality audio and navigation products.","CHF;Euro;USD"
+"Bamboo Textiles","China","sales@bambootextiles.cn","www.bambootextiles.cn","Eco-friendly textiles made from bamboo fibers.","RMB;USD"
+"River Coffee Roasters","UK","hello@rivercoffeeroasters.uk","www.rivercoffeeroasters.uk","Artisan coffee roasting company sourcing ethical beans globally.","GBP;Euro;USD"
+"TechLogix","Germany","support@techlogix.de","www.techlogix.de","Innovative tech solutions for businesses and individuals.","Euro;GBP"
+"Cosmic Cosmetics","France","contact@cosmiccosmetics.fr","www.cosmiccosmetics.fr","Organic makeup and skincare products.","Euro;GBP;CHF"
+"Fresh Farm Produce","USA","info@freshfarmproduce.us","www.freshfarmproduce.us","Locally sourced organic fruits and vegetables delivered to your door.","USD"
+"Artisan Bakers Ltd.","Italy","orders@artisanbakers.it","www.artisanbakers.it","Traditional Italian bakery offering a variety of breads and pastries.","Euro"
+"Highland Adventures","Scotland","bookings@highlandadventures.scot","www.highlandadventures.scot","Outdoor adventure and tour company in the Scottish Highlands.","GBP;Euro"
+"Digital Nomad Hub","Spain","membership@digitalnomadhub.es","www.digitalnomadhub.es","Co-working and co-living spaces for digital nomads.","Euro;USD"

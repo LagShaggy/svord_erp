@@ -1,8 +1,8 @@
 import { derived, get, writable, type Writable } from 'svelte/store'
-import type { AuthError, User, Session, UserResponse } from '@supabase/supabase-js'
+import type { AuthError, Session, UserResponse } from '@supabase/supabase-js'
 import { supabase } from '$lib/supabase/supabaseClient'
 import { browser } from '$app/environment'
-import { CLIENT } from '$lib/routes'
+import { ROUTES } from '$lib/routes'
 import { goto } from '$app/navigation'
 import { api } from '$lib/supabase/supabase.api'
 
@@ -15,15 +15,11 @@ interface SessionStore<T> extends Writable<T> {
 	getUserData: () => Promise<UserResponse>
 }
 
-interface SessionObject {
-	user: User | null
-	session: Session | null
-}
-
-const createSession = (): SessionStore<SessionObject> => {
-	const store = writable<SessionObject>()
+const createSession = (): SessionStore<Session | null> => {
+	const store = writable<Session | null>()
 	const { subscribe, set } = store
 
+	// if local storages has entry (aka after refresh) load it back into store
 	browser &&
 		localStorage[AUTH_LOCALSTORAGE_KEY] &&
 		set(JSON.parse(localStorage[AUTH_LOCALSTORAGE_KEY]))
@@ -46,12 +42,9 @@ const createSession = (): SessionStore<SessionObject> => {
 				alert(logoutResponse.error)
 			} else {
 				localStorage.removeItem(AUTH_LOCALSTORAGE_KEY)
-				set({
-					user: null,
-					session: null
-				})
+				set({} as Session)
 			}
-			goto(CLIENT.AUTH.LOGIN)
+			goto(ROUTES.AUTH.LOGIN)
 			return logoutResponse
 		},
 		getUserData: async () => await api.getUserData()

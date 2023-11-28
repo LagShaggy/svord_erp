@@ -9,6 +9,11 @@ const config = {
 			fontFamily: {
 				popp: ['Poppins'],
 				oswald: ['Oswald']
+			},
+			colors: {
+				'base-colour': '#4338ca',
+				'comp-colour': '#eab308'
+				//'comp-colour': '#4338ca'
 			}
 		}
 	},

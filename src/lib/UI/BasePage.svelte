@@ -7,10 +7,9 @@
 	<title>Svord - {title}</title>
 </svelte:head>
 
-<header>
+<header class="pl-2">
 	<h1>{title}</h1>
 </header>
 <p>{description}</p>
-<br />
 
 <slot />

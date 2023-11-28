@@ -1,8 +1,5 @@
 <script lang="ts">
-	import { goto } from '$app/navigation'
-	import { pathPreviouslyOn, session, loggedIn } from '$lib/Auth/authStores'
-	import { browser } from '$app/environment'
-	import { page } from '$app/stores'
+	import { loggedIn } from '$lib/Auth/authStores'
 	import svord_logo from '$icons/svord-logo.svg'
 
 	// $: {
@@ -14,6 +11,8 @@
 	// 		}
 	// 	}
 	// }
+
+	console.log('authguard: ', $loggedIn)
 </script>
 
 {#if $loggedIn}

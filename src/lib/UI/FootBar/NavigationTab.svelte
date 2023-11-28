@@ -9,7 +9,7 @@
 	}
 </script>
 
-<button class="flex-grow p-1 bg-slate-300 rounded-md" on:click={navigate}>
+<button class="flex-grow p-1 bg-slate-300 rounded-t-md" on:click={navigate}>
 	<div class="flex flex-col items-center">
 		<img class="h-6 w-6" src={props.img} alt="prop" />
 		<p>

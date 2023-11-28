@@ -5,7 +5,7 @@
 	import DropdownPannel from '$lib/UI/Dropdown/DropdownPannel.svelte'
 	import DropdownProvider from '$lib/UI/Dropdown/DropdownProvider.svelte'
 	import DropdownButton from '$lib/UI/Dropdown/DropdownButton.svelte'
-	import { CLIENT } from '$lib/routes'
+	import { ROUTES } from '$lib/routes'
 	import Link from '$lib/UI/Primitive/Link.svelte'
 
 	const redirect = (path: string) => {
