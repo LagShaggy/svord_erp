@@ -24,8 +24,10 @@
 			<Link path={CLIENT.PROFILE}>Profile</Link>
 			<Link path={CLIENT.ORG}>Organisation</Link>
 			<Button command={session.logout}>Logout</Button>
-			<Button command={session.logout}>Logout</Button>
 			<Button command={() => console.log('clicked')}>Click me</Button>
+			<DropdownProvider let:handleExpand let:expanded>
+				<DropdownButton {handleExpand} />
+			</DropdownProvider>
 		</DropdownPannel>
 	</DropdownProvider>
 {/if}
