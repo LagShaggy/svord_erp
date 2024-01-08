@@ -21,8 +21,8 @@
 			</div>
 		</DropdownButton>
 		<DropdownPannel {expanded} displaceCSS="top-10 right-10">
-			<Link path={CLIENT.PROFILE}>Profile</Link>
-			<Link path={CLIENT.ORG}>Organisation</Link>
+			<Link path={ROUTES.PROFILE}>Profile</Link>
+			<Link path={ROUTES.ORG}>Organisation</Link>
 			<Button command={session.logout}>Logout</Button>
 			<Button command={() => console.log('clicked')}>Click me</Button>
 			<DropdownProvider let:handleExpand let:expanded>
