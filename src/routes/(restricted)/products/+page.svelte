@@ -6,16 +6,14 @@
 	import type { PageData } from './$types'
 
 	export let data: PageData
-	let { products, supabase } = data
+	let { products } = data
 	// sveltekit reactivity when something has changed.
-	$: ({
-		products: { data: productList }
-	} = data)
+	$: ({ products } = data)
 </script>
 
 <BasePage title={'PRODUCTS'}>
 	<div class="flex justify-center">
-		<Table let:item let:index items={productList}>
+		<Table let:item let:index items={products}>
 			<ProductRow {item} {index} />
 		</Table>
 	</div>

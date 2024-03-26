@@ -1,6 +1,9 @@
 import type { PageServerLoad } from './$types'
 
-export const load: PageServerLoad = async ({ locals: { prisma } }) => {
-	const accounts = await prisma.account.findMany()
+export const load: PageServerLoad = async ({ locals: { supabase } }) => {
+	const { data: accounts, error } = await supabase.from('Account').select()
+	if(error){
+		console.log(error)
+	}
 	return { accounts }
 }

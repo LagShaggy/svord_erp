@@ -4,7 +4,7 @@
 	import { writable } from 'svelte/store'
 
 	export let action: string
-	export let className: string
+	export let className: string = ''
 	const submitable = writable<boolean[]>([])
 
 	setContext('sumbit', submitable)

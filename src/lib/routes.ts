@@ -10,13 +10,12 @@ export const ROUTES = {
 }
 
 export const API = {
-	AUTH: {
-		LOGIN: '?/login'
-	}
+	AUTH: {}
 }
 
 export const ACTIONS = {
 	AUTH: {
-		LOGIN: '?/login'
+		LOGIN: '/auth/login?/login',
+		LOGOUT: '/auth/logout?/logout'
 	}
 }

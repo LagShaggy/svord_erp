@@ -11,5 +11,10 @@
 			{type}
 		</p>
 	</slot>
-	<input {type} {name} class="border border-comp-colour rounded-full text-left px-3 ml-5 w-80" />
+	<input
+		{type}
+		{name}
+		placeholder={type}
+		class="border border-comp-colour rounded-full text-left px-3 ml-5 w-80"
+	/>
 </label>

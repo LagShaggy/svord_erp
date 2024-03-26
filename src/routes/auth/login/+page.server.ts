@@ -3,11 +3,7 @@ import type { Actions } from './$types'
 import { ROUTES } from '$lib/routes'
 
 export const actions: Actions = {
-	login: async (event) => {
-		const {
-			request,
-			locals: { supabase }
-		} = event
+	login: async ({request, locals: {supabase}}) => {
 
 		const formdata = await request.formData()
 
@@ -20,10 +16,16 @@ export const actions: Actions = {
 		})
 
 		if (error) {
-			return { message: 'Login failed.' }
+			return { success: false, message: 'Login failed.' }
 		} else {
 			console.log('auth successfull!')
 			throw redirect(301, ROUTES.HOME)
 		}
-	}
+	},
+	logout: async ({ locals: {supabase} }) => {
+		console.log("Logout Action")
+		//supabase.auth.signOut()
+		// return {success: true, message: "Logout Successfull!"}
+		//throw redirect(301, ROUTES.AUTH.LOGIN)
+}
 }

@@ -7,9 +7,9 @@
 </script>
 
 <button
-	class="border border-comp-colour button rounded-full text-center {className}"
 	on:click={command}
 	type={submit ? 'submit' : null}
+	class="border border-comp-colour button rounded-full text-center {className}"
 >
 	<slot />
 </button>
