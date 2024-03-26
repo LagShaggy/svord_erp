@@ -38,11 +38,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 	// Protecting routes && authentication
 	if (!session && !onAuthPage(event.route.id)) {
 		console.log('not authenticated.')
-		throw redirect(303, ROUTES.AUTH.LOGIN)
+		redirect(303, ROUTES.AUTH.LOGIN);
 	}
 	// if authenticated and on auth route, redirect.
 	if (session && onAuthPage(event.route.id)) {
-		throw redirect(301, ROUTES.HOME)
+		redirect(301, ROUTES.HOME);
 	}
 
 	return resolve(event, {

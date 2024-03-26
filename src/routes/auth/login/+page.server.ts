@@ -19,7 +19,7 @@ export const actions: Actions = {
 			return { success: false, message: 'Login failed.' }
 		} else {
 			console.log('auth successfull!')
-			throw redirect(301, ROUTES.HOME)
+			redirect(301, ROUTES.HOME);
 		}
 	},
 	logout: async ({ locals: {supabase} }) => {

@@ -15,9 +15,10 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.42.1",
-		"@sveltejs/adapter-auto": "^1.0.3",
+		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-static": "^3.0.1",
-		"@sveltejs/kit": "^1.30.4",
+		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/cookie": "^0.5.4",
 		"@typescript-eslint/eslint-plugin": "^7.4.0",
 		"@typescript-eslint/parser": "^7.4.0",
@@ -38,8 +39,8 @@
 		"tailwindcss": "^3.1.5",
 		"tslib": "^2.6.2",
 		"typescript": "^5.4.3",
-		"vite": "^4.5.3",
-		"vitest": "^0.25.8"
+		"vite": "^5.0.0",
+		"vitest": "^1.0.0"
 	},
 	"type": "module",
 	"dependencies": {

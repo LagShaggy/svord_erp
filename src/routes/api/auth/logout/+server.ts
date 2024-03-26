@@ -22,7 +22,7 @@ export const actions: Actions = {
 			return { message: 'Login failed.' }
 		} else {
 			console.log('auth successfull!')
-			throw redirect(301, ROUTES.HOME)
+			redirect(301, ROUTES.HOME);
 		}
 	}
 }
