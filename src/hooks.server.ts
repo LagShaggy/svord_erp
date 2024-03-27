@@ -1,7 +1,6 @@
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
 import { onAuthPage } from '$lib/Auth/auth.helpers'
 import { ROUTES } from '$lib/routes'
-import { PrismaClient } from '@prisma/client'
 import { createServerClient } from '@supabase/ssr'
 import { redirect, type Handle } from '@sveltejs/kit'
 
