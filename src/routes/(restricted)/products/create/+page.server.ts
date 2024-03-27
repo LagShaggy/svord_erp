@@ -38,16 +38,19 @@ export const actions: Actions = {
 
 	createProductCategory: async ({ request, locals: { supabase } }) => {
 		const formData = await request.formData()
-		const category = formData.get('newCategory') as string
+		const categoryName = formData.get('newCategory') as string
 		console.log('creating category form')
 
+		if (categoryName.trim() == '') {
+			fail(400, { categoryName, error: { message: 'Category Name cant be an Empty String' } })
+		}
 		const { error } = await supabase
 			.from('Product_Category')
-			.insert([{ name: category, colour_hex: '' }])
+			.insert([{ name: categoryName, colour_hex: '' }])
 			.select()
 
 		if (error) {
-			return fail(400, { category, error })
+			return fail(400, { category: categoryName, error })
 		}
 	}
 }
