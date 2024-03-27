@@ -9,12 +9,10 @@ export const actions: Actions = {
 		const email = formdata.get('email') as string
 		const password = formdata.get('password') as string
 
-		const { error, data } = await supabase.auth.signInWithPassword({
+		const { error } = await supabase.auth.signInWithPassword({
 			email,
 			password
 		})
-
-		console.log(data)
 
 		if (error) {
 			return { success: false, message: 'Login failed.' }

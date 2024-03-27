@@ -7,7 +7,7 @@
 </script>
 
 {#if items != null && items?.length != 0}
-	<table class="min-w-full leading-normal overflow-y-auto">
+	<table class="w-full leading-normal overflow-y-auto">
 		<!-- <thead class="sticky top-[64px]">
 			<tr>
 				{#each keys as column}
