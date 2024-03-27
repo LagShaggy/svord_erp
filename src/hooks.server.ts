@@ -24,9 +24,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 	})
 
-	const prisma = new PrismaClient()
-
-	event.locals.prisma = prisma
 	event.locals.supabase = supabase
 
 	/**

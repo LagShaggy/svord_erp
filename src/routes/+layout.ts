@@ -1,12 +1,9 @@
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public'
 import type { LayoutLoad } from './$types'
 import { createBrowserClient, isBrowser, parse } from '@supabase/ssr'
-import { PrismaClient } from '@prisma/client/edge'
 
 export const load: LayoutLoad = async ({ fetch, data, depends }) => {
 	depends('supabase:auth')
-
-	const prisma = new PrismaClient()
 
 	const supabase = createBrowserClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
 		global: {
@@ -24,5 +21,5 @@ export const load: LayoutLoad = async ({ fetch, data, depends }) => {
 		}
 	})
 
-	return { supabase, session: data.session, prisma }
+	return { supabase, session: data.session }
 }
