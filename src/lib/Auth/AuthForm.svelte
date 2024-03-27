@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte'
 	import type { AuthLoginProps } from './types'
-	import Submit from '$lib/UI/Primitive/Form/Submit.svelte'
+	import SubmitButton from '$src/lib/UI/Primitive/Form/SubmitButton.svelte'
 
 	const dispatch = createEventDispatcher<{ fire: AuthLoginProps }>()
 	function fire() {
@@ -44,7 +44,7 @@
 		/>
 	</div>
 
-	<Submit>Login</Submit>
+	<SubmitButton>Login</SubmitButton>
 
 	{#if submitDisabled()}
 		<div>Provide email and password before you submit!</div>

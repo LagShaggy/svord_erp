@@ -1,6 +1,6 @@
 <script lang="ts">
 	import FootBar from '$lib/UI/FootBar/FootBar.svelte'
-	import type { LayoutData } from './$types'
+	import type { ActionData, LayoutData } from './$types'
 
 	export let data: LayoutData
 	const { supabase } = data

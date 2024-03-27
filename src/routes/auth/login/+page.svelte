@@ -4,7 +4,7 @@
 	import { ACTIONS } from '$lib/routes'
 
 	export let form: ActionData
-	console.log(form?.message)
+	// console.log(form?.message)
 </script>
 
 <LoginForm />

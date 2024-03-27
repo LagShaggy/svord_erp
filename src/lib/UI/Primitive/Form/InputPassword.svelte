@@ -1,9 +1,8 @@
 <script lang="ts">
 	import type { HTMLInputTypeAttribute } from 'svelte/elements'
 
-	export let type: HTMLInputTypeAttribute
+	export let type: string = ''
 	export let name: string = ''
-	export let value: string = ''
 </script>
 
 <label class="flex justify-between text-left">
@@ -13,10 +12,9 @@
 		</p>
 	</slot>
 	<input
-		{type}
 		{name}
-		{value}
-		placeholder={type}
+		type="password"
+		placeholder="Password"
 		class="border border-comp-colour rounded-full text-left px-3 ml-5 w-80"
 	/>
 </label>

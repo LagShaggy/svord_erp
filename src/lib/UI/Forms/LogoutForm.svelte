@@ -1,15 +1,9 @@
 <script lang="ts">
 	import Form from '$lib/UI/Primitive/Form/Form.svelte'
-	import Submit from '$lib/UI/Primitive/Form/Submit.svelte'
-	import { ACTIONS, API } from '$lib/routes'
-
-	const action = ACTIONS.AUTH.LOGOUT
+	import SubmitButton from '$src/lib/UI/Primitive/Form/SubmitButton.svelte'
+	import { ACTIONS } from '$lib/routes'
 </script>
 
-<form action="/auth/login?/logout" method="POST">
-	<button type="submit"> Logout </button>
-</form>
-
-<!-- <Form action={'/auth/logout?/logout'}>
-	<Submit>Logout</Submit>
-</Form> -->
+<Form action={ACTIONS.AUTH.LOGOUT}>
+	<SubmitButton>Logout</SubmitButton>
+</Form>

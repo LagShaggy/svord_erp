@@ -6,18 +6,26 @@ import { createServerClient } from '@supabase/ssr'
 import { redirect, type Handle } from '@sveltejs/kit'
 
 export const handle: Handle = async ({ event, resolve }) => {
-	const prisma = new PrismaClient()
 	const supabase = createServerClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
 		cookies: {
 			get: (key) => event.cookies.get(key),
+			/**
+			 * Note: You have to add the `path` variable to the
+			 * set and remove method due to sveltekit's cookie API
+			 * requiring this to be set, setting the path to an empty string
+			 * will replicate previous/standard behaviour (https://kit.svelte.dev/docs/types#public-types-cookies)
+			 */
 			set: (key, value, options) => {
-				event.cookies.set(key, value, options)
+				event.cookies.set(key, value, { ...options, path: '/' })
 			},
 			remove: (key, options) => {
-				event.cookies.delete(key, options)
+				event.cookies.delete(key, { ...options, path: '/' })
 			}
 		}
 	})
+
+	const prisma = new PrismaClient()
+
 	event.locals.prisma = prisma
 	event.locals.supabase = supabase
 
@@ -37,12 +45,14 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	// Protecting routes && authentication
 	if (!session && !onAuthPage(event.route.id)) {
-		console.log('not authenticated.')
-		redirect(303, ROUTES.AUTH.LOGIN);
+		console.log('not authenticated. redirecting to login')
+		redirect(303, ROUTES.AUTH.LOGIN)
 	}
+
 	// if authenticated and on auth route, redirect.
 	if (session && onAuthPage(event.route.id)) {
-		redirect(301, ROUTES.HOME);
+		console.log('session found, redirecting to app.')
+		redirect(301, ROUTES.HOME)
 	}
 
 	return resolve(event, {

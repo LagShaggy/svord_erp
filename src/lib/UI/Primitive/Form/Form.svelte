@@ -3,7 +3,7 @@
 	import { setContext } from 'svelte'
 	import { writable } from 'svelte/store'
 
-	export let action: string
+	export let action: string = ''
 	export let className: string = ''
 	const submitable = writable<boolean[]>([])
 

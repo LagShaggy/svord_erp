@@ -12,6 +12,12 @@
 </script>
 
 <BasePage title={'PRODUCTS'}>
+	<div class="flex flex-row justify-end">
+		<a href="/products/create" class="border p-1 rounded-md border-black flex flex-row gap-2">
+			Add new Product
+			<img src="/icons/plus.svg" alt="" />
+		</a>
+	</div>
 	<div class="flex justify-center">
 		<Table let:item let:index items={products}>
 			<ProductRow {item} {index} />
