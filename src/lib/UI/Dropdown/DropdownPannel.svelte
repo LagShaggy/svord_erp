@@ -5,7 +5,7 @@
 	import { slide } from 'svelte/transition'
 
 	export let expanded: Writable<boolean> = writable(false)
-	export let displaceCSS
+	export let displaceCSS: string = ''
 
 	interface Attributes {
 		'on:outside'?: (event: CustomEvent) => void
