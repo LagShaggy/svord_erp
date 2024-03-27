@@ -1,0 +1,64 @@
+generator client {
+    provider = "prisma-client-js"
+    //previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+    provider  = "postgresql"
+    url       = env("DATABASE_URL")
+    directUrl = env("DIRECT_URL")
+    //schemas   = ["public", "auth"]
+}
+
+model account {
+    id                  Int        @id @default(autoincrement())
+    name                String     @db.VarChar(255)
+    country             String     @db.VarChar(255)
+    email               String?    @unique @db.VarChar(255)
+    website             String?    @db.VarChar(255)
+    description         String?    @db.VarChar()
+    accepted_currencies currency[]
+    contacts            contact[]
+    posts               post[]
+}
+
+model contact {
+    id         Int     @id @default(autoincrement())
+    email      String  @unique @db.VarChar(255)
+    accountId  Int?
+    account_id Int
+    works_for  account @relation(fields: [account_id], references: [id])
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model product {
+    id          Int     @id @default(autoincrement())
+    name        String  @db.VarChar(255)
+    description String? @db.VarChar()
+}
+
+model post {
+    id        Int      @id @default(autoincrement())
+    message   String
+    accountId Int?
+    account   account? @relation(fields: [accountId], references: [id])
+}
+
+enum currency {
+    USD
+    RMB
+    Euro
+    CHF
+    GBP
+}
+
+enum country {
+    CH
+    CN
+    DE
+    US
+    GB
+}
+
+-- Sequence for accounts start at 1000
+ALTER SEQUENCE accounts_id_seq RESTART WITH 1000;

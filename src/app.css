@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	h1 {
+		@apply text-4xl;
+	}
+
+	h2 {
+		@apply text-2xl;
+	}
+
+	h3 {
+		@apply text-xl;
+	}
+
+	h1,
+	h2 {
+		@apply font-oswald;
+		@apply mb-4;
+	}
+
+	h3 {
+		@apply font-popp;
+	}
+
+	p {
+		@apply font-popp;
+		@apply font-light;
+		@apply text-sm;
+		@apply text-left;
+		@apply antialiased;
+	}
+}
