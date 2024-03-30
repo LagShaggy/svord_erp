@@ -10,7 +10,6 @@ const config = {
 			$util: 'src/lib/util',
 			$hooks: 'src/hooks',
 			$src: 'src/',
-			$icons: 'src/lib/Icons/',
 			$lib: 'src/lib/'
 		}
 	},
