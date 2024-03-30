@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { draw, slide } from 'svelte/transition'
+	import { createExpandedControl } from '../Behavior/expandStore'
 
 	interface AccordionProps {
 		title: string
@@ -12,20 +13,17 @@
 		shortDescr: 'Description is missing'
 	}
 
-	let expanded: boolean = props.expanded ?? false
-	const toggleExpand = () => {
-		expanded = !expanded
-	}
+	let expanded = createExpandedControl(props.expanded ?? false)
 
 	const closeChevron = '/icons/chevron-up.svg'
 	const openChevron = '/icons/chevron-down.svg'
 
-	let chevron: string = expanded ? closeChevron : openChevron
-	$: chevron = expanded ? closeChevron : openChevron
+	let chevron: string = $expanded ? closeChevron : openChevron
+	$: chevron = $expanded ? closeChevron : openChevron
 </script>
 
 <div class="border-t-2 border-b-2 min-h-20">
-	<button class="flex h-full w-full items-center" on:click={toggleExpand}>
+	<button class="flex h-full w-full items-center" on:click={expanded.toggle}>
 		<img src={chevron} alt="" />
 		<p class="w-3/4 text-black text-xl">
 			{props.title}
@@ -34,7 +32,7 @@
 			{props.shortDescr}
 		</p>
 	</button>
-	{#if expanded}
+	{#if $expanded}
 		<div transition:slide={{ delay: 100, duration: 250 }} class="py-4 px-1">
 			<slot>
 				<section>
