@@ -22,8 +22,8 @@
 	$: chevron = $expanded ? closeChevron : openChevron
 </script>
 
-<div class="border-t-2 border-b-2 min-h-20">
-	<button class="flex h-full w-full items-center" on:click={expanded.toggle}>
+<div class="border-y-2 min-h-20">
+	<button class="flex h-20 w-full items-center" on:click={expanded.toggle}>
 		<img src={chevron} alt="" />
 		<p class="w-3/4 text-black text-xl">
 			{props.title}
