@@ -13,7 +13,7 @@
 	// sveltekit reactivity when something has changed.
 	$: ({ products } = data)
 
-	let maxPages: number = 2
+	let maxPages: number = 20
 	let currentIndex: number
 </script>
 
