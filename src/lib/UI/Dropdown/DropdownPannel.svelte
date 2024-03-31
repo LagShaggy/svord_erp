@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { getContext, onMount } from 'svelte'
 	import type { Action } from 'svelte/action'
-	import { writable, type Writable } from 'svelte/store'
 	import { slide } from 'svelte/transition'
+	import { createExpandedControl } from '../Behavior/expandStore'
 
-	export let expanded: Writable<boolean> = writable(false)
+	export let expanded = createExpandedControl(false)
 	export let displaceCSS: string = ''
 
 	interface Attributes {
@@ -27,10 +26,6 @@
 			}
 		}
 	}
-
-	const closeDropdown = () => {
-		$expanded = false
-	}
 </script>
 
 {#if $expanded}
@@ -38,7 +33,7 @@
 		in:slide
 		out:slide
 		use:clickOutsideOfParent
-		on:outside={closeDropdown}
+		on:outside={() => ($expanded = false)}
 		class="bg-white w-28 absolute {displaceCSS}"
 	>
 		<slot />

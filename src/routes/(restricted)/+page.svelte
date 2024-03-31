@@ -12,6 +12,3 @@
 		<h2 class="center">THIS IS THE MAIN PAGE</h2>
 	</body>
 </BasePage>
-<header>
-	<h1>{title}</h1>
-</header>

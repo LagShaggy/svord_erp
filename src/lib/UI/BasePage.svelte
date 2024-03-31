@@ -11,5 +11,4 @@
 	<h1>{title}</h1>
 </header>
 <p>{description}</p>
-
 <slot />

@@ -3,12 +3,18 @@
 	import BasePage from '$lib/UI/BasePage.svelte'
 	import ProductRow from '$lib/UI/Table/Rows/ProductRow.svelte'
 	import Table from '$lib/UI/Table/Table.svelte'
+	import PageController from '$src/lib/UI/Pagination/PageController.svelte'
+	import { type Stores, type Writable } from 'svelte/store'
 	import type { PageData } from './$types'
+	import { page } from '$app/stores'
 
 	export let data: PageData
 	let { products } = data
 	// sveltekit reactivity when something has changed.
 	$: ({ products } = data)
+
+	let maxPages: number = 2
+	let currentIndex: number
 </script>
 
 <BasePage title={'PRODUCTS'}>
@@ -23,6 +29,7 @@
 			<ProductRow {item} {index} />
 		</Table>
 	</div>
+	<PageController bind:currentIndex {maxPages} className={'sticky bottom-14'}></PageController>
 </BasePage>
 
 <style>

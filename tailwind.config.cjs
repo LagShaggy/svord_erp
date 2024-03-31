@@ -13,7 +13,12 @@ const config = {
 			colors: {
 				'base-colour': '#4338ca',
 				'comp-colour': '#eab308'
-				//'comp-colour': '#4338ca'
+			},
+			strokeWidth: {
+				5: '5px',
+				6: '6px',
+				7: '7px',
+				8: '8px'
 			}
 		}
 	},
