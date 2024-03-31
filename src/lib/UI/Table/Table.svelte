@@ -7,14 +7,7 @@
 </script>
 
 {#if items != null && items?.length != 0}
-	<table class="w-full leading-normal overflow-y-auto">
-		<!-- <thead class="sticky top-[64px]">
-			<tr>
-				{#each keys as column}
-					<TableHeader>{column}</TableHeader>
-				{/each}
-			</tr>
-		</thead> -->
+	<table class="w-full">
 		<tbody class="bg-white divide-y divide-gray-200">
 			{#each items ?? [] as item, index (item.id)}
 				<slot {item} {index} />
