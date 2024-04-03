@@ -1,9 +1,8 @@
 <script lang="ts">
 	import type { Action } from 'svelte/action'
 	import { slide } from 'svelte/transition'
-	import { createExpandedControl } from '../Behavior/expandStore'
 
-	export let expanded = createExpandedControl(false)
+	export let expanded
 	export let displaceCSS: string = ''
 
 	interface Attributes {
