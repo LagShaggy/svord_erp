@@ -29,7 +29,7 @@
 			<ProductRow {item} {index} />
 		</Table>
 	</div>
-	<PageController bind:currentIndex {maxPages} className={'sticky bottom-14'}></PageController>
+	<!-- <PageController bind:currentIndex {maxPages}></PageController> -->
 </BasePage>
 
 <style>

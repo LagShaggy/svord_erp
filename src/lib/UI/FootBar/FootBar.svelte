@@ -27,8 +27,8 @@
 	}
 </script>
 
-<div class="fixed bottom-0 mt-auto bg-slate-100 w-full">
-	<div class="flex w-full text-center gap-1">
+<div class="fixed bottom-0 mt-auto bg-slate-100 w-full clear-both">
+	<div class="flex flex-grow w-full text-center gap-1">
 		<Tab props={information} />
 		<Tab props={products} />
 		<Tab props={people} />
