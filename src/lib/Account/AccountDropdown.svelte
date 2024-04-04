@@ -6,12 +6,19 @@
 	import LogoutForm from '$lib/UI/Forms/LogoutForm.svelte'
 
 	import { ROUTES } from '$lib/routes'
+	import UserIcon from '../Icons/UserIcon.svelte'
+
+	export let userImage: string = ''
 </script>
 
 <DropdownProvider let:expandControll>
 	<DropdownButton expandControll={expandControll.toggle}>
 		<div class="w-10 h-10 rounded-full border-1 bg-base-colour overflow-hidden">
-			<img src="/icons/user.svg" alt="Profile Picutre" class="w-full h-full object-cover" />
+			{#if !!userImage}
+				<img src={userImage} alt="" />
+			{:else}
+				<UserIcon className="w-full h-full object-cover" />
+			{/if}
 		</div>
 	</DropdownButton>
 	<DropdownPannel expanded={expandControll} displaceCSS="top-10 right-10">
