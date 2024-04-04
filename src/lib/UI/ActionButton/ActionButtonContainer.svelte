@@ -4,8 +4,7 @@
 	import ExpandContent from '../Dropdown/ExpandContent.svelte'
 
 	import { actionStore } from './actionButtonStore'
-
-	$: console.log('ActionStoreLength: ', $actionStore.length)
+	import ActionButton from './ActionButton.svelte'
 </script>
 
 {#if $actionStore.length != 0}
@@ -17,8 +16,8 @@
 					displaceCSS="bottom-12 mb-1"
 					className="flex flex-col gap-1"
 				>
-					{#each $actionStore as Action}
-						<svelte:component this={Action} />
+					{#each $actionStore as props}
+						<svelte:component this={ActionButton} {...props} />
 					{/each}
 				</ExpandContent>
 				<ExpandButton
@@ -45,7 +44,7 @@
 					</svg>
 				</ExpandButton>
 			{:else}
-				<svelte:component this={$actionStore.pop()} />
+				<svelte:component this={ActionButton} {...$actionStore[0]} />
 			{/if}
 		</ExpandProvider>
 	</div>

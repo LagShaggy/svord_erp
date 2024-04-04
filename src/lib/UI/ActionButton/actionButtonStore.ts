@@ -1,25 +1,19 @@
-import type { ComponentType } from 'svelte'
 import { writable } from 'svelte/store'
 
-// type ActionStore = {
-// 	id: number
-// 	action: ComponentType
-// 	props: {
-// 		click: () => void
-// 	}
-// }
-
 const createStore = () => {
-	const { subscribe, set, update } = writable<ComponentType[]>([])
-	// const id = writable<number>(0)
+	const { subscribe, set, update } = writable<
+		{ command: () => void; img: string; className?: string }[]
+	>([])
 
 	return {
 		subscribe,
 		set,
 		update,
-		add: (c: ComponentType) => {
-			update((n) => [...n, c])
-			return 0
+		add: (props: { command: () => void; img: string; className?: string }) => {
+			update((n) => [...n, { ...props }])
+		},
+		reset: () => {
+			set([])
 		}
 	}
 }

@@ -4,8 +4,9 @@
 	import Table from '$lib/UI/Table/Table.svelte'
 	import ActionButton from '$src/lib/UI/ActionButton/ActionButton.svelte'
 	import { actionStore } from '$src/lib/UI/ActionButton/actionButtonStore'
-	import { onDestroy, type ComponentType } from 'svelte'
+	import { onDestroy } from 'svelte'
 	import type { PageData } from './$types'
+	import { goto } from '$app/navigation'
 
 	export let data: PageData
 	let { products } = data
@@ -14,15 +15,15 @@
 
 	let maxPages: number = 20
 	let currentIndex: number
+
+	actionStore.add({ command: () => goto('/products/create'), img: '/icons/plus.svg' })
+
+	onDestroy(() => {
+		actionStore.reset()
+	})
 </script>
 
 <BasePage title={'PRODUCTS'}>
-	<div class="flex flex-row justify-end">
-		<a href="/products/create" class="border p-1 rounded-md border-black flex flex-row gap-2">
-			Add new Product
-			<img src="/icons/plus.svg" alt="" />
-		</a>
-	</div>
 	<div class="flex justify-center">
 		<Table let:item let:index items={products}>
 			<ProductRow {item} {index} />
