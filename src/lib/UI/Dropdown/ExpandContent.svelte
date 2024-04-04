@@ -4,6 +4,7 @@
 
 	export let expanded
 	export let displaceCSS: string = ''
+	export let className: string = ''
 
 	interface Attributes {
 		'on:outside'?: (event: CustomEvent) => void
@@ -29,11 +30,10 @@
 
 {#if $expanded}
 	<div
-		in:slide
-		out:slide
+		transition:slide
 		use:clickOutsideOfParent
 		on:outside={() => ($expanded = false)}
-		class="bg-white w-28 absolute {displaceCSS}"
+		class="absolute {displaceCSS} {className}"
 	>
 		<slot />
 	</div>

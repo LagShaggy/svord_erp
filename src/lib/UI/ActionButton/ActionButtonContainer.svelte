@@ -4,30 +4,49 @@
 	import ExpandContent from '../Dropdown/ExpandContent.svelte'
 
 	import { actionStore } from './actionButtonStore'
+
+	$: console.log('ActionStoreLength: ', $actionStore.length)
 </script>
 
-<ExpandProvider let:expandControll>
-	<ExpandButton
-		expandControll={expandControll.toggle}
-		className="fixed bottom-20 right-10 bg-base-colour aspect-square h-12 rounded-full"
-	>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="26"
-			height="26"
-			viewBox="0 0 24 24"
-			stroke="currentColor"
-			stroke-width="2"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			class="fill-white stroke-white feather feather-plus"
-		>
-			<line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg
-		>
-	</ExpandButton>
-	<ExpandContent expanded={expandControll} displaceCSS="">
-		{#each $actionStore as Action}
-			<svelte:component this={Action} />
-		{/each}
-	</ExpandContent>
-</ExpandProvider>
+{#if $actionStore.length != 0}
+	<div class="fixed bottom-20 right-10">
+		<ExpandProvider let:expandControll>
+			{#if $actionStore.length > 1}
+				<ExpandContent
+					expanded={expandControll}
+					displaceCSS="bottom-12 mb-1"
+					className="flex flex-col gap-1"
+				>
+					{#each $actionStore as Action}
+						<svelte:component this={Action} />
+					{/each}
+				</ExpandContent>
+				<ExpandButton
+					expandControll={expandControll.toggle}
+					className=" bg-base-colour aspect-square h-12 rounded-full"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="28"
+						height="28"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="fill-white stroke-white feather feather-more-vertical"
+					>
+						<circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle
+							cx="12"
+							cy="19"
+							r="1"
+						></circle>
+					</svg>
+				</ExpandButton>
+			{:else}
+				<svelte:component this={$actionStore.pop()} />
+			{/if}
+		</ExpandProvider>
+	</div>
+{/if}
