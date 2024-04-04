@@ -1,12 +1,11 @@
 <script lang="ts">
-	import StorePanel from '$lib/StoreUI/StorePanel.svelte'
 	import BasePage from '$lib/UI/BasePage.svelte'
 	import ProductRow from '$lib/UI/Table/Rows/ProductRow.svelte'
 	import Table from '$lib/UI/Table/Table.svelte'
-	import PageController from '$src/lib/UI/Pagination/PageController.svelte'
-	import { type Stores, type Writable } from 'svelte/store'
+	import ActionButton from '$src/lib/UI/ActionButton/ActionButton.svelte'
+	import { actionStore } from '$src/lib/UI/ActionButton/actionButtonStore'
+	import { onDestroy, type ComponentType } from 'svelte'
 	import type { PageData } from './$types'
-	import { page } from '$app/stores'
 
 	export let data: PageData
 	let { products } = data
