@@ -1,14 +1,11 @@
 <script lang="ts">
 	import BasePage from '$lib/UI/BasePage.svelte'
+	import type { PageData } from './$types'
 
-	let title = 'Overview'
+	export let data: PageData
 </script>
 
 <BasePage
 	title="MAIN PAGE"
 	description="this it the main page, here you can find information about everything"
->
-	<body>
-		<h2 class="center">THIS IS THE MAIN PAGE</h2>
-	</body>
-</BasePage>
+></BasePage>

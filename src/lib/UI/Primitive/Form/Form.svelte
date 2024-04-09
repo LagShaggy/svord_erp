@@ -10,6 +10,6 @@
 	setContext('sumbit', submitable)
 </script>
 
-<form method="POST" {action} class="flex flex-col gap-2 mx-auto {className}">
+<form method="POST" {action} {...$$props} class="flex flex-col gap-2 mx-auto {className}">
 	<slot />
 </form>

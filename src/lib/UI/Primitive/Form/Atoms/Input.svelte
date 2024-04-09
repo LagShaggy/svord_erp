@@ -5,6 +5,7 @@
 	export let name: string
 	export let value: string = ''
 	export let placeholder: string = ''
+	export let className: string = ''
 </script>
 
 <label class="flex justify-between text-left">
@@ -19,6 +20,6 @@
 		{value}
 		{placeholder}
 		{...$$slots}
-		class="clickable text-left px-3 ml-5 w-80 bg-comp-colour bg-opacity-20"
+		class="clickable text-left px-3 ml-5 w-80 bg-comp-colour bg-opacity-20 {className}"
 	/>
 </label>
