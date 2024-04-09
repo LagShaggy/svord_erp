@@ -1,12 +1,12 @@
 <script lang="ts">
-	import StorePanel from '$lib/StoreUI/StorePanel.svelte'
 	import BasePage from '$lib/UI/BasePage.svelte'
 	import ProductRow from '$lib/UI/Table/Rows/ProductRow.svelte'
 	import Table from '$lib/UI/Table/Table.svelte'
-	import PageController from '$src/lib/UI/Pagination/PageController.svelte'
-	import { type Stores, type Writable } from 'svelte/store'
+	import ActionButton from '$src/lib/UI/ActionButton/ActionButton.svelte'
+	import { actionStore } from '$src/lib/UI/ActionButton/actionButtonStore'
+	import { onDestroy } from 'svelte'
 	import type { PageData } from './$types'
-	import { page } from '$app/stores'
+	import { goto } from '$app/navigation'
 
 	export let data: PageData
 	let { products } = data
@@ -15,21 +15,21 @@
 
 	let maxPages: number = 20
 	let currentIndex: number
+
+	actionStore.add({ command: () => goto('/products/create'), img: '/icons/plus.svg' })
+
+	onDestroy(() => {
+		actionStore.reset()
+	})
 </script>
 
 <BasePage title={'PRODUCTS'}>
-	<div class="flex flex-row justify-end">
-		<a href="/products/create" class="border p-1 rounded-md border-black flex flex-row gap-2">
-			Add new Product
-			<img src="/icons/plus.svg" alt="" />
-		</a>
-	</div>
 	<div class="flex justify-center">
 		<Table let:item let:index items={products}>
 			<ProductRow {item} {index} />
 		</Table>
 	</div>
-	<PageController bind:currentIndex {maxPages} className={'sticky bottom-14'}></PageController>
+	<!-- <PageController bind:currentIndex {maxPages}></PageController> -->
 </BasePage>
 
 <style>

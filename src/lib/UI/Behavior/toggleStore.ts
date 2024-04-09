@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store'
 
-export const createExpandedControl = (init: boolean) => {
+export const createToggleControl = (init: boolean) => {
 	const { set, subscribe, update } = writable<boolean>(init)
 
 	return {
@@ -8,6 +8,12 @@ export const createExpandedControl = (init: boolean) => {
 		set,
 		toggle: () => {
 			update((b) => !b)
+		},
+		close: () => {
+			set(false)
+		},
+		open: () => {
+			set(true)
 		}
 	}
 }

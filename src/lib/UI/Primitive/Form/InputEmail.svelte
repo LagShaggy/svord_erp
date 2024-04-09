@@ -6,6 +6,6 @@
 	export let placeholder: string = 'Text'
 </script>
 
-<Input type="text" {name} {placeholder} {value} {...$$slots}>
+<Input type="email" {name} {placeholder} {value}>
 	<slot />
 </Input>

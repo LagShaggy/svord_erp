@@ -1,20 +1,10 @@
 <script lang="ts">
-	import type { HTMLInputTypeAttribute } from 'svelte/elements'
+	import Input from './Atoms/Input.svelte'
 
-	export let type: string = ''
 	export let name: string = ''
+	export let placeholder: string = 'Password'
 </script>
 
-<label class="flex justify-between text-left">
-	<slot>
-		<p>
-			{type}
-		</p>
-	</slot>
-	<input
-		{name}
-		type="password"
-		placeholder="Password"
-		class="border border-comp-colour rounded-full text-left px-3 ml-5 w-80"
-	/>
-</label>
+<Input type="password" {name} {placeholder}>
+	<slot />
+</Input>

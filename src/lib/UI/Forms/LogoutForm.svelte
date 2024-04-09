@@ -5,5 +5,5 @@
 </script>
 
 <Form action={ACTIONS.AUTH.LOGOUT}>
-	<SubmitButton>Logout</SubmitButton>
+	<button class="text-left" type="submit"> Logout </button>
 </Form>

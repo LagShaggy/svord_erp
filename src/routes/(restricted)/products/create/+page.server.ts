@@ -38,7 +38,6 @@ export const actions: Actions = {
 	createProductCategory: async ({ request, locals: { supabase } }) => {
 		const formData = await request.formData()
 		const categoryName = formData.get('newCategory') as string
-		console.log('creating category form')
 
 		if (categoryName.trim() == '') {
 			fail(400, { categoryName, error: { message: 'Category Name cant be an Empty String' } })
