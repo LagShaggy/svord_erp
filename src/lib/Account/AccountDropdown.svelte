@@ -8,13 +8,14 @@
 	import { ROUTES } from '$lib/routes'
 	import UserIcon from '../Icons/UserIcon.svelte'
 
-	export let userImage: string = ''
+	export let userImage: string | null = ''
+	console.log(userImage)
 </script>
 
 <DropdownProvider let:expandControll>
 	<DropdownButton expandControll={expandControll.toggle}>
 		<div class="w-10 h-10 rounded-full border-1 bg-base-colour overflow-hidden">
-			{#if !!userImage}
+			{#if userImage}
 				<img src={userImage} alt="" />
 			{:else}
 				<UserIcon className="w-full h-full object-cover" />

@@ -7,14 +7,14 @@
 	import AlertBar from '$src/lib/Alert/AlertBar.svelte'
 
 	export let data: LayoutData
-	const { session } = data
+	const { session, profilePicture } = data
 </script>
 
 <AlertBar />
 <HeadBar>
 	<SvordxCompanyLogo />
 	{#if session}
-		<AccountDropdown />
+		<AccountDropdown userImage={profilePicture?.signedUrl} />
 	{/if}
 </HeadBar>
 
