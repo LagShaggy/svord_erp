@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { createExpandedControl } from '../Behavior/expandStore'
+	import { createToggleControl } from '../Behavior/toggleStore'
 
-	let expandControll = createExpandedControl(false)
+	let expandControll = createToggleControl(false)
 </script>
 
 <span class="relative">

@@ -1,7 +1,4 @@
 <script lang="ts">
-	import { draw, fly } from 'svelte/transition'
-	import { createExpandedControl } from '../UI/Behavior/expandStore'
-
 	export let size: number = 200
 </script>
 

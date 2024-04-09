@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { draw, slide } from 'svelte/transition'
-	import { createExpandedControl } from '../Behavior/expandStore'
+	import { createToggleControl } from '../Behavior/toggleStore'
 
 	interface AccordionProps {
 		title: string
@@ -13,7 +13,7 @@
 		shortDescr: 'Description is missing'
 	}
 
-	let expanded = createExpandedControl(props.expanded ?? false)
+	let expanded = createToggleControl(props.expanded ?? false)
 
 	const closeChevron = '/icons/chevron-up.svg'
 	const openChevron = '/icons/chevron-down.svg'
