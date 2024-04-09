@@ -118,7 +118,8 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 	('00000000-0000-0000-0000-000000000000', 'c138503a-297b-4b6d-a212-1e77692108fe', '{"action":"token_refreshed","actor_id":"f9a9a122-3299-43c2-a4ff-1caf453929c7","actor_username":"ares@lf-trading.com","actor_via_sso":false,"log_type":"token"}', '2023-12-07 23:06:59.841107+00', ''),
 	('00000000-0000-0000-0000-000000000000', 'cde5335f-d1c9-44d0-8c5e-34871a4e2c83', '{"action":"token_revoked","actor_id":"f9a9a122-3299-43c2-a4ff-1caf453929c7","actor_username":"ares@lf-trading.com","actor_via_sso":false,"log_type":"token"}', '2023-12-07 23:06:59.841693+00', ''),
 	('00000000-0000-0000-0000-000000000000', '52ae218a-740a-428b-a43c-42d74f417365', '{"action":"token_refreshed","actor_id":"f9a9a122-3299-43c2-a4ff-1caf453929c7","actor_username":"ares@lf-trading.com","actor_via_sso":false,"log_type":"token"}', '2023-12-13 13:11:57.618433+00', ''),
-	('00000000-0000-0000-0000-000000000000', '37ad33c2-89d0-4180-b475-1f985a65bb22', '{"action":"token_revoked","actor_id":"f9a9a122-3299-43c2-a4ff-1caf453929c7","actor_username":"ares@lf-trading.com","actor_via_sso":false,"log_type":"token"}', '2023-12-13 13:11:57.619407+00', '');
+	('00000000-0000-0000-0000-000000000000', '37ad33c2-89d0-4180-b475-1f985a65bb22', '{"action":"token_revoked","actor_id":"f9a9a122-3299-43c2-a4ff-1caf453929c7","actor_username":"ares@lf-trading.com","actor_via_sso":false,"log_type":"token"}', '2023-12-13 13:11:57.619407+00', ''),
+	('00000000-0000-0000-0000-000000000000', '359657ed-c5ca-44be-96ac-2ce518f76865', '{"action":"user_signedup","actor_id":"00000000-0000-0000-0000-000000000000","actor_username":"service_role","actor_via_sso":false,"log_type":"team","traits":{"user_email":"local@dev.com","user_id":"71af1c14-1c5f-476d-89b1-f763fc671359","user_phone":""}}', '2024-04-09 06:45:19.083049+00', '');
 
 
 --
@@ -131,8 +132,9 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 -- Data for Name: users; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
 --
 
-INSERT INTO "auth"."users" ("instance_id", "id", "aud", "role", "email", "encrypted_password", "email_confirmed_at", "invited_at", "confirmation_token", "confirmation_sent_at", "recovery_token", "recovery_sent_at", "email_change_token_new", "email_change", "email_change_sent_at", "last_sign_in_at", "raw_app_meta_data", "raw_user_meta_data", "is_super_admin", "created_at", "updated_at", "phone", "phone_confirmed_at", "phone_change", "phone_change_token", "phone_change_sent_at", "email_change_token_current", "email_change_confirm_status", "banned_until", "reauthentication_token", "reauthentication_sent_at", "is_sso_user", "deleted_at") VALUES
-	('00000000-0000-0000-0000-000000000000', 'f9a9a122-3299-43c2-a4ff-1caf453929c7', 'authenticated', 'authenticated', 'ares@lf-trading.com', '$2a$10$Yqn7yjWj3aUKuLiZmZENWeXREv2ihJ0wjlRUZFoj7Z/namzaAGSom', '2023-11-10 17:35:14.291741+00', NULL, '', NULL, '', NULL, '', '', NULL, '2023-11-12 13:10:30.233031+00', '{"provider": "email", "providers": ["email"]}', '{}', NULL, '2023-11-10 17:35:14.287404+00', '2023-12-13 13:11:57.624857+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL);
+INSERT INTO "auth"."users" ("instance_id", "id", "aud", "role", "email", "encrypted_password", "email_confirmed_at", "invited_at", "confirmation_token", "confirmation_sent_at", "recovery_token", "recovery_sent_at", "email_change_token_new", "email_change", "email_change_sent_at", "last_sign_in_at", "raw_app_meta_data", "raw_user_meta_data", "is_super_admin", "created_at", "updated_at", "phone", "phone_confirmed_at", "phone_change", "phone_change_token", "phone_change_sent_at", "email_change_token_current", "email_change_confirm_status", "banned_until", "reauthentication_token", "reauthentication_sent_at", "is_sso_user", "deleted_at", "is_anonymous") VALUES
+	('00000000-0000-0000-0000-000000000000', 'f9a9a122-3299-43c2-a4ff-1caf453929c7', 'authenticated', 'authenticated', 'ares@lf-trading.com', '$2a$10$Yqn7yjWj3aUKuLiZmZENWeXREv2ihJ0wjlRUZFoj7Z/namzaAGSom', '2023-11-10 17:35:14.291741+00', NULL, '', NULL, '', NULL, '', '', NULL, '2023-11-12 13:10:30.233031+00', '{"provider": "email", "providers": ["email"]}', '{}', NULL, '2023-11-10 17:35:14.287404+00', '2023-12-13 13:11:57.624857+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false),
+	('00000000-0000-0000-0000-000000000000', '71af1c14-1c5f-476d-89b1-f763fc671359', 'authenticated', 'authenticated', 'local@dev.com', '$2a$10$MXQOEgitVjILTjkxHRqWzeOrts1Kz69akgcEpMuAYItFZ0n7bfsB.', '2024-04-09 06:45:19.08503+00', NULL, '', NULL, '', NULL, '', '', NULL, NULL, '{"provider": "email", "providers": ["email"]}', '{}', NULL, '2024-04-09 06:45:19.08145+00', '2024-04-09 06:45:19.08512+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false);
 
 
 --
@@ -140,7 +142,8 @@ INSERT INTO "auth"."users" ("instance_id", "id", "aud", "role", "email", "encryp
 --
 
 INSERT INTO "auth"."identities" ("provider_id", "user_id", "identity_data", "provider", "last_sign_in_at", "created_at", "updated_at", "id") VALUES
-	('f9a9a122-3299-43c2-a4ff-1caf453929c7', 'f9a9a122-3299-43c2-a4ff-1caf453929c7', '{"sub": "f9a9a122-3299-43c2-a4ff-1caf453929c7", "email": "ares@lf-trading.com"}', 'email', '2023-11-10 17:35:14.289658+00', '2023-11-10 17:35:14.289706+00', '2023-11-10 17:35:14.289706+00', '52324727-2e88-4728-b74e-f4b1cc1daa85');
+	('f9a9a122-3299-43c2-a4ff-1caf453929c7', 'f9a9a122-3299-43c2-a4ff-1caf453929c7', '{"sub": "f9a9a122-3299-43c2-a4ff-1caf453929c7", "email": "ares@lf-trading.com"}', 'email', '2023-11-10 17:35:14.289658+00', '2023-11-10 17:35:14.289706+00', '2023-11-10 17:35:14.289706+00', '52324727-2e88-4728-b74e-f4b1cc1daa85'),
+	('71af1c14-1c5f-476d-89b1-f763fc671359', '71af1c14-1c5f-476d-89b1-f763fc671359', '{"sub": "71af1c14-1c5f-476d-89b1-f763fc671359", "email": "local@dev.com", "email_verified": false, "phone_verified": false}', 'email', '2024-04-09 06:45:19.08245+00', '2024-04-09 06:45:19.082475+00', '2024-04-09 06:45:19.082475+00', 'd898b44f-9151-4489-83d5-d829559f6cb0');
 
 
 --
@@ -264,30 +267,42 @@ INSERT INTO "public"."Account" ("id", "name", "country", "email", "website", "de
 
 
 --
+-- Data for Name: Product_Category; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
 -- Data for Name: Product; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO "public"."Product" ("id", "name", "description") VALUES
-	(1, 'Organic Raw Honey', 'Pure, unfiltered organic honey from wildflower blossoms.'),
-	(2, 'Artisanal Sourdough Bread', 'Handcrafted sourdough loaf made with organic flour.'),
-	(3, 'Single Origin Coffee Beans', 'Premium arabica beans sourced from Ethiopia.'),
-	(4, 'Cold Pressed Olive Oil', 'Extra virgin olive oil, cold-pressed from the finest olives.'),
-	(5, 'Dark Chocolate Bar', '70% cacao dark chocolate bar, ethically sourced.'),
-	(6, 'Almond Butter', 'Smooth, all-natural almond butter with no added sugar.'),
-	(7, 'Quinoa Pasta', 'Gluten-free pasta made from organic quinoa flour.'),
-	(8, 'Spicy Pickles', 'Crunchy dill pickles with a spicy kick.'),
-	(9, 'Organic Brown Rice', 'Whole grain organic brown rice, perfect for a healthy side dish.'),
-	(10, 'Maple Syrup', 'Pure maple syrup, great for pancakes and waffles.'),
-	(11, 'Vegetable Spiralizer', 'Kitchen gadget for making vegetable noodles.'),
-	(12, 'Chia Seeds', 'Organic chia seeds, a superfood great for smoothies.'),
-	(13, 'Coconut Water', 'Refreshing coconut water, rich in electrolytes.'),
-	(14, 'Green Tea Leaves', 'Organic green tea leaves, rich in antioxidants.'),
-	(15, 'Kombucha Starter Kit', 'Everything you need to brew your own kombucha at home.'),
-	(16, 'Almond Milk', 'Unsweetened almond milk, dairy-free and vegan.'),
-	(17, 'Avocado Oil Mayo', 'Mayonnaise made with avocado oil, keto-friendly.'),
-	(18, 'Grass-Fed Beef Jerky', 'High-protein beef jerky from grass-fed cattle.'),
-	(19, 'Multivitamin Gummies', 'Chewable gummies with essential vitamins and minerals.'),
-	(20, 'Reusable Water Bottle', 'Eco-friendly stainless steel water bottle.');
+INSERT INTO "public"."Product" ("id", "name", "description", "category") VALUES
+	(1, 'Organic Raw Honey', 'Pure, unfiltered organic honey from wildflower blossoms.', NULL),
+	(2, 'Artisanal Sourdough Bread', 'Handcrafted sourdough loaf made with organic flour.', NULL),
+	(3, 'Single Origin Coffee Beans', 'Premium arabica beans sourced from Ethiopia.', NULL),
+	(4, 'Cold Pressed Olive Oil', 'Extra virgin olive oil, cold-pressed from the finest olives.', NULL),
+	(5, 'Dark Chocolate Bar', '70% cacao dark chocolate bar, ethically sourced.', NULL),
+	(6, 'Almond Butter', 'Smooth, all-natural almond butter with no added sugar.', NULL),
+	(7, 'Quinoa Pasta', 'Gluten-free pasta made from organic quinoa flour.', NULL),
+	(8, 'Spicy Pickles', 'Crunchy dill pickles with a spicy kick.', NULL),
+	(9, 'Organic Brown Rice', 'Whole grain organic brown rice, perfect for a healthy side dish.', NULL),
+	(10, 'Maple Syrup', 'Pure maple syrup, great for pancakes and waffles.', NULL),
+	(11, 'Vegetable Spiralizer', 'Kitchen gadget for making vegetable noodles.', NULL),
+	(12, 'Chia Seeds', 'Organic chia seeds, a superfood great for smoothies.', NULL),
+	(13, 'Coconut Water', 'Refreshing coconut water, rich in electrolytes.', NULL),
+	(14, 'Green Tea Leaves', 'Organic green tea leaves, rich in antioxidants.', NULL),
+	(15, 'Kombucha Starter Kit', 'Everything you need to brew your own kombucha at home.', NULL),
+	(16, 'Almond Milk', 'Unsweetened almond milk, dairy-free and vegan.', NULL),
+	(17, 'Avocado Oil Mayo', 'Mayonnaise made with avocado oil, keto-friendly.', NULL),
+	(18, 'Grass-Fed Beef Jerky', 'High-protein beef jerky from grass-fed cattle.', NULL),
+	(19, 'Multivitamin Gummies', 'Chewable gummies with essential vitamins and minerals.', NULL),
+	(20, 'Reusable Water Bottle', 'Eco-friendly stainless steel water bottle.', NULL);
+
+
+--
+-- Data for Name: Profile; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
 
 
 --
@@ -298,6 +313,12 @@ INSERT INTO "public"."Product" ("id", "name", "description") VALUES
 
 --
 -- Data for Name: objects; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
+--
+
+
+
+--
+-- Data for Name: hooks; Type: TABLE DATA; Schema: supabase_functions; Owner: supabase_functions_admin
 --
 
 
@@ -344,10 +365,24 @@ SELECT pg_catalog.setval('"public"."Post_id_seq"', 1, false);
 
 
 --
+-- Name: Product_Category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"public"."Product_Category_id_seq"', 1, false);
+
+
+--
 -- Name: Product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('"public"."Product_id_seq"', 20, true);
+
+
+--
+-- Name: hooks_id_seq; Type: SEQUENCE SET; Schema: supabase_functions; Owner: supabase_functions_admin
+--
+
+SELECT pg_catalog.setval('"supabase_functions"."hooks_id_seq"', 1, false);
 
 
 --
