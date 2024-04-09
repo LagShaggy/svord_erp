@@ -1,6 +1,6 @@
 import { derived, get, writable, type Writable } from 'svelte/store'
 import type { AuthError, Session, UserResponse } from '@supabase/supabase-js'
-import { supabase } from '$lib/supabase/supabaseClient'
+import { browserSupabase } from '$lib/supabase/supabaseClient'
 import { browser } from '$app/environment'
 import { ROUTES } from '$lib/routes'
 import { goto } from '$app/navigation'
@@ -37,7 +37,7 @@ const createSession = (): SessionStore<Session | null> => {
 			set(updatedStore)
 		},
 		logout: async () => {
-			const logoutResponse = await supabase.auth.signOut()
+			const logoutResponse = await browserSupabase.auth.signOut()
 			if (logoutResponse.error) {
 				alert(logoutResponse.error)
 			} else {

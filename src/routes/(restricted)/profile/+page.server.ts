@@ -4,21 +4,47 @@ import { fail } from '@sveltejs/kit'
 export const actions: Actions = {
 	default: async ({ request, locals: { supabase, getSession } }) => {
 		const formData = await request.formData()
-		const firstName = formData.get('firstName') as string
-		const lastName = formData.get('lastName') as string
-		const avatar = formData.get('picture') as string
+		const firstname = formData.get('firstName') as string
+		const lastname = formData.get('lastName') as string
+		const avatar = formData.get('file') as File
 
 		const session = await getSession()
 
 		if (session) {
-			supabase.from('Profile').update({
-				id: session.user.id,
-				firstName,
-				lastName,
-				avatar_url: avatar
-			})
+			if (avatar) {
+				const { data: image, error: imageError } = await supabase.storage
+					.from('images')
+					.upload('/avatars/' + session.user.id, avatar, {
+						cacheControl: '3600',
+						upsert: true
+					})
 
-			supabase.storage.from('images').upload('uuid', avatar)
+				if (imageError) {
+					console.log("uploading image didn't work")
+					console.log(imageError)
+				}
+
+				const { data, error } = await supabase
+					.from('Profile')
+					.update({
+						avatar_url: image?.path
+					})
+					.eq('id', session.user.id)
+					.select()
+			}
+
+			const { data, error } = await supabase
+				.from('Profile')
+				.update({
+					firstname,
+					lastname
+				})
+				.eq('id', session.user.id)
+				.select()
+
+			if (error) {
+				console.log(error)
+			}
 		} else {
 			fail(401, { message: 'Failed because something' })
 		}

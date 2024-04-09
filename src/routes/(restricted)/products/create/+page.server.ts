@@ -11,8 +11,6 @@ export const load: PageServerLoad = async ({ locals: { supabase } }) => {
 
 export const actions: Actions = {
 	createProduct: async ({ request, locals: { supabase } }) => {
-		console.log('creating product form')
-
 		const formData = await request.formData()
 
 		const name = formData.get('name') as string

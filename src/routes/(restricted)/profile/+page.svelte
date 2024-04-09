@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { createToggleControl } from '$src/lib/UI/Behavior/toggleStore'
 	import Form from '$src/lib/UI/Primitive/Form/Form.svelte'
 	import InputText from '$src/lib/UI/Primitive/Form/InputText.svelte'
@@ -9,8 +9,8 @@
 	import { onDestroy, onMount } from 'svelte'
 
 	export let data
-	let { session, message } = data
-	let user = session?.user
+	let { profile } = data
+	$: ({ profile } = data)
 
 	const edit = createToggleControl(false)
 
@@ -19,7 +19,7 @@
 			edit.toggle()
 			actionStore.reset()
 		},
-		img: '/icons/dollar-sign.svg'
+		img: '/icons/edit.svg'
 	}
 
 	const goBack = () => {
@@ -40,22 +40,19 @@
 			</button>
 		</div>
 		<span transition:blur>
-			<Form>
-				<InputFile name="picture">Profile Picture</InputFile>
-				<InputText name="firstName">First Name</InputText>
-				<InputText name="lastName">Last Name</InputText>
+			<Form enctype="multipart/form-data">
+				<InputFile>Profile Picture</InputFile>
+				<InputText name="firstName" value={profile?.firstname ?? ''}>First Name</InputText>
+				<InputText name="lastName" value={profile?.lastname ?? ''}>Last Name</InputText>
 				<SubmitButton className="w-min self-center px-4 py-2">Update</SubmitButton>
 			</Form>
 		</span>
 	{:else}
 		<span transition:blur>
 			<div>
-				{message}
-			</div>
-			<div>
-				{session?.user.email}
+				{profile?.firstname}
 				<br />
-				{session?.user.aud}
+				{profile?.lastname}
 			</div>
 		</span>
 	{/if}

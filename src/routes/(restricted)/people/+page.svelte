@@ -6,7 +6,6 @@
 	export let data
 	let { accounts } = data
 	$: ({ accounts } = data)
-	$: console.log(`We found ${accounts?.length} Accounts`)
 </script>
 
 <BasePage title="PEOPLE">
