@@ -15,6 +15,7 @@
 
 	h3 {
 		@apply text-xl;
+		@apply font-popp;
 	}
 
 	h1,
@@ -23,15 +24,17 @@
 		@apply mb-4;
 	}
 
-	h3 {
-		@apply font-popp;
-	}
-
 	p {
 		@apply font-popp;
 		@apply font-light;
 		@apply text-sm;
 		@apply text-left;
 		@apply antialiased;
+	}
+}
+
+@layer utilities {
+	.clickable {
+		@apply border border-comp-colour rounded-full text-center;
 	}
 }
