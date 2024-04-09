@@ -8,6 +8,12 @@ export const createToggleControl = (init: boolean) => {
 		set,
 		toggle: () => {
 			update((b) => !b)
+		},
+		close: () => {
+			set(false)
+		},
+		open: () => {
+			set(true)
 		}
 	}
 }
