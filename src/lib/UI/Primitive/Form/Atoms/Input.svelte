@@ -13,5 +13,12 @@
 			{name}
 		</p>
 	</slot>
-	<input {name} {type} {value} {placeholder} class="clickable text-left px-3 ml-5 w-80" />
+	<input
+		{name}
+		{type}
+		{value}
+		{placeholder}
+		{...$$slots}
+		class="clickable text-left px-3 ml-5 w-80 bg-comp-colour bg-opacity-20"
+	/>
 </label>

@@ -24,10 +24,9 @@
 	<DropdownPannel
 		expanded={expandControll}
 		displaceCSS="top-10 right-10"
-		className="[&>*]:(bg-comp-colour bg-opacity-10) border"
+		className="bg-comp-colour bg-opacity-10 border p-2"
 	>
 		<Link on:activated={expandControll.close} path={ROUTES.PROFILE}>Profile</Link>
-		<Link on:activated={expandControll.close} path={ROUTES.ORG}>Organisation</Link>
 		<LogoutForm />
 	</DropdownPannel>
 </DropdownProvider>
