@@ -1,11 +1,12 @@
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public'
+import type { Database } from '$src/lib/supabase/supabase'
 import type { LayoutLoad } from './$types'
 import { createBrowserClient, isBrowser, parse } from '@supabase/ssr'
 
 export const load: LayoutLoad = async ({ fetch, data, depends }) => {
 	depends('supabase:auth')
 
-	const supabase = createBrowserClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
+	const supabase = createBrowserClient<Database>(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
 		global: {
 			fetch
 		},
@@ -25,5 +26,14 @@ export const load: LayoutLoad = async ({ fetch, data, depends }) => {
 		data: { session }
 	} = await supabase.auth.getSession()
 
-	return { supabase, session }
+	const { data: profile } = await supabase.from('Profile').select().single()
+	const { data: profilePicture, error } = await supabase.storage
+		.from('images')
+		.createSignedUrl(profile?.avatar_url ?? '', 60)
+
+	if (error) {
+		console.log(error)
+	}
+
+	return { supabase, session, profile, profilePicture }
 }

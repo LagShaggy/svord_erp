@@ -3,9 +3,10 @@ import { onAuthPage } from '$lib/Auth/auth.helpers'
 import { ROUTES } from '$lib/routes'
 import { createServerClient } from '@supabase/ssr'
 import { redirect, type Handle } from '@sveltejs/kit'
+import type { Database } from './lib/supabase/supabase'
 
 export const handle: Handle = async ({ event, resolve }) => {
-	const supabase = createServerClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
+	const supabase = createServerClient<Database>(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
 		cookies: {
 			get: (key) => event.cookies.get(key),
 			/**

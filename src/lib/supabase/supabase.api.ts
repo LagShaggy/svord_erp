@@ -1,4 +1,4 @@
-import { supabase } from './supabaseClient'
+import { browserSupabase } from './supabaseClient'
 export const api = {
-	getUserData: async () => await supabase.auth.getUser()
+	getUserData: async () => await browserSupabase.auth.getUser()
 }
