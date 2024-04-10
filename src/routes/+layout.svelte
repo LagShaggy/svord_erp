@@ -14,7 +14,7 @@
 <HeadBar>
 	<SvordxCompanyLogo />
 	{#if session}
-		<AccountDropdown userImage={profilePicture?.signedUrl} />
+		<AccountDropdown userImage={profilePicture} />
 	{/if}
 </HeadBar>
 
