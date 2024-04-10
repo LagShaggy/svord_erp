@@ -8,6 +8,8 @@ export const actions: Actions = {
 		const lastname = formData.get('lastName') as string
 		const avatar = formData.get('file') as File
 
+		console.log(formData)
+
 		const session = await getSession()
 
 		if (session) {
@@ -33,20 +35,26 @@ export const actions: Actions = {
 					.select()
 			}
 
-			const { data, error } = await supabase
-				.from('Profile')
-				.update({
-					firstname,
-					lastname
-				})
-				.eq('id', session.user.id)
-				.select()
+			if (firstname || lastname) {
+				console.log('updating name')
 
-			if (error) {
-				console.log(error)
+				const { data, error } = await supabase
+					.from('Profile')
+					.update({
+						firstname,
+						lastname
+					})
+					.eq('id', session.user.id)
+					.select()
+
+				if (error) {
+					console.log(error)
+					fail(401, { message: 'Failed because something' })
+				}
+				console.log(data)
 			}
 		} else {
-			fail(401, { message: 'Failed because something' })
+			fail(401, { message: 'Failed No Session found' })
 		}
 	}
 }

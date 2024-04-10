@@ -19,3 +19,7 @@ export const ACTIONS = {
 		LOGOUT: '/auth/logout?/logout'
 	}
 }
+
+export const BUCKETS = {
+	IMAGES: 'images'
+}
