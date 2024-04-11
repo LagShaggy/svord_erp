@@ -35,6 +35,6 @@
 
 @layer utilities {
 	.clickable {
-		@apply border border-comp-colour rounded-full text-center;
+		@apply border border-comp-colour;
 	}
 }
