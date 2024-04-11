@@ -38,7 +38,6 @@ export const load: LayoutServerLoad = async ({ locals: { getSession, supabase } 
 	try {
 		const profile = await getProfile((await getSession()) ?? undefined)
 		const profilePicture = await getProfilePicture(profile)
-		console.log(profilePicture)
 		return { profile, profilePicture }
 	} catch (e) {
 		console.log(e)
