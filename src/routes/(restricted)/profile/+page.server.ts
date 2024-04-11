@@ -1,46 +1,27 @@
+import type { Session } from '@supabase/supabase-js'
 import type { Actions } from './$types'
 import { fail } from '@sveltejs/kit'
 
 export const actions: Actions = {
 	default: async ({ request, locals: { supabase, getSession } }) => {
-		const formData = await request.formData()
-		const firstname = formData.get('firstName') as string
-		const lastname = formData.get('lastName') as string
-		const avatar = formData.get('file') as File
+		const session: Session | null = await getSession()
 
-		console.log(formData)
-
-		const session = await getSession()
-
-		if (session) {
-			if (avatar) {
-				const { data: image, error: imageError } = await supabase.storage
-					.from('images')
-					.upload('/avatars/' + session.user.id, avatar, {
-						cacheControl: '3600',
-						upsert: true
-					})
-
-				if (imageError) {
-					console.log("uploading image didn't work")
-					console.log(imageError)
-				}
-
-				const { data, error } = await supabase
-					.from('Profile')
-					.update({
-						avatar_url: image?.path
-					})
-					.eq('id', session.user.id)
-					.select()
+		const updateProfile = async (
+			session: Session | null,
+			formData: FormData,
+			avatar_url: string | undefined
+		) => {
+			if (!session) {
+				return undefined
 			}
+			const firstname = formData.get('firstName') as string
+			const lastname = formData.get('lastName') as string
 
-			if (firstname || lastname) {
-				console.log('updating name')
-
+			if (firstname || lastname || avatar_url) {
 				const { data, error } = await supabase
 					.from('Profile')
 					.update({
+						avatar_url,
 						firstname,
 						lastname
 					})
@@ -48,13 +29,41 @@ export const actions: Actions = {
 					.select()
 
 				if (error) {
-					console.log(error)
-					fail(401, { message: 'Failed because something' })
+					throw error
 				}
 				console.log(data)
+				return data
 			}
-		} else {
-			fail(401, { message: 'Failed No Session found' })
+		}
+
+		const uploadAvatar = async (session: Session | null, formData: FormData) => {
+			if (!session) {
+				return undefined
+			}
+			const avatar = formData.get('file') as File
+
+			const { data: image, error: imageError } = await supabase.storage
+				.from('images')
+				.upload('/avatars/' + session.user.id, avatar, {
+					cacheControl: '3600',
+					upsert: true
+				})
+
+			if (imageError) {
+				throw imageError
+			}
+			await updateProfile(session, formData, image.path)
+
+			return image.path
+		}
+
+		try {
+			const formData = await request.formData()
+			const imagePath = await uploadAvatar(session, formData)
+			await updateProfile(session, formData, imagePath)
+		} catch (e) {
+			console.log(e)
+			fail(401, { e })
 		}
 	}
 }

@@ -19,7 +19,7 @@
 		{type}
 		{value}
 		{placeholder}
-		{...$$slots}
-		class="clickable text-left px-3 ml-5 w-80 bg-comp-colour bg-opacity-20 {className}"
+		{...$$restProps}
+		class="clickable text-left px-3 ml-5 w-80 bg-comp-colour rounded-full bg-opacity-20 {className}"
 	/>
 </label>

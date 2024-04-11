@@ -1,5 +1,5 @@
 <script>
-	import ClickableStyling from '$src/lib/UI/Primitive/Styling/ClickableStyling.svelte'
+	import ClickableStyling from '$src/lib/UI/Styling/ClickableStyling.svelte'
 </script>
 
 <div class="flex flex-col mx-auto items-center">

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { HttpMethod } from '@sveltejs/kit'
 	import { setContext } from 'svelte'
 	import { writable } from 'svelte/store'
 

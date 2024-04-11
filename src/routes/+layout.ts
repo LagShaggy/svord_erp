@@ -22,29 +22,25 @@ export const load: LayoutLoad = async ({ fetch, data, depends }) => {
 		}
 	})
 
-	const {
-		data: { session }
-	} = await supabase.auth.getSession()
-	const { data: profile, error } = await supabase.from('Profile').select().single()
+	const getSession = async () => {
+		let session
+		try {
+			const {
+				data: { session: sessionData },
+				error: sessionError
+			} = await supabase.auth.getSession()
 
-	if (error) {
-		console.log(error)
-	}
-
-	//TODO: rework this abom
-	let profilePicture
-	if (profile?.avatar_url) {
-		const { data: picUrl, error } = await supabase.storage
-			.from('images')
-			.createSignedUrl(profile.avatar_url, 60)
-
-		if (error) {
-			console.log(profile?.avatar_url)
-			console.log(error)
+			if (sessionError) {
+				throw sessionError
+			}
+			session = sessionData
+		} catch (e) {
+			console.log(e)
 		}
-
-		profilePicture = picUrl?.signedUrl
+		return session ?? undefined
 	}
 
-	return { supabase, session, profile, profilePicture }
+	const session = await getSession()
+
+	return { supabase, session }
 }

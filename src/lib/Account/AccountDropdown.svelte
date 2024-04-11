@@ -9,7 +9,6 @@
 	import UserIcon from '../Icons/UserIcon.svelte'
 
 	export let userImage: string | null = ''
-	console.log(userImage)
 </script>
 
 <DropdownProvider let:expandControll>
@@ -28,6 +27,7 @@
 		className="bg-comp-colour bg-opacity-10 border p-2"
 	>
 		<Link on:activated={expandControll.close} path={ROUTES.PROFILE}>Profile</Link>
+		<Link on:activated={expandControll.close} path={ROUTES.ORG}>Organisation</Link>
 		<LogoutForm />
 	</DropdownPannel>
 </DropdownProvider>

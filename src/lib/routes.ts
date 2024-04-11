@@ -20,6 +20,6 @@ export const ACTIONS = {
 	}
 }
 
-export const BUCKETS = {
+export const STORAGE = {
 	IMAGES: 'images'
 }

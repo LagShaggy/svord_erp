@@ -8,7 +8,7 @@
 <button
 	on:click={command}
 	type={submit ? 'submit' : null}
-	class="clickable {className}"
+	class="clickable rounded-full {className}"
 	{formaction}
 >
 	<slot />

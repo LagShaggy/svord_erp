@@ -33,7 +33,7 @@
 		transition:slide
 		use:clickOutsideOfParent
 		on:outside={() => ($expanded = false)}
-		class="absolute {displaceCSS} {className}"
+		class="absolute z-10 {displaceCSS} {className}"
 	>
 		<slot />
 	</div>
