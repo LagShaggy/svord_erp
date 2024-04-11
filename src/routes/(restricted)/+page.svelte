@@ -1,8 +1,5 @@
 <script lang="ts">
 	import BasePage from '$lib/UI/BasePage.svelte'
-	import type { PageData } from './$types'
-
-	export let data: PageData
 </script>
 
 <BasePage
