@@ -7,10 +7,12 @@
 	import { blur } from 'svelte/transition'
 	import { actionStore } from '$src/lib/UI/ActionButton/actionButtonStore'
 	import { onDestroy, onMount } from 'svelte'
+	import Profile from '$src/lib/Profile/Profile.svelte'
+	import type { PageData } from './$types'
 
-	export let data
-	let { profile } = data
-	$: ({ profile } = data)
+	export let data: PageData
+	let { profile, profilePicture } = data
+	$: ({ profile, profilePicture } = data)
 
 	const edit = createToggleControl(false)
 
@@ -49,11 +51,7 @@
 		</span>
 	{:else}
 		<span transition:blur>
-			<div>
-				{profile?.firstname}
-				<br />
-				{profile?.lastname}
-			</div>
+			<Profile {profile} {profilePicture}></Profile>
 		</span>
 	{/if}
 </div>
