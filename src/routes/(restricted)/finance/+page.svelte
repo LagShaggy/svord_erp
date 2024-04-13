@@ -6,31 +6,31 @@
 	import { alertStore } from '$src/lib/Alert/alert'
 
 	alertStore.add({
+		title: 'MESSAGE 1',
 		message: 'Hello This is a test to see the bar',
-		title: 'MESSAGE',
 		type: 'ERROR',
-		interval: 2000
+		interval: 5000
 	})
 
 	alertStore.add({
+		title: 'MESSAGE 2',
 		message: 'Hello This is a test to see the bar',
-		title: 'MESSAGE',
 		type: 'INFO',
-		interval: 4000
+		interval: 10000
 	})
 
 	alertStore.add({
+		title: 'MESSAGE 3',
 		message: 'Hello This is a test to see the bar',
-		title: 'MESSAGE',
 		type: 'OK',
-		interval: 6000
+		interval: 15000
 	})
 
 	alertStore.add({
+		title: 'MESSAGE 4',
 		message: 'Hello This is a test to see the bar',
-		title: 'MESSAGE',
 		type: 'WARNING',
-		interval: 8000
+		interval: 20000
 	})
 </script>
 

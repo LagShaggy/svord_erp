@@ -22,7 +22,7 @@
 				</ExpandContent>
 				<ExpandButton
 					expandControll={expandControll.toggle}
-					className=" bg-base-colour aspect-square h-12 rounded-full"
+					className=" bg-primary-colour aspect-square h-12 rounded-full"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

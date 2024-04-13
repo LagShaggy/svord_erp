@@ -31,7 +31,6 @@ export const actions: Actions = {
 				if (error) {
 					throw error
 				}
-				console.log(data)
 				return data
 			}
 		}
@@ -63,7 +62,7 @@ export const actions: Actions = {
 			await updateProfile(session, formData, imagePath)
 		} catch (e) {
 			console.log(e)
-			fail(401, { e })
+			fail(401, { error: e })
 		}
 	}
 }

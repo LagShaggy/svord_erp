@@ -12,7 +12,6 @@
 	const { session, profilePicture } = data
 </script>
 
-<AlertBar />
 <HeadBar>
 	<SvordxCompanyLogo />
 	{#if session}
@@ -20,9 +19,9 @@
 	{/if}
 </HeadBar>
 <main class="flex flex-col flex-grow w-full min-h-full bg-slate-100">
-	<div class="h-min py-6 lg:px-8 font-oswald shadow-xl">
+	<div class="h-min py-6 px-5 mb-8 lg:px-8 font-oswald shadow-xl">
 		<slot />
 	</div>
-	<ActionButtonContainer />
 </main>
+<ActionButtonContainer />
 <FootBar />

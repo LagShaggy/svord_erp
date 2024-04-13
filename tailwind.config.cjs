@@ -11,8 +11,8 @@ const config = {
 				oswald: ['Oswald']
 			},
 			colors: {
-				'base-colour': '#4338ca',
-				'comp-colour': '#eab308'
+				'primary-colour': '#4338ca',
+				'secondary-colour': '#eab308'
 			},
 			strokeWidth: {
 				5: '5px',

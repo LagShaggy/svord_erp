@@ -8,7 +8,9 @@
 <button
 	on:click={command}
 	type={submit ? 'submit' : null}
-	class="clickable rounded-full {className}"
+	class="clickable rounded-full outline-none transition-all
+	focus:border-secondary-colour focus:border-2
+	{className}"
 	{formaction}
 >
 	<slot />

@@ -1,38 +1,29 @@
 <script lang="ts">
-	import { onMount } from 'svelte'
 	import type { Alert } from './alert'
 
 	export let alert: Alert
+	export let destroy: () => void
 
-	let backgroundColour: string
-	let borderColour: string
+	let style: string
 
 	switch (alert.type) {
 		case 'INFO':
-			backgroundColour = 'bg-blue-200'
-			borderColour = 'border-blue-300'
+			style = 'bg-blue-500'
 			break
 		case 'OK':
-			backgroundColour = 'bg-green-200'
-			borderColour = 'border-green-300'
+			style = 'bg-green-500'
 			break
 		case 'WARNING':
-			backgroundColour = 'bg-yellow-200'
-			borderColour = 'border-yellow-300'
+			style = 'bg-yellow-500'
 			break
 		case 'ERROR':
-			backgroundColour = 'bg-red-200'
-			borderColour = 'border-red-300'
+			style = 'bg-red-500'
 			break
-	}
-
-	const destroyThis = () => {
-		console.log('we forgot to implement the destroy method')
 	}
 </script>
 
-<button on:click={destroyThis}>
-	<div class="px-5 py-2 border rounded-md bg-opacity-90 {backgroundColour} {borderColour}">
+<button class="mx-2" on:click={destroy}>
+	<div class="px-5 py-2 text-white border rounded-md bg-opacity-90 {style}">
 		<h3>{alert.title}</h3>
 		<p>{alert.message}</p>
 	</div>

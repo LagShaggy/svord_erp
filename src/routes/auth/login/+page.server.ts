@@ -1,6 +1,7 @@
 import { redirect } from '@sveltejs/kit'
 import type { Actions } from './$types'
 import { ROUTES } from '$lib/routes'
+import type { Alert } from '$src/lib/Alert/alert'
 
 export const actions: Actions = {
 	login: async ({ request, locals: { supabase } }) => {
@@ -15,7 +16,13 @@ export const actions: Actions = {
 		})
 
 		if (error) {
-			return { success: false, message: 'Login failed.' }
+			const alert: Alert = {
+				type: 'ERROR',
+				title: 'AuthError',
+				message: error.message
+			}
+			console.log(error)
+			return { alert, email }
 		} else {
 			console.log('auth successfull!')
 			redirect(301, ROUTES.HOME)

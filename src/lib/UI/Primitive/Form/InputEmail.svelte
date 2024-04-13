@@ -3,9 +3,9 @@
 
 	export let name: string = 'text'
 	export let value: string = ''
-	export let placeholder: string = 'Text'
+	export let placeholder: string = 'Email'
 </script>
 
-<Input type="email" {name} {placeholder} {value}>
+<Input type="email" {name} {placeholder} {value} {...$$props}>
 	<slot />
 </Input>
