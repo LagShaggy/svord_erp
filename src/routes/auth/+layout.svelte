@@ -8,6 +8,6 @@
 	<SvordxCompanyLogo />
 </HeadBar>
 
-<div class="mt-10">
+<div class="mt-10 px-5">
 	<slot />
 </div>
