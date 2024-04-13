@@ -13,7 +13,7 @@
 
 <DropdownProvider let:expandControll>
 	<DropdownButton expandControll={expandControll.toggle}>
-		<div class="w-10 h-10 rounded-full border-1 bg-base-colour overflow-hidden">
+		<div class="w-10 h-10 rounded-full border-1 bg-primary-colour overflow-hidden">
 			{#if userImage}
 				<img src={userImage} alt="" />
 			{:else}
@@ -24,7 +24,7 @@
 	<DropdownPannel
 		expanded={expandControll}
 		displaceCSS="top-10 right-10"
-		className="bg-comp-colour bg-opacity-10 border p-2"
+		className="bg-secondary-colour bg-opacity-10 border p-2"
 	>
 		<Link on:activated={expandControll.close} path={ROUTES.PROFILE}>Profile</Link>
 		<Link on:activated={expandControll.close} path={ROUTES.ORG}>Organisation</Link>

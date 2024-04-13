@@ -83,7 +83,7 @@
 
 <slot />
 <div class="flex flex-row justify-center my-2 {className}">
-	<div class="flex flex-row h-8 lg:h-10 bg-comp-colour bg-opacity-15 rounded-full">
+	<div class="flex flex-row h-8 lg:h-10 bg-secondary-colour bg-opacity-15 rounded-full">
 		<button on:click={current.backTen}>
 			<img src="/icons/chevrons-left.svg" alt="" />
 		</button>
@@ -93,7 +93,7 @@
 		{#each nearestIndices as index}
 			<button
 				on:click={selectPage(index)}
-				class="aspect-square {index == $current ? 'border border-comp-colour' : ''}"
+				class="aspect-square {index == $current ? 'border border-secondary-colour' : ''}"
 			>
 				{index}
 			</button>

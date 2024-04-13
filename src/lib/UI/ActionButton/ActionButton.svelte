@@ -6,7 +6,7 @@
 
 <button
 	on:click={command}
-	class="flex justify-center items-center bg-base-colour aspect-square h-12 rounded-full {className}"
+	class="flex justify-center items-center bg-primary-colour aspect-square h-12 rounded-full {className}"
 >
 	<img src={img} alt="" />
 </button>
