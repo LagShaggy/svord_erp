@@ -1,13 +1,15 @@
 import { fail } from '@sveltejs/kit'
-import type { Actions, PageServerLoad } from './$types'
+import type { Actions } from './$types'
+import type { Alert } from '$src/lib/Alert/alert'
 
-export const load: PageServerLoad = async ({ locals: { supabase } }) => {
-	const { data, error } = await supabase.from('Product_Category').select()
-	if (error) {
-		console.log(error)
-	}
-	return { categories: data }
-}
+// export const load: PageServerLoad = async ({ locals: { supabase } }) => {
+// 	const { data, error } = await supabase.from('Product_Category').select()
+// 	console.log(data)
+// 	if (error) {
+// 		console.log(error)
+// 	}
+// 	return { categories: data }
+// }
 
 export const actions: Actions = {
 	createProduct: async ({ request, locals: { supabase } }) => {
@@ -17,6 +19,9 @@ export const actions: Actions = {
 		const description = formData.get('description') as string
 		const category = formData.get('product_category') as string
 
+		if (!category || !name || !description) {
+			fail(400, { name, category, description })
+		}
 		const product = {
 			name,
 			description,
@@ -29,7 +34,12 @@ export const actions: Actions = {
 
 		if (error) {
 			console.log(error)
-			return fail(400, { name, description, category, error })
+			const alert: Alert = {
+				type: 'ERROR',
+				title: 'Something went wrong',
+				message: error.message
+			}
+			return fail(400, { alert, name, description, category })
 		}
 	},
 
@@ -46,6 +56,7 @@ export const actions: Actions = {
 			.select()
 
 		if (error) {
+			console.log(error)
 			return fail(400, { category: categoryName, error })
 		}
 	}

@@ -8,7 +8,7 @@
 	$: ({ accounts } = data)
 </script>
 
-<BasePage title="PEOPLE">
+<BasePage title="PEOPLE" className="-mx-5">
 	<Table items={accounts} let:item let:index>
 		<AccountRow {item} {index} />
 	</Table>

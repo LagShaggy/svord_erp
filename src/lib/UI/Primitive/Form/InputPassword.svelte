@@ -5,6 +5,6 @@
 	export let placeholder: string = 'Password'
 </script>
 
-<Input type="password" {name} {placeholder}>
+<Input type="password" {name} {placeholder} {...$$props}>
 	<slot />
 </Input>

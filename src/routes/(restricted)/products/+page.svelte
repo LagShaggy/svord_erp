@@ -23,7 +23,7 @@
 	})
 </script>
 
-<BasePage title={'PRODUCTS'}>
+<BasePage title={'PRODUCTS'} className="-mx-5">
 	<div class="flex justify-center">
 		<Table let:item let:index items={products}>
 			<ProductRow {item} {index} />

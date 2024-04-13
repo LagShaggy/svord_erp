@@ -2,8 +2,6 @@
 	import { fly } from 'svelte/transition'
 	import { alertStore } from './alert'
 	import Alert from './Alert.svelte'
-
-	$: console.log($alertStore.length)
 </script>
 
 <span class="fixed top-2 z-20 left-1/2 -translate-x-1/2">

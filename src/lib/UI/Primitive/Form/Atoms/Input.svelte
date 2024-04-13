@@ -1,25 +1,43 @@
 <script lang="ts">
 	import type { HTMLInputTypeAttribute } from 'svelte/elements'
+	import { v4 as uuidv4 } from 'uuid'
 
 	export let type: HTMLInputTypeAttribute
 	export let name: string
 	export let value: string = ''
 	export let placeholder: string = ''
 	export let className: string = ''
+
+	const id = uuidv4()
 </script>
 
-<label class="flex justify-between text-left">
-	<slot>
-		<p>
-			{name}
-		</p>
-	</slot>
+<div class="relative mt-3 w-full">
 	<input
+		{id}
 		{name}
 		{type}
 		{value}
-		{placeholder}
 		{...$$restProps}
-		class="clickable text-left px-3 ml-5 w-80 bg-comp-colour rounded-full bg-opacity-20 {className}"
+		class="user-input w-full text-left bg-inherit border-b border-gray-500 appearance-none
+		transition-all duration-400
+		focus:border-secondary-colour
+		invalid:border-red-400
+		outline-none {className}"
 	/>
-</label>
+	<label
+		for={id}
+		class="user-label absolute top-0 left-0 pointer-events-none
+		duration-200 ease-in-out
+		text-gray-400 text-sm"
+	>
+		<slot />
+	</label>
+</div>
+
+<style>
+	.user-input:active + .user-label,
+	.user-input:focus + .user-label,
+	.user-input:valid + .user-label {
+		transform: translate(-5px, -20px) scale(0.8);
+	}
+</style>

@@ -7,9 +7,9 @@
 	import SubmitButton from '$src/lib/UI/Primitive/Form/SubmitButton.svelte'
 </script>
 
-<Form action={ACTIONS.AUTH.LOGIN} className={'w-1/3'}>
+<Form action={ACTIONS.AUTH.LOGIN} className={'lg:w-1/3 mx-5'}>
 	<h1>Welcome back</h1>
-	<InputEmail name={'email'} value={$page.form?.email}>Email</InputEmail>
-	<InputPassword name={'password'}>Password</InputPassword>
+	<InputEmail name={'email'} value={$page.form?.email} required>Email</InputEmail>
+	<InputPassword name={'password'} required>Password</InputPassword>
 	<SubmitButton className={'mt-5'}>Login</SubmitButton>
 </Form>

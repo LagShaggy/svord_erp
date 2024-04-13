@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { draw, slide } from 'svelte/transition'
+	import { slide } from 'svelte/transition'
 	import { createToggleControl } from '../Behavior/toggleStore'
 
 	interface AccordionProps {
 		title: string
-		shortDescr: string
+		shortDescr?: string
 		expanded?: boolean
 	}
 
@@ -23,7 +23,7 @@
 </script>
 
 <div class="border-y-2 min-h-20">
-	<button class="flex h-20 w-full items-center" on:click={expanded.toggle}>
+	<button type="button" class="flex h-20 w-full items-center" on:click={expanded.toggle}>
 		<img src={chevron} alt="" />
 		<p class="w-3/4 text-black text-xl">
 			{props.title}
