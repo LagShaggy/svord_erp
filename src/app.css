@@ -35,6 +35,6 @@
 
 @layer utilities {
 	.clickable {
-		@apply border border-comp-colour;
+		@apply border border-secondary-colour;
 	}
 }
