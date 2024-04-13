@@ -1,6 +1,7 @@
-import { fail } from '@sveltejs/kit'
+import { fail, redirect } from '@sveltejs/kit'
 import type { Actions } from './$types'
 import type { Alert } from '$src/lib/Alert/alert'
+import { ROUTES } from '$src/lib/routes'
 
 // export const load: PageServerLoad = async ({ locals: { supabase } }) => {
 // 	const { data, error } = await supabase.from('Product_Category').select()
@@ -27,7 +28,7 @@ export const actions: Actions = {
 			description,
 			category
 		}
-		const { error } = await supabase
+		const { data, error } = await supabase
 			.from('Product')
 			.insert({ ...product })
 			.select()
@@ -41,6 +42,7 @@ export const actions: Actions = {
 			}
 			return fail(400, { alert, name, description, category })
 		}
+		redirect(301, ROUTES.PRODUCT.SINGLE + data[0].id)
 	},
 
 	createProductCategory: async ({ request, locals: { supabase } }) => {
