@@ -12,7 +12,6 @@
 	const { session, profilePicture } = data
 </script>
 
-<AlertBar />
 <HeadBar>
 	<SvordxCompanyLogo />
 	{#if session}
