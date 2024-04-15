@@ -1,12 +1,21 @@
 <script lang="ts">
-	export let command: () => void
-	export let img: string | null
-	export let className: string = ''
+	import type { ActionType } from './types'
+
+	export let action: ActionType
 </script>
 
-<button
-	on:click={command}
-	class="flex justify-center items-center bg-primary-colour aspect-square h-12 rounded-full {className}"
->
-	<img src={img} alt="" />
-</button>
+<div class="relative bg-transparent">
+	{#if action.name}
+		<div
+			class="absolute h-12 right-8 top-0 -z-10 min-w-max px-5 rounded-l-3xl align-middle bg-primary-colour bg-opacity-40 text-white flex items-center"
+		>
+			{action.name}
+		</div>
+	{/if}
+	<button
+		on:click={action.command}
+		class="flex justify-center items-center bg-primary-colour aspect-square h-12 rounded-full {action.className}"
+	>
+		<svelte:component this={action.img} />
+	</button>
+</div>
