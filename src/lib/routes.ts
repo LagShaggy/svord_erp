@@ -9,6 +9,9 @@ export const ROUTES = {
 	},
 	PRODUCT: {
 		SINGLE: '/products/item/'
+	},
+	PEOPLE: {
+		SINGLE: '/products/item/'
 	}
 }
 
@@ -20,6 +23,12 @@ export const ACTIONS = {
 	AUTH: {
 		LOGIN: '/auth/login?/login',
 		LOGOUT: '/auth/logout?/logout'
+	},
+	ACCOUNT: {
+		CREATE: '/people?/createAccount'
+	},
+	CONTACT: {
+		CREATE: '/people?/createContact'
 	}
 }
 

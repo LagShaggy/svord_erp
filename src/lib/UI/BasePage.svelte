@@ -1,6 +1,5 @@
 <script lang="ts">
 	export let title: string
-	export let description: string = ''
 	export let className: string = ''
 </script>
 
@@ -11,7 +10,6 @@
 <header>
 	<h1>{title}</h1>
 </header>
-<div class={className}>
-	<p>{description}</p>
+<main>
 	<slot />
-</div>
+</main>

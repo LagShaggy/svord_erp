@@ -9,7 +9,7 @@
 </script>
 
 <BasePage title={product.name}>
-	<p>
+	<p class="my-5">
 		{product.description}
 	</p>
 	<Accordion
