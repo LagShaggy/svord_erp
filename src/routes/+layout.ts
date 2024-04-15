@@ -1,5 +1,5 @@
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public'
-import type { Database } from '$src/lib/supabase/supabase'
+import type { Database } from '$src/lib/supabase/supabase.types'
 import type { LayoutLoad } from './$types'
 import { createBrowserClient, isBrowser, parse } from '@supabase/ssr'
 

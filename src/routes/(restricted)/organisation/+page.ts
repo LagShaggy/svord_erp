@@ -1,3 +1,4 @@
+import type { Alert } from '$src/lib/Alert/alert'
 import { STORAGE } from '$src/lib/routes'
 import type { PageLoad } from './$types'
 
@@ -7,7 +8,6 @@ export const load: PageLoad = async ({ parent }) => {
 	try {
 		const { data: profiles, error } = await supabase.from('Profile').select()
 		if (error) {
-			console.log(error)
 			throw error
 		}
 
@@ -18,11 +18,16 @@ export const load: PageLoad = async ({ parent }) => {
 		if (filesError) {
 			throw filesError
 		}
-		console.log(fileList)
 
 		// const {} = await supabase.storage.from('avatars').createSignedUrls(fileList.map(f=>f.), 60)
-		return { profiles }
+		return { profiles, fileList }
 	} catch (e) {
 		console.log(e)
+		const alert: Alert = {
+			title: 'Error Occured',
+			message: e.message,
+			type: 'ERROR'
+		}
+		return { alert }
 	}
 }

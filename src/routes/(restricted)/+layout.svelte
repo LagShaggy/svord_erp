@@ -4,7 +4,6 @@
 	import SvordxCompanyLogo from '$lib/Icons/SvordxCompanyLogo.svelte'
 	import HeadBar from '$lib/UI/TopBar/HeadBar.svelte'
 	import type { LayoutData } from './$types'
-	import AlertBar from '$src/lib/Alert/AlertBar.svelte'
 	import ActionButtonContainer from '$src/lib/UI/ActionButton/ActionButtonContainer.svelte'
 	import FootBar from '$src/lib/UI/FootBar/FootBar.svelte'
 

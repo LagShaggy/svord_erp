@@ -11,7 +11,7 @@
 <header>
 	<h1>{title}</h1>
 </header>
-<div class="lg:px-4 {className}">
+<div class={className}>
 	<p>{description}</p>
 	<slot />
 </div>

@@ -3,7 +3,7 @@ import { onAuthPage } from '$lib/Auth/auth.helpers'
 import { ROUTES } from '$lib/routes'
 import { createServerClient } from '@supabase/ssr'
 import { redirect, type Handle } from '@sveltejs/kit'
-import type { Database } from './lib/supabase/supabase'
+import type { Database } from './lib/supabase/supabase.types'
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const supabase = createServerClient<Database>(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
