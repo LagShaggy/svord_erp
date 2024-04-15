@@ -42,13 +42,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	// Protecting routes && authentication
 	if (!session && !onAuthPage(event.route.id)) {
-		console.log('not authenticated. redirecting to login')
+		console.log('User not authenticated, redirecting to login')
 		redirect(303, ROUTES.AUTH.LOGIN)
 	}
 
 	// if authenticated and on auth route, redirect.
 	if (session && onAuthPage(event.route.id)) {
-		console.log('session found, redirecting to app.')
+		console.log('Session found, redirecting to Svord entrypoint')
 		redirect(301, ROUTES.HOME)
 	}
 
