@@ -7,7 +7,7 @@
 <div class="relative bg-transparent">
 	{#if action.name}
 		<div
-			class="absolute h-12 right-8 top-0 -z-10 min-w-max px-5 rounded-l-3xl align-middle bg-primary-colour bg-opacity-40 text-white flex items-center"
+			class="absolute h-12 right-8 top-0 -z-10 min-w-max px-5 rounded-l-3xl align-middle bg-primary-colour bg-opacity-40 text-white flex items-center backdrop-blur"
 		>
 			{action.name}
 		</div>
