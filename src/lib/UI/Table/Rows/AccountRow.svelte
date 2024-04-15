@@ -1,9 +1,10 @@
 <script lang="ts">
+	import type { Account } from '$src/lib/supabase/schema'
 	import TableData from '../Molecules/TableData.svelte'
 	import { getColourForIndex } from '../Molecules/tableHelpers'
 	import TableRow from '../Molecules/TableRow.svelte'
 
-	export let item
+	export let item: Account
 	export let index: number
 	const colour = getColourForIndex(index)
 	const handleClick = (e: MouseEvent) => {
