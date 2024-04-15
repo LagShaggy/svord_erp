@@ -5,10 +5,11 @@
 	import InputFile from '$src/lib/UI/Primitive/Form/InputFile.svelte'
 	import SubmitButton from '$src/lib/UI/Primitive/Form/SubmitButton.svelte'
 	import { blur } from 'svelte/transition'
-	import { actionStore } from '$src/lib/UI/ActionButton/actionButtonStore'
+	import { actionStore } from '$src/lib/UI/ActionButton/actionButton'
 	import { onDestroy, onMount } from 'svelte'
 	import Profile from '$src/lib/Profile/Profile.svelte'
 	import type { PageData } from './$types'
+	import Edit from '$src/lib/Icons/Edit.svelte'
 
 	export let data: PageData
 	let { profile, profilePicture } = data
@@ -21,7 +22,7 @@
 			edit.toggle()
 			actionStore.reset()
 		},
-		img: '/icons/edit.svg'
+		img: Edit
 	}
 
 	const goBack = () => {
