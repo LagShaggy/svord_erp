@@ -61,5 +61,12 @@ export const actions: Actions = {
 			console.log(error)
 			return fail(400, { category: categoryName, error })
 		}
+
+		const alert: Alert = {
+			title: 'Product Category Created',
+			message: ``,
+			type: 'OK'
+		}
+		return { alert }
 	}
 }

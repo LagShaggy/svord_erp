@@ -1,11 +1,11 @@
+import { TABLES } from '$src/lib/routes'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async ({ params: { productId }, locals: { supabase } }) => {
 	const { data: product, error } = await supabase
-		.from('Product')
+		.from(TABLES.PRODUCTS)
 		.select()
 		.eq('id', productId)
-		.limit(1)
 		.single()
 	if (error) {
 		console.log(error)

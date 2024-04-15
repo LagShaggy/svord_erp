@@ -26,3 +26,7 @@ export const ACTIONS = {
 export const STORAGE = {
 	IMAGES: 'images'
 }
+
+export const TABLES = {
+	PRODUCTS: 'Product'
+}
