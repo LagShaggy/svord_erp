@@ -1,5 +1,5 @@
-<script lang="ts">
-	import type { Profile } from '../supabase/schema'
+<ProfileTlang="ts">
+	ProfileTtype { Profile } from '../supabase/schema'
 
 	export let profile: Profile | undefined
 	export let profilePicture: string | undefined = ''

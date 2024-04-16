@@ -18,9 +18,16 @@
 			shortDescr: 'Here you can see an overview of the basic product properties'
 		}}
 	></Accordion>
-	<Accordion props={{ title: 'Price Information', shortDescr: 'See product workflows' }}
+	<Accordion
+		props={{
+			title: 'Price Information',
+			shortDescr: 'See product workflows'
+		}}
 	></Accordion>
-	<Accordion props={{ title: 'People of Interest', shortDescr: 'See product workflows' }}
+	<Accordion
+		props={{
+			title: 'People of Interest',
+			shortDescr: 'See product workflows'
+		}}
 	></Accordion>
-	<Accordion props={{ title: 'Comments', shortDescr: 'See product workflows' }}></Accordion>
 </BasePage>

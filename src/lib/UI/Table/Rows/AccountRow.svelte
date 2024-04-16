@@ -3,7 +3,6 @@
 	import TableData from '../Molecules/TableData.svelte'
 	import { getColourForIndex } from '../Molecules/tableHelpers'
 	import TableRow from '../Molecules/TableRow.svelte'
-
 	export let item: Account
 	export let index: number
 	const colour = getColourForIndex(index)

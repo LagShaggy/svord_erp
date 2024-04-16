@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Input from '../UI/Primitive/Form/Atoms/Input.svelte'
 	import Form from '../UI/Primitive/Form/Form.svelte'
 	import InputEmail from '../UI/Primitive/Form/InputEmail.svelte'
 	import InputText from '../UI/Primitive/Form/InputText.svelte'

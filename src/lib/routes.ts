@@ -29,6 +29,10 @@ export const ACTIONS = {
 	},
 	CONTACT: {
 		CREATE: '/people?/createContact'
+	},
+	PRODUCT: {
+		UPLOADIMAGE: '/products/item?/uploadImage',
+		UPLOADDOC: '/products/item?/uploadDoc'
 	}
 }
 

@@ -3,10 +3,10 @@
 	import { getColourForIndex } from '../Molecules/tableHelpers'
 	import TableRow from '../Molecules/TableRow.svelte'
 	import { goto } from '$app/navigation'
-	import type { Product } from '$src/lib/supabase/schema'
-	import ProductCategory from '$src/lib/Badges/ProductCategory.svelte'
+	import type { Product, ProductCategoryType } from '$src/lib/supabase/schema'
+	import ProductCategoryBadge from '$src/lib/Badges/ProductCategoryBadge.svelte'
 
-	export let item: Product
+	export let item: Omit<Product, 'category'> & { category: ProductCategoryType }
 	export let index: number
 	const colour = getColourForIndex(index)
 	const handleClick = (e: MouseEvent) => {
@@ -19,10 +19,12 @@
 		{item.id}
 	</TableData>
 	<TableData>
-		<ProductCategory category={item.category} />
+		<ProductCategoryBadge category={item.category} />
 	</TableData>
 	<TableData>
-		{item.name}
+		<span class="text-base">
+			{item.name}
+		</span>
 	</TableData>
 	<TableData>
 		{item.description}
