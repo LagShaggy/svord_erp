@@ -5,7 +5,7 @@
 	import HeadBar from '$lib/UI/TopBar/HeadBar.svelte'
 	import type { LayoutData } from './$types'
 	import ActionButtonContainer from '$src/lib/UI/ActionButton/ActionButtonContainer.svelte'
-	import FootBar from '$src/lib/UI/FootBar/FootBar.svelte'
+	import NavigationBar from '$src/lib/UI/FootBar/NavigationBar.svelte'
 
 	export let data: LayoutData
 	const { session, profilePicture } = data
@@ -23,4 +23,4 @@
 	</div>
 </main>
 <ActionButtonContainer />
-<FootBar />
+<NavigationBar />
