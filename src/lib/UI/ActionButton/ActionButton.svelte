@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition'
+	import { blur, slide } from 'svelte/transition'
 	import type { ActionType } from './types'
 	import { onMount } from 'svelte'
 
@@ -12,10 +12,11 @@
 
 <div class="relative bg-transparent">
 	{#if action.name}
-		{#if showName}
+		{#if showName && action.name}
 			<div
-				transition:fly={{ delay: 100, duration: 200, x: -10 }}
-				class="absolute h-12 right-8 top-0 -z-10 min-w-max px-5 rounded-l-3xl align-middle bg-primary-colour bg-opacity-40 text-white flex items-center backdrop-blur"
+				in:slide={{ delay: 300, duration: 400, axis: 'x' }}
+				out:blur={{ duration: 100, amount: '5px' }}
+				class="absolute h-12 right-7 top-0 -z-10 min-w-max px-6 rounded-l-3xl align-middle bg-primary-colour bg-opacity-40 text-white flex items-center backdrop-blur"
 			>
 				{action.name}
 			</div>

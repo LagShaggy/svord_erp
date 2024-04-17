@@ -8,9 +8,9 @@
 	$: ({ product } = data)
 </script>
 
-<BasePage title={product.name}>
+<BasePage title={product?.name}>
 	<p class="my-5">
-		{product.description}
+		{product?.description}
 	</p>
 	<Accordion
 		props={{

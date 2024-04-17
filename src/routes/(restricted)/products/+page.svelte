@@ -9,6 +9,7 @@
 	import Add from '$src/lib/Icons/Add.svelte'
 	import ModalWindow from '$src/lib/UI/Modal/ModalWindow.svelte'
 	import CreateAccount from '$src/lib/Account/CreateAccount.svelte'
+	import LoadingS from '$src/lib/Icons/LoadingS.svelte'
 
 	export let data: PageData
 	let { products } = data
@@ -25,15 +26,21 @@
 </script>
 
 <BasePage title={'PRODUCTS'} className="-mx-5">
-	<ModalWindow>
+	{#await products}
+		<LoadingS></LoadingS>
+	{:then { data: products, error }}
+		<!-- <ModalWindow>
 		<CreateAccount account={null}></CreateAccount>
-	</ModalWindow>
-	<div class="flex justify-center">
-		<Table let:item let:index items={products}>
-			<ProductRow {item} {index} />
-		</Table>
-	</div>
-	<!-- <PageController bind:currentIndex {maxPages}></PageController> -->
+	</ModalWindow> -->
+		<div class="flex justify-center">
+			<Table let:item let:index items={products}>
+				<ProductRow {item} {index} />
+			</Table>
+		</div>
+		<!-- <PageController bind:currentIndex {maxPages}></PageController> -->
+	{:catch error}
+		error
+	{/await}
 </BasePage>
 
 <style>

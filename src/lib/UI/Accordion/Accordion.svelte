@@ -13,7 +13,7 @@
 		shortDescr: 'Description is missing'
 	}
 
-	let expanded = createToggleControl(props.expanded ?? false)
+	export let expanded = createToggleControl(props.expanded ?? false)
 
 	const closeChevron = '/icons/chevron-up.svg'
 	const openChevron = '/icons/chevron-down.svg'
