@@ -14,6 +14,7 @@
 	{action}
 	{...$$props}
 	class="flex justify-center h-full flex-col flex-grow gap-2 mx-auto {className}"
+	on:change
 >
 	<slot />
 </form>

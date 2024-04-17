@@ -10,6 +10,7 @@
 	import ModalWindow from '$src/lib/UI/Modal/ModalWindow.svelte'
 	import CreateAccount from '$src/lib/Account/CreateAccount.svelte'
 	import LoadingS from '$src/lib/Icons/LoadingS.svelte'
+	import { alertStore } from '$src/lib/Alert/alert'
 
 	export let data: PageData
 	let { products } = data
