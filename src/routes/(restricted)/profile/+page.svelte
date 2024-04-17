@@ -52,7 +52,7 @@
 		</span>
 	{:else}
 		<span transition:blur>
-			<Profile {profile} {profilePicture}></Profile>
+			<Profile {profile}></Profile>
 		</span>
 	{/if}
 </div>

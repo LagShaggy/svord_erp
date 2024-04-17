@@ -4,8 +4,8 @@
 	import type { PageData } from './$types'
 
 	export let data: PageData
-	let { profiles, profile: me } = data
-	$: ({ profiles, profile: me } = data)
+	let { profiles, profile } = data
+	$: profiles = [profile, ...(profiles ?? [])]
 </script>
 
 <BasePage title="Your Organisation">

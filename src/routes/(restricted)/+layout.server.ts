@@ -1,6 +1,6 @@
 import type { Session } from '@supabase/supabase-js'
 import type { LayoutServerLoad } from './$types'
-import type { ProfileT } from '$src/lib/supabase/schema'
+import type { Profile } from '$src/lib/supabase/schema'
 
 export const load: LayoutServerLoad = async ({ locals: { getSession, supabase } }) => {
 	const getProfile = async (session: Session | undefined) => {
@@ -18,7 +18,7 @@ export const load: LayoutServerLoad = async ({ locals: { getSession, supabase } 
 		return profileData
 	}
 
-	const getProfilePicture = async (profile: ProfileT | undefined) => {
+	const getProfilePicture = async (profile: Profile | undefined) => {
 		if (!profile) {
 			return undefined
 		}
