@@ -41,5 +41,5 @@ export const STORAGE = {
 }
 
 export const TABLES = {
-	PRODUCTS: 'Product'
+	PRODUCT: 'Product'
 }

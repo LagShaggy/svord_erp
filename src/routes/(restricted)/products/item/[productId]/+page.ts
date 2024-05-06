@@ -1,16 +1,17 @@
 import { TABLES } from '$src/lib/routes'
 import type { PageLoad } from './$types'
-import { browserSupabase } from '$src/lib/supabase/supabaseClient'
 
-export const load: PageLoad = async ({ params: { productId } }) => {
-	const { data: product, error } = await browserSupabase
-		.from(TABLES.PRODUCTS)
+export const load: PageLoad = async ({ params: { productId }, parent }) => {
+	const { supabase } = await parent()
+	const { data: product, error } = await supabase
+		.from(TABLES.PRODUCT)
 		.select(
 			`
 			id,
 			name,
 			description,
 			category(id, name, colour_hex)
+			product_variant(id, product_id, name)
 		`
 		)
 		.eq('id', productId)
