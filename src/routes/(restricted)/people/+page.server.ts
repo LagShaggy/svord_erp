@@ -1,3 +1,5 @@
+import { Country } from '$src/lib/Icons/Flags/countries.enum'
+import { postAccount } from '$src/lib/supabase/api/account'
 import type { Actions, PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async ({ locals: { supabase } }) => {
@@ -9,10 +11,12 @@ export const load: PageServerLoad = async ({ locals: { supabase } }) => {
 }
 
 export const actions: Actions = {
-	createARccount: ({ request }) => {
-		console.log(request.formData())
+	createAccount: async ({ request, locals: { supabase } }) => {
+		const data = await request.formData()
+		const account = Object.fromEntries(data)
+		postAccount(supabase, { country: Country.Anguilla, ...account })
 	},
-	createContact: ({ request }) => {
+	createContact: async ({ request }) => {
 		console.log(request.formData())
 	}
 }
