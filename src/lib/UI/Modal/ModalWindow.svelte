@@ -1,8 +1,11 @@
 <script lang="ts">
 	import Add from '$src/lib/Icons/Add.svelte'
+	import { fly } from 'svelte/transition'
+	import { clickOutsideAction } from '../Behavior/clickOutside'
 	import { createToggleControl } from '../Behavior/toggleStore'
+	import { backInOut, backOut, cubicInOut } from 'svelte/easing'
 
-	const active = createToggleControl(true)
+	export let active = createToggleControl(false)
 </script>
 
 {#if $active}
@@ -11,6 +14,9 @@
 	>
 		<div class="relative">
 			<div
+				transition:fly={{ y: 50, duration: 250, easing: backOut }}
+				use:clickOutsideAction
+				on:outside={active.close}
 				class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
 				border border-primary-colour rounded-md
 				bg-primary-colour bg-opacity-20 backdrop-blur-md
