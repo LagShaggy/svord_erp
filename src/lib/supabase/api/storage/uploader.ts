@@ -1,6 +1,4 @@
-import type { SupabaseClient } from '@supabase/supabase-js'
 import { v4 as uuidv4 } from 'uuid'
-import type { Database } from '../../supabase.types'
 import type { TypedSupabaseClient } from '../../schema'
 
 export enum Bucket {
