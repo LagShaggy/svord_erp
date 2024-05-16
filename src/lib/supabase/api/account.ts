@@ -1,7 +1,14 @@
-import type { SupabaseClient } from '@supabase/supabase-js'
-import type { Account } from '../schema'
+import type { Account, TypedSupabaseClient } from '../schema'
 
-export const postAccount = async (supabase: SupabaseClient, account: Partial<Account>) => {
-	const { data, error } = await supabase.from('Account').insert([account]).select()
-	console.log(error)
+export const postAccount = async (
+	supabase: TypedSupabaseClient,
+	newAccount: Omit<Account, 'id'>
+) => {
+	const { data: account } = await supabase
+		.from('Account')
+		.insert([newAccount])
+		.select()
+		.throwOnError()
+
+	return account
 }

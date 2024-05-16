@@ -1,16 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
-	import StoreItem from '../StoreUI/StoreItem.svelte'
-	import { STORAGE } from '../routes'
 	import type { Profile } from '../supabase/schema'
-	import { getImage } from '../supabase/storage/getImageUrl'
+	import { getImage } from '../supabase/api/storage/getImageUrl'
+	import { browserSupabase } from '../supabase/supabaseClient'
+	import { Bucket } from '../supabase/api/storage/uploader'
 
 	export let profile: Profile
 	export let className: string = ''
 
 	let pp: string
 	onMount(async () => {
-		pp = await getImage(STORAGE.IMAGES, profile.avatar_url)
+		pp = await getImage(browserSupabase, {
+			bucket: Bucket.Images,
+			fileName: profile.avatar_url
+		})
 	})
 </script>
 

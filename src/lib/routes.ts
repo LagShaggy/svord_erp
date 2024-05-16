@@ -41,5 +41,6 @@ export const STORAGE = {
 }
 
 export const TABLES = {
-	PRODUCT: 'Product'
+	PRODUCT: 'Product',
+	PRODUCT_IMAGE: 'product_image'
 }

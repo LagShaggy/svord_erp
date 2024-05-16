@@ -6,25 +6,39 @@
 	import Add from '$src/lib/Icons/Add.svelte'
 	import { onDestroy, onMount } from 'svelte'
 	import ModalWindow from '$src/lib/UI/Modal/ModalWindow.svelte'
-	import CreateAccount from '$src/lib/Account/CreateAccount.svelte'
+	import CreateAccount from '$src/lib/People/Account/CreateAccount.svelte'
 	import type { ToggleControlType } from '$src/lib/UI/Behavior/toggleStore.js'
+	import CreateContact from '$src/lib/People/Contact/CreateContact.svelte'
 
 	export let data
 	let { accounts } = data
 	$: ({ accounts } = data)
 
 	// modal
-	let createAccountToggle: ToggleControlType
+	let createAccount: ToggleControlType
+	let createContact: ToggleControlType
 
 	onMount(() => {
+		createAccount.subscribe((v) => {
+			if (v == true && $createContact == true) {
+				console.log('closing Contact Modal')
+				return createContact.close()
+			}
+		})
+		createContact.subscribe((v) => {
+			if (v == true && $createAccount == true) {
+				console.log('closing Account Modal')
+				return createAccount.close()
+			}
+		})
 		actionStore.add({
 			name: 'Add Account',
-			command: createAccountToggle.toggle,
+			command: createAccount.toggle,
 			img: Add
 		})
 		actionStore.add({
 			name: 'Add Contact',
-			command: () => console.log('clicked Contact'),
+			command: createContact.toggle,
 			img: Add
 		})
 	})
@@ -33,9 +47,13 @@
 	})
 </script>
 
-<ModalWindow bind:active={createAccountToggle}>
+<ModalWindow bind:active={createAccount}>
 	<CreateAccount account={null}></CreateAccount>
 </ModalWindow>
+<ModalWindow bind:active={createContact}>
+	<CreateContact contact={null}></CreateContact>
+</ModalWindow>
+
 <BasePage title="PEOPLE" className="-mx-5">
 	<Table items={accounts} let:item let:index>
 		<AccountRow {item} {index} />

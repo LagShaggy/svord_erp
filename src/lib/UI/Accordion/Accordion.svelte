@@ -33,7 +33,7 @@
 		</p>
 	</button>
 	{#if $expanded}
-		<div transition:slide={{ delay: 100, duration: 250 }} class="py-4 px-1">
+		<div transition:slide={{ delay: 50, duration: 200 }} class="py-4 px-1">
 			<slot>
 				<section>
 					THE ACCORDION IS CURRENTLY EMPTY THE ACCORDION IS CURRENTLY EMPTY THE ACCORDION IS

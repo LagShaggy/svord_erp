@@ -1,4 +1,4 @@
-export type Country1 = typeof Country
+export type CountryT = typeof Country
 
 export enum Country {
 	Afghanistan = 'AF',

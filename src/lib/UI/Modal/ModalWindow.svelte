@@ -1,30 +1,52 @@
 <script lang="ts">
-	import Add from '$src/lib/Icons/Add.svelte'
 	import { fly } from 'svelte/transition'
 	import { clickOutsideAction } from '../Behavior/clickOutside'
-	import { createToggleControl } from '../Behavior/toggleStore'
-	import { backInOut, backOut, cubicInOut } from 'svelte/easing'
+	import { createToggleControl, type ToggleControlType } from '../Behavior/toggleStore'
+	import { backOut } from 'svelte/easing'
+	import X from '$src/lib/Icons/X.svelte'
+	import RoundButton from '../Primitive/RoundButton.svelte'
 
-	export let active = createToggleControl(false)
+	export let active: ToggleControlType = createToggleControl(false)
+
+	//close with escape
+	export const escapeAction = (el: HTMLElement) => {
+		const handleKeydown = (keypress: KeyboardEvent) => {
+			console.log(keypress.key)
+			if (keypress.key !== 'Escape') {
+				return
+			}
+			active.close()
+		}
+		document.addEventListener('keydown', handleKeydown)
+
+		return {
+			destroy: () => document.removeEventListener('keydown', handleKeydown)
+		}
+	}
 </script>
 
 {#if $active}
-	<div
-		class="fixed top-0 left-0 w-screen h-screen bg-opacity-10 bg-black flex justify-center overscroll-auto"
-	>
+	<!-- maybe use dialog html component -->
+	<div class="fixed top-0 left-0 w-screen h-screen bg-opacity-10 bg-black flex justify-center">
 		<div class="relative">
 			<div
 				transition:fly={{ y: 50, duration: 250, easing: backOut }}
+				use:escapeAction
 				use:clickOutsideAction
 				on:outside={active.close}
-				class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
-				border border-primary-colour rounded-md
-				bg-primary-colour bg-opacity-20 backdrop-blur-md
-				w-11/12 h-2/3 lg:w-2/3 lg:h-1/2 px-20"
+				class="fixed lg:top-1/2 lg:left-1/2 lg:-translate-y-1/2 -translate-x-1/2
+				w-[98%] h-4/5 bottom-24 lg:w-2/3 lg:h-1/2 px-20 h-80%
+				bg-gradient-to-b from-white from-95%
+				border-t border-x lg:border border-secondary-300 rounded-t-md
+				"
 			>
-				<button on:click={active.close} class="absolute top-5 right-5">
-					<Add className="stroke-black"></Add>
-				</button>
+				<RoundButton
+					command={active.close}
+					className="absolute -bottom-5 right-1/2 translate-x-1/2"
+				>
+					<X></X>
+				</RoundButton>
+
 				<slot />
 			</div>
 		</div>

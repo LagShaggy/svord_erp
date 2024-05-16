@@ -7,24 +7,25 @@
 
 	import { ROUTES } from '$lib/routes'
 	import UserIcon from '../Icons/UserIcon.svelte'
+	import RoundButton from '../UI/Primitive/RoundButton.svelte'
 
 	export let userImage: string | null = ''
 </script>
 
 <DropdownProvider let:expandControll>
 	<DropdownButton expandControll={expandControll.toggle}>
-		<div class="w-10 h-10 rounded-full border-1 bg-primary-colour overflow-hidden">
+		<RoundButton>
 			{#if userImage}
 				<img src={userImage} alt="" />
 			{:else}
 				<UserIcon className="w-full h-full object-cover" />
 			{/if}
-		</div>
+		</RoundButton>
 	</DropdownButton>
 	<DropdownPannel
 		expanded={expandControll}
 		displaceCSS="top-10 right-10"
-		className="bg-secondary-colour bg-opacity-10 border p-2"
+		className="bg-secondary-100 bg-opacity-80 border p-2"
 	>
 		<Link on:activated={expandControll.close} path={ROUTES.PROFILE}>Profile</Link>
 		<Link on:activated={expandControll.close} path={ROUTES.ORG}>Organisation</Link>
