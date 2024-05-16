@@ -38,6 +38,6 @@
 
 @layer utilities {
 	.clickable {
-		@apply border border-secondary-colour;
+		@apply border border-secondary-700;
 	}
 }

@@ -23,8 +23,12 @@ export const handle: Handle = async ({ event, resolve }) => {
 			}
 		}
 	})
-
 	event.locals.supabase = supabase
+
+	const {
+		data: { user }
+	} = await supabase.auth.getUser()
+	event.locals.user = user
 
 	/**
 	 * a little helper that is written for convenience so that instead
@@ -37,7 +41,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 		} = await supabase.auth.getSession()
 		return session
 	}
-
 	const session = await event.locals.getSession()
 
 	// Protecting routes && authentication

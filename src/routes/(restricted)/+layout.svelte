@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '$src/app.css'
-	import AccountDropdown from '$lib/Account/AccountDropdown.svelte'
+	import ProfileDropdown from '$src/lib/Profile/ProfileDropdown.svelte'
 	import SvordxCompanyLogo from '$lib/Icons/SvordxCompanyLogo.svelte'
 	import HeadBar from '$lib/UI/TopBar/HeadBar.svelte'
 	import type { LayoutData } from './$types'
@@ -14,11 +14,11 @@
 <HeadBar>
 	<SvordxCompanyLogo />
 	{#if session}
-		<AccountDropdown userImage={profilePicture} />
+		<ProfileDropdown userImage={profilePicture} />
 	{/if}
 </HeadBar>
-<main class="flex flex-col flex-grow w-full min-h-full bg-slate-100">
-	<div class="h-min py-6 px-5 mb-8 lg:px-8 font-oswald shadow-xl">
+<main class="flex flex-col flex-grow w-full min-h-full bg-white">
+	<div class="h-min py-6 px-5 mb-8 lg:px-8 font-oswald">
 		<slot />
 	</div>
 </main>

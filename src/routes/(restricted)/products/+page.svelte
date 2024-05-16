@@ -7,10 +7,7 @@
 	import type { PageData } from './$types'
 	import { goto } from '$app/navigation'
 	import Add from '$src/lib/Icons/Add.svelte'
-	import ModalWindow from '$src/lib/UI/Modal/ModalWindow.svelte'
-	import CreateAccount from '$src/lib/Account/CreateAccount.svelte'
 	import LoadingS from '$src/lib/Icons/LoadingS.svelte'
-	import { alertStore } from '$src/lib/Alert/alert'
 
 	export let data: PageData
 	let { products } = data
@@ -30,9 +27,6 @@
 	{#await products}
 		<LoadingS></LoadingS>
 	{:then { data: products, error }}
-		<!-- <ModalWindow>
-		<CreateAccount account={null}></CreateAccount>
-	</ModalWindow> -->
 		<div class="flex justify-center">
 			<Table let:item let:index items={products}>
 				<ProductRow {item} {index} />

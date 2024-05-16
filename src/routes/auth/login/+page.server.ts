@@ -25,6 +25,11 @@ export const actions: Actions = {
 			return { alert, email }
 		} else {
 			console.log('auth successfull!')
+			const alertSuccess: Alert = {
+				message: 'Welcome back.',
+				title: 'Login',
+				type: 'OK'
+			}
 			redirect(301, ROUTES.HOME)
 		}
 	}

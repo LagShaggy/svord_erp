@@ -1,7 +1,13 @@
 <script lang="ts">
+	import type { Action } from 'svelte/action'
 	import { createToggleControl } from '../Behavior/toggleStore'
 
-	let expandControll = createToggleControl(false)
+	export let initial = false
+	let expandControll = createToggleControl(initial)
+
+	interface Attributes {
+		'on:actionInvoked'?: (event: CustomEvent) => void
+	}
 </script>
 
 <span class="relative">
