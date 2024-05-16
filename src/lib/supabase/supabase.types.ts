@@ -12,7 +12,7 @@ export type Database = {
       Account: {
         Row: {
           accepted_currencies: Database["public"]["Enums"]["Currency"][] | null
-          country: number | null
+          country: number
           description: string | null
           email: string
           id: number
@@ -21,7 +21,7 @@ export type Database = {
         }
         Insert: {
           accepted_currencies?: Database["public"]["Enums"]["Currency"][] | null
-          country?: number | null
+          country?: number
           description?: string | null
           email: string
           id?: number
@@ -30,7 +30,7 @@ export type Database = {
         }
         Update: {
           accepted_currencies?: Database["public"]["Enums"]["Currency"][] | null
-          country?: number | null
+          country?: number
           description?: string | null
           email?: string
           id?: number
@@ -147,6 +147,27 @@ export type Database = {
           nicename?: string
           numcode?: number | null
           phonecode?: number | null
+        }
+        Relationships: []
+      }
+      currency: {
+        Row: {
+          id: number
+          iso: string
+          name: string
+          symbol: string
+        }
+        Insert: {
+          id?: number
+          iso?: string
+          name?: string
+          symbol?: string
+        }
+        Update: {
+          id?: number
+          iso?: string
+          name?: string
+          symbol?: string
         }
         Relationships: []
       }

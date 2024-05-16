@@ -11,7 +11,6 @@
 	//close with escape
 	export const escapeAction = (el: HTMLElement) => {
 		const handleKeydown = (keypress: KeyboardEvent) => {
-			console.log(keypress.key)
 			if (keypress.key !== 'Escape') {
 				return
 			}
@@ -27,7 +26,7 @@
 
 {#if $active}
 	<!-- maybe use dialog html component -->
-	<div class="fixed top-0 left-0 w-screen h-screen bg-opacity-10 bg-black flex justify-center">
+	<div class="fixed top-0 left-0 w-screen h-screen bg-opacity-10 bg-black flex justify-center z-10">
 		<div class="relative">
 			<div
 				transition:fly={{ y: 50, duration: 250, easing: backOut }}
@@ -36,7 +35,7 @@
 				on:outside={active.close}
 				class="fixed lg:top-1/2 lg:left-1/2 lg:-translate-y-1/2 -translate-x-1/2
 				w-[98%] h-4/5 bottom-24 lg:w-2/3 lg:h-1/2 px-20 h-80%
-				bg-gradient-to-b from-white from-95%
+				bg-white
 				border-t border-x lg:border border-secondary-300 rounded-t-md
 				"
 			>
