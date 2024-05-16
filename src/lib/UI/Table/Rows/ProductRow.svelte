@@ -19,7 +19,7 @@
 		{item.id}
 	</TableData>
 	<TableData>
-		<ProductCategoryBadge category={item.category} />
+		{item.abbreviation}
 	</TableData>
 	<TableData>
 		<span class="text-base">
@@ -28,5 +28,8 @@
 	</TableData>
 	<TableData>
 		{item.description}
+	</TableData>
+	<TableData>
+		<ProductCategoryBadge category={item.category} />
 	</TableData>
 </TableRow>

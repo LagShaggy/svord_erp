@@ -13,13 +13,17 @@ export const load: PageLoad = () => {
 	// if (error) {
 	// 	console.log(error)
 	// }
-	const products = browserSupabase.from('Product').select(
-		`
+	const products = browserSupabase
+		.from('Product')
+		.select(
+			`
 			id,
 			name,
+			abbreviation,
 			description,
 			category(id, name, colour_hex)
 		`
-	)
+		)
+		.eq('active', true)
 	return { products }
 }
