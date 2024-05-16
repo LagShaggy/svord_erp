@@ -6,7 +6,7 @@ import type { Alert } from '$src/lib/Alert/alert'
 
 export const load: PageServerLoad = async ({ locals: { supabase } }) => {
 	const { data: accounts, error } = await supabase
-		.from('Account')
+		.from('account')
 		.select('id, name, country(*), description, email, website')
 	if (error) {
 		console.log(error)

@@ -9,7 +9,7 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      Account: {
+      account: {
         Row: {
           accepted_currencies: Database["public"]["Enums"]["Currency"][] | null
           country: number
@@ -77,14 +77,14 @@ export type Database = {
             foreignKeyName: "public_account_contact_account_id_fkey"
             columns: ["account_id"]
             isOneToOne: false
-            referencedRelation: "Account"
+            referencedRelation: "account"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "public_account_contact_contact_id_fkey"
             columns: ["contact_id"]
             isOneToOne: false
-            referencedRelation: "Contact"
+            referencedRelation: "contact"
             referencedColumns: ["id"]
           },
           {
@@ -96,7 +96,7 @@ export type Database = {
           },
         ]
       }
-      Contact: {
+      contact: {
         Row: {
           email: string
           firstName: string | null
@@ -171,7 +171,7 @@ export type Database = {
         }
         Relationships: []
       }
-      Post: {
+      post: {
         Row: {
           accountId: number | null
           id: number
@@ -192,7 +192,7 @@ export type Database = {
             foreignKeyName: "Post_accountId_fkey"
             columns: ["accountId"]
             isOneToOne: false
-            referencedRelation: "Account"
+            referencedRelation: "account"
             referencedColumns: ["id"]
           },
         ]
@@ -215,20 +215,26 @@ export type Database = {
         }
         Relationships: []
       }
-      Product: {
+      product: {
         Row: {
+          abbreviation: string
+          active: boolean
           category: number | null
           description: string | null
           id: number
           name: string
         }
         Insert: {
+          abbreviation?: string
+          active?: boolean
           category?: number | null
           description?: string | null
           id?: number
-          name: string
+          name?: string
         }
         Update: {
+          abbreviation?: string
+          active?: boolean
           category?: number | null
           description?: string | null
           id?: number
@@ -239,12 +245,12 @@ export type Database = {
             foreignKeyName: "public_Product_category_fkey"
             columns: ["category"]
             isOneToOne: false
-            referencedRelation: "Product_Category"
+            referencedRelation: "product_category"
             referencedColumns: ["id"]
           },
         ]
       }
-      Product_Category: {
+      product_category: {
         Row: {
           abbr: string | null
           colour_hex: string | null
@@ -264,6 +270,39 @@ export type Database = {
           name?: string
         }
         Relationships: []
+      }
+      product_component: {
+        Row: {
+          component: number
+          id: number
+          main: number
+        }
+        Insert: {
+          component: number
+          id?: number
+          main: number
+        }
+        Update: {
+          component?: number
+          id?: number
+          main?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "public_product_component_component_fkey"
+            columns: ["component"]
+            isOneToOne: false
+            referencedRelation: "product"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "public_product_component_main_fkey"
+            columns: ["main"]
+            isOneToOne: false
+            referencedRelation: "product"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       product_image: {
         Row: {
@@ -289,7 +328,7 @@ export type Database = {
             foreignKeyName: "public_product_image_productId_fkey"
             columns: ["productId"]
             isOneToOne: false
-            referencedRelation: "Product"
+            referencedRelation: "product"
             referencedColumns: ["id"]
           },
         ]
@@ -327,7 +366,7 @@ export type Database = {
             foreignKeyName: "public_product_variant_product_id_fkey"
             columns: ["product_id"]
             isOneToOne: false
-            referencedRelation: "Product"
+            referencedRelation: "product"
             referencedColumns: ["id"]
           },
         ]
@@ -356,7 +395,7 @@ export type Database = {
             foreignKeyName: "public_product_variant_manufacturer_manufacturer_id_fkey"
             columns: ["manufacturer_id"]
             isOneToOne: false
-            referencedRelation: "Account"
+            referencedRelation: "account"
             referencedColumns: ["id"]
           },
           {
@@ -368,7 +407,7 @@ export type Database = {
           },
         ]
       }
-      Profile: {
+      profile: {
         Row: {
           avatar_url: string | null
           firstname: string | null

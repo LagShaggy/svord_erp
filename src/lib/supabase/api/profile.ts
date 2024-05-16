@@ -5,7 +5,7 @@ import type { Database } from '../supabase.types'
 export const updateProfile = async (supabase: SupabaseClient<Database>, profile: Profile) => {
 	const { id, ...profileData } = profile
 	const { data, error } = await supabase
-		.from('Profile')
+		.from('profile')
 		.update({
 			...profileData
 		})

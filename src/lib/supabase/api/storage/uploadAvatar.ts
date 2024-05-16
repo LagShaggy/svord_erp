@@ -14,14 +14,14 @@ export const uploadAvatar = async (
 	}
 	console.log(profile)
 
-	const objectData = await uploadToBucket(supabase, {
+	const filePath = await uploadToBucket(supabase, {
 		bucket: Bucket.Images,
 		file: file,
 		upsert: true,
-		name: 'avatars/' + profile.id!
+		name: 'avatars/' + profile.id
 	})
 
-	const data = await updateProfile(supabase, { ...profile, avatar_url: objectData.name })
+	const data = await updateProfile(supabase, { ...profile, avatar_url: filePath })
 
 	return data
 }

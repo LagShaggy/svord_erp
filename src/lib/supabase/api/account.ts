@@ -5,7 +5,7 @@ export const postAccount = async (
 	newAccount: Omit<Account, 'id'>
 ) => {
 	const { data: account } = await supabase
-		.from('Account')
+		.from('account')
 		.insert([newAccount])
 		.select()
 		.throwOnError()

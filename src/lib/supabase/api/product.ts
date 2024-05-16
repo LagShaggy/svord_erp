@@ -1,6 +1,6 @@
 import type { TypedSupabaseClient } from '../schema'
 
-const PRODUCT_TABLE = 'Product'
+const PRODUCT_TABLE = 'product'
 
 export const getProductById = async (supabase: TypedSupabaseClient, id: number | string) => {
 	const { data: product, error } = await supabase
