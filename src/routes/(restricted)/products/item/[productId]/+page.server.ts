@@ -7,8 +7,6 @@ import type { Actions } from '@sveltejs/kit'
 export const actions: Actions = {
 	uploadDoc: ({ request, locals: { supabase } }) => {
 		const formData = request.formData()
-		supabase
-		console.log(formData)
 	},
 	uploadImage: async ({ request, locals: { supabase }, params }) => {
 		const formData = Object.fromEntries(await request.formData())

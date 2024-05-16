@@ -5,8 +5,6 @@
 	import DisplayImage from '$src/lib/UI/Files/DisplayImage.svelte'
 	import Form from '$src/lib/UI/Primitive/Form/Form.svelte'
 	import InputFile from '$src/lib/UI/Primitive/Form/InputFile.svelte'
-	import { getImageURL } from '$src/lib/supabase/api/storage/getImageUrl'
-	import { Bucket } from '$src/lib/supabase/api/storage/uploader'
 	import type { PageData } from './$types'
 
 	export let data: PageData
