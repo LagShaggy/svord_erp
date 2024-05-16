@@ -153,7 +153,7 @@ INSERT INTO "public"."Account" ("id", "name", "country", "email", "website", "de
 -- Data for Name: Product; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO "public"."Product" ("id", "name", "description", "category") VALUES
+INSERT INTO "public"."product" ("id", "name", "description", "category") VALUES
 	(1, 'Organic Raw Honey', 'Pure, unfiltered organic honey from wildflower blossoms.', NULL),
 	(2, 'Artisanal Sourdough Bread', 'Handcrafted sourdough loaf made with organic flour.', NULL),
 	(3, 'Single Origin Coffee Beans', 'Premium arabica beans sourced from Ethiopia.', NULL),
@@ -256,7 +256,7 @@ SELECT pg_catalog.setval('"public"."Product_Category_id_seq"', 1, false);
 -- Name: Product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"public"."Product_id_seq"', 20, true);
+SELECT pg_catalog.setval('"public"."product_id_seq"', 20, true);
 
 
 --
