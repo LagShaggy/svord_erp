@@ -15,10 +15,6 @@ export const ROUTES = {
 	}
 }
 
-export const API = {
-	AUTH: {}
-}
-
 export const ACTIONS = {
 	AUTH: {
 		LOGIN: '/auth/login?/login',
