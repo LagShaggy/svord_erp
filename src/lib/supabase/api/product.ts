@@ -1,4 +1,3 @@
-import { $$props } from '$src/lib/UI/Primitive/Form/InputEmail.svelte'
 import type { TypedSupabaseClient } from '../schema'
 
 const PRODUCT_TABLE = 'product'
