@@ -12,7 +12,3 @@ export type Country = Database['public']['Tables']['country']['Row']
 export type Product = Database['public']['Tables']['product']['Row']
 export type ProductCategoryType = Database['public']['Tables']['product_category']['Row']
 export type ProductImage = Database['public']['Tables']['product_image']['Row']
-
-//Enums
-export type CurrencyE = Database['public']['Enums']['Currency']
-export type CountryE = Database['public']['Enums']['Country']

@@ -26,8 +26,11 @@ export const getProductById = async (supabase: TypedSupabaseClient, productId: n
 
 export const getAlternativeProducts = async (
 	supabase: TypedSupabaseClient,
-	categoryId: number | string
+	categoryId: number | null
 ) => {
+	if (!categoryId) {
+		return null
+	}
 	const { data: alternativeProducts, error } = await supabase
 		.from('product')
 		.select()
@@ -38,13 +41,18 @@ export const getAlternativeProducts = async (
 	return alternativeProducts
 }
 
-export const getComponents = async (supabase: TypedSupabaseClient, productId: number | string) => {
-	const { data: components, error } = await supabase
+export const getComponents = async (supabase: TypedSupabaseClient, productId: number | null) => {
+	if (!productId) {
+		return null
+	}
+	const { data: components, error } = await await supabase
 		.from('product_component')
 		.select('component(*)')
 		.eq('main', productId)
+		.single()
+
 	if (error) {
 		throw error
 	}
-	return components
+	return components?.component
 }

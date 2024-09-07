@@ -1,7 +1,7 @@
 SET session_replication_role = replica;
 
 --
--- PostgreSQL database dump
+-- postgreSQL database dump
 --
 
 -- Dumped from database version 15.1 (Ubuntu 15.1-1.pgdg20.04+1)
@@ -112,7 +112,127 @@ INSERT INTO "auth"."identities" ("provider_id", "user_id", "identity_data", "pro
 -- Data for Name: key; Type: TABLE DATA; Schema: pgsodium; Owner: supabase_admin
 --
 
-insert into "country" (id, iso, name, nicename, iso3, numcode, phonecode) values
+INSERT INTO "public"."currency" ("id", "name", "iso", "symbol") VALUES
+        (1, 'US Dollar', 'USD', '$'),
+        (2, 'Swiss franc', 'CHF', 'NULL'),
+        (3, 'Euro', 'EUR', '€'),
+        (4, 'Renminbi', 'CNY', '¥'),
+        (5, 'Leke', 'ALL', 'Lek'),
+        (6, 'Dollars', 'USD', '$'),
+        (7, 'Afghanis', 'AFN', '؋'),
+        (8, 'Pesos', 'ARS', '$'),
+        (9, 'Guilders', 'AWG', 'ƒ'),
+        (10, 'Dollars', 'AUD', '$'),
+        (11, 'New Manats', 'AZN', 'ман'),
+        (12, 'Dollars', 'BSD', '$'),
+        (13, 'Dollars', 'BBD', '$'),
+        (14, 'Rubles', 'BYR', 'p.'),
+        (15, 'Euro', 'EUR', '€'),
+        (16, 'Dollars', 'BZD', 'BZ$'),
+        (17, 'Dollars', 'BMD', '$'),
+        (18, 'Bolivianos', 'BOB', '$b'),
+        (19, 'Convertible Marka', 'BAM', 'KM'),
+        (20, 'Pula', 'BWP', 'P'),
+        (21, 'Leva', 'BGN', 'лв'),
+        (22, 'Reais', 'BRL', 'R$'),
+        (23, 'Pounds', 'GBP', '£'),
+        (24, 'Dollars', 'BND', '$'),
+        (25, 'Riels', 'KHR', '៛'),
+        (26, 'Dollars', 'CAD', '$'),
+        (27, 'Dollars', 'KYD', '$'),
+        (28, 'Pesos', 'CLP', '$'),
+        (29, 'Yuan Renminbi', 'CNY', '¥'),
+        (30, 'Pesos', 'COP', '$'),
+        (31, 'Colón', 'CRC', '₡'),
+        (32, 'Kuna', 'HRK', 'kn'),
+        (33, 'Pesos', 'CUP', '₱'),
+        (34, 'Koruny', 'CZK', 'Kč'),
+        (35, 'Kroner', 'DKK', 'kr'),
+        (36, 'Pesos', 'DOP ', 'RD$'),
+        (37, 'Dollars', 'XCD', '$'),
+        (38, 'Pounds', 'EGP', '£'),
+        (39, 'Colones', 'SVC', '$'),
+        (40, 'Pounds', 'FKP', '£'),
+        (41, 'Dollars', 'FJD', '$'),
+        (42, 'Cedis', 'GHC', '¢'),
+        (43, 'Pounds', 'GIP', '£'),
+        (44, 'Quetzales', 'GTQ', 'Q'),
+        (45, 'Pounds', 'GGP', '£'),
+        (46, 'Dollars', 'GYD', '$'),
+        (47, 'Lempiras', 'HNL', 'L'),
+        (48, 'Dollars', 'HKD', '$'),
+        (49, 'Forint', 'HUF', 'Ft'),
+        (50, 'Kronur', 'ISK', 'kr'),
+        (51, 'Rupees', 'INR', 'Rp'),
+        (52, 'Rupiahs', 'IDR', 'Rp'),
+        (53, 'Rials', 'IRR', '﷼'),
+        (54, 'Pounds', 'IMP', '£'),
+        (55, 'New Shekels', 'ILS', '₪'),
+        (56, 'Dollars', 'JMD', 'J$'),
+        (57, 'Yen', 'JPY', '¥'),
+        (58, 'Pounds', 'JEP', '£'),
+        (59, 'Tenge', 'KZT', 'лв'),
+        (60, 'Won', 'KPW', '₩'),
+        (61, 'Won', 'KRW', '₩'),
+        (62, 'Soms', 'KGS', 'лв'),
+        (63, 'Kips', 'LAK', '₭'),
+        (64, 'Lati', 'LVL', 'Ls'),
+        (65, 'Pounds', 'LBP', '£'),
+        (66, 'Dollars', 'LRD', '$'),
+        (67, 'Switzerland Francs', 'CHF', 'CHF'),
+        (68, 'Litai', 'LTL', 'Lt'),
+        (69, 'Denars', 'MKD', 'ден'),
+        (70, 'Ringgits', 'MYR', 'RM'),
+        (71, 'Rupees', 'MUR', '₨'),
+        (72, 'Pesos', 'MXN', '$'),
+        (73, 'Tugriks', 'MNT', '₮'),
+        (74, 'Meticais', 'MZN', 'MT'),
+        (75, 'Dollars', 'NAD', '$'),
+        (76, 'Rupees', 'NPR', '₨'),
+        (77, 'Guilders', 'ANG', 'ƒ'),
+        (78, 'Dollars', 'NZD', '$'),
+        (79, 'Cordobas', 'NIO', 'C$'),
+        (80, 'Nairas', 'NGN', '₦'),
+        (81, 'Krone', 'NOK', 'kr'),
+        (82, 'Rials', 'OMR', '﷼'),
+        (83, 'Rupees', 'PKR', '₨'),
+        (84, 'Balboa', 'PAB', 'B/.'),
+        (85, 'Guarani', 'PYG', 'Gs'),
+        (86, 'Nuevos Soles', 'PEN', 'S/.'),
+        (87, 'Pesos', 'PHP', 'Php'),
+        (88, 'Zlotych', 'PLN', 'zł'),
+        (89, 'Rials', 'QAR', '﷼'),
+        (90, 'New Lei', 'RON', 'lei'),
+        (91, 'Rubles', 'RUB', 'руб'),
+        (92, 'Pounds', 'SHP', '£'),
+        (93, 'Riyals', 'SAR', '﷼'),
+        (94, 'Dinars', 'RSD', 'Дин.'),
+        (95, 'Rupees', 'SCR', '₨'),
+        (96, 'Dollars', 'SGD', '$'),
+        (97, 'Dollars', 'SBD', '$'),
+        (98, 'Shillings', 'SOS', 'S'),
+        (99, 'Rand', 'ZAR', 'R'),
+        (100, 'Rupees', 'LKR', '₨'),
+        (101, 'Kronor', 'SEK', 'kr'),
+        (102, 'Dollars', 'SRD', '$'),
+        (103, 'Pounds', 'SYP', '£'),
+        (104, 'New Dollars', 'TWD', 'NT$'),
+        (105, 'Baht', 'THB', '฿'),
+        (106, 'Dollars', 'TTD', 'TT$'),
+        (107, 'Lira', 'TRY', '₺'),
+        (108, 'Liras', 'TRL', '£'),
+        (109, 'Dollars', 'TVD', '$'),
+        (110, 'Hryvnia', 'UAH', '₴'),
+        (111, 'Pesos', 'UYU', '$U'),
+        (112, 'Sums', 'UZS', 'лв'),
+        (113, 'Bolivares Fuertes', 'VEF', 'Bs'),
+        (114, 'Dong', 'VND', '₫'),
+        (115, 'Rials', 'YER', '﷼'),
+        (116, 'Zimbabwe Dollars', 'ZWD', 'Z$'),
+        (117, 'Rupees', 'INR', '₹');
+
+
+insert into "public"."country" (id, iso, name, nicename, iso3, numcode, phonecode) values
 	(1, 'AF', 'AFGHANISTAN', 'Afghanistan', 'AFG', 4, 93),
 	(2, 'AL', 'ALBANIA', 'Albania', 'ALB', 8, 355),
 	(3, 'DZ', 'ALGERIA', 'Algeria', 'DZA', 12, 213),
@@ -354,44 +474,44 @@ insert into "country" (id, iso, name, nicename, iso3, numcode, phonecode) values
 	(239, 'ZW', 'ZIMBABWE', 'Zimbabwe', 'ZWE', 716, 263);
 
 --
--- Data for Name: Account; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: account; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
-INSERT INTO "public"."Account" ("id", "name", "country", "email", "website", "description", "accepted_currencies") VALUES
-	(1, 'GreenTech Innovations', '1', 'contact@greentechinnovations.com', 'www.greentechinnovations.com', 'Sustainable energy solutions for the modern world.', NULL),
-	(2, 'Alpine Electronics', '1', 'info@alpineelec.ch', 'www.alpineelec.ch', 'High-quality audio and navigation products.', NULL),
-	(3, 'Bamboo Textiles', '1', 'sales@bambootextiles.cn', 'www.bambootextiles.cn', 'Eco-friendly textiles made from bamboo fibers.', NULL),
-	(4, 'River Coffee Roasters', '1', 'hello@rivercoffeeroasters.uk', 'www.rivercoffeeroasters.uk', 'Artisan coffee roasting company sourcing ethical beans globally.', NULL),
-	(5, 'TechLogix', '1', 'support@techlogix.de', 'www.techlogix.de', 'Innovative tech solutions for businesses and individuals.', NULL),
-	(6, 'Cosmic Cosmetics', '1', 'contact@cosmiccosmetics.fr', 'www.cosmiccosmetics.fr', 'Organic makeup and skincare products.', NULL),
-	(7, 'Fresh Farm Produce', '1', 'info@freshfarmproduce.us', 'www.freshfarmproduce.us', 'Locally sourced organic fruits and vegetables delivered to your door.', NULL),
-	(8, 'Artisan Bakers Ltd.', '1', 'orders@artisanbakers.it', 'www.artisanbakers.it', 'Traditional Italian bakery offering a variety of breads and pastries.', NULL),
-	(9, 'Highland Adventures', '1', 'bookings@highlandadventures.scot', 'www.highlandadventures.scot', 'Outdoor adventure and tour company in the Scottish Highlands.', NULL),
-	(10, 'Digital Nomad Hub', '1', 'membership@digitalnomadhub.es', 'www.digitalnomadhub.es', 'Co-working and co-living spaces for digital nomads.', NULL);
+INSERT INTO "public"."account" ("id", "name", "country", "email", "website", "description") VALUES
+	(1, 'GreenTech Innovations', '1', 'contact@greentechinnovations.com', 'www.greentechinnovations.com', 'Sustainable energy solutions for the modern world.'),
+	(2, 'Alpine Electronics', '1', 'info@alpineelec.ch', 'www.alpineelec.ch', 'High-quality audio and navigation products.'),
+	(3, 'Bamboo Textiles', '1', 'sales@bambootextiles.cn', 'www.bambootextiles.cn', 'Eco-friendly textiles made from bamboo fibers.'),
+	(4, 'River Coffee Roasters', '1', 'hello@rivercoffeeroasters.uk', 'www.rivercoffeeroasters.uk', 'Artisan coffee roasting company sourcing ethical beans globally.'),
+	(5, 'TechLogix', '1', 'support@techlogix.de', 'www.techlogix.de', 'Innovative tech solutions for businesses and individuals.'),
+	(6, 'Cosmic Cosmetics', '1', 'contact@cosmiccosmetics.fr', 'www.cosmiccosmetics.fr', 'Organic makeup and skincare products.'),
+	(7, 'Fresh Farm Produce', '1', 'info@freshfarmproduce.us', 'www.freshfarmproduce.us', 'Locally sourced organic fruits and vegetables delivered to your door.'),
+	(8, 'Artisan Bakers Ltd.', '1', 'orders@artisanbakers.it', 'www.artisanbakers.it', 'Traditional Italian bakery offering a variety of breads and pastries.'),
+	(9, 'Highland Adventures', '1', 'bookings@highlandadventures.scot', 'www.highlandadventures.scot', 'Outdoor adventure and tour company in the Scottish Highlands.'),
+	(10, 'Digital Nomad Hub', '1', 'membership@digitalnomadhub.es', 'www.digitalnomadhub.es', 'Co-working and co-living spaces for digital nomads.');
 
 
 --
--- Data for Name: Contact; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: Post; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: contact; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- Data for Name: Product_Category; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: post; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- Data for Name: Product; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: product_category; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: product; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO "public"."product" ("id", "name", "description", "category") VALUES
@@ -421,7 +541,7 @@ INSERT INTO "public"."product" ("id", "name", "description", "category") VALUES
 -- Data for Name: Profile; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO "public"."Profile" ("id", "firstname", "lastname", "avatar_url") VALUES
+INSERT INTO "public"."profile" ("id", "firstname", "lastname", "avatar_url") VALUES
 	('51b3b09a-acb2-4471-82cc-a8fcc12e8cbd', NULL, NULL, NULL);
 
 
@@ -466,35 +586,35 @@ SELECT pg_catalog.setval('"pgsodium"."key_key_id_seq"', 1, false);
 
 
 --
--- Name: Account_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: account_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"public"."Account_id_seq"', 10, true);
-
-
---
--- Name: Contact_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('"public"."Contact_id_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."account_id_seq"', 10, true);
 
 
 --
--- Name: Post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: contact_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"public"."Post_id_seq"', 1, false);
-
-
---
--- Name: Product_Category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('"public"."Product_Category_id_seq"', 1, false);
+SELECT pg_catalog.setval('"public"."contact_id_seq"', 1, false);
 
 
 --
--- Name: Product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"public"."post_id_seq"', 1, false);
+
+
+--
+-- Name: product_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"public"."product_category_id_seq"', 1, false);
+
+
+--
+-- Name: product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('"public"."product_id_seq"', 20, true);
@@ -508,7 +628,7 @@ SELECT pg_catalog.setval('"supabase_functions"."hooks_id_seq"', 1, false);
 
 
 --
--- PostgreSQL database dump complete
+-- postgreSQL database dump complete
 --
 
 RESET ALL;

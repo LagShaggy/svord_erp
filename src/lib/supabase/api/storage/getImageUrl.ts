@@ -35,13 +35,13 @@ export const getImage = async (
 	return imgurl.signedUrl
 }
 
+//un-used
 export const getImageURL = async (
 	supabase: TypedSupabaseClient,
 	objectData: {
 		bucket: Bucket
 		fileName: string | null
-		imageSize?: ImageSize
-
+		imageSize?: TransformOptions
 		duration?: number
 	}
 ): Promise<string> => {

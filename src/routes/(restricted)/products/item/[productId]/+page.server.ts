@@ -5,16 +5,12 @@ import type { ProductImage } from '$src/lib/supabase/schema'
 import type { Actions } from '@sveltejs/kit'
 
 export const actions: Actions = {
-	uploadDoc: ({ request, locals: { supabase } }) => {
-		const formData = request.formData()
-	},
 	uploadImage: async ({ request, locals: { supabase }, params }) => {
 		const formData = Object.fromEntries(await request.formData())
 		const { file } = formData as unknown as SvordFile<ProductImage>
 
 		try {
 			const product = await getProductById(supabase, params.productId as string)
-
 			const filePath = await uploadToBucket(supabase, {
 				bucket: Bucket.ProductImages,
 				file,
@@ -33,20 +29,23 @@ export const actions: Actions = {
 			console.log(e)
 		}
 	},
-	uploadCoverImage: async ({ request, locals: { supabase } }) => {
-		const formData = Object.fromEntries(await request.formData())
-		const { file, ...newProductImage } = formData as unknown as SvordFile<ProductImage>
 
+	uploadCoverImage: async ({ params, request, locals: { supabase } }) => {
+		const formData = Object.fromEntries(await request.formData())
+		const { file } = formData as unknown as SvordFile<ProductImage>
 		try {
+			const product = await getProductById(supabase, params.productId as string)
+
 			const filePath = await uploadToBucket(supabase, {
 				bucket: Bucket.ProductImages,
 				file,
 				upsert: false,
-				folderPrefix: newProductImage.productId
+				folderPrefix: product.id
 			})
 
 			const productImage = await insertProductImage(supabase, {
-				...newProductImage,
+				coverImage: true,
+				productId: product.id,
 				filePath
 			})
 

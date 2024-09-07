@@ -1,17 +1,17 @@
 <script lang="ts">
 	import LoadingS from '$src/lib/Icons/LoadingS.svelte'
-	import { getImageURL, type TransformOptions } from '$src/lib/supabase/api/storage/getImageUrl'
+	import { getImage, type TransformOptions } from '$src/lib/supabase/api/storage/getImageUrl'
 	import { Bucket } from '$src/lib/supabase/api/storage/uploader'
 	import { browserSupabase } from '$src/lib/supabase/supabaseClient'
 
 	export let coverImagePath
 	export let className = ''
-	export let imageSize: TransformOptions
+	export let imageSize: TransformOptions = {} as TransformOptions
 </script>
 
 <div class={className}>
 	{#if coverImagePath}
-		{#await getImageURL( browserSupabase, { bucket: Bucket.ProductImages, fileName: coverImagePath, imageSize } )}
+		{#await getImage( browserSupabase, { bucket: Bucket.ProductImages, fileName: coverImagePath, imageSize } )}
 			<LoadingS></LoadingS>
 		{:then url}
 			<img src={url} alt="" />

@@ -8,12 +8,13 @@
 	import type { PageData } from './$types'
 
 	export let data: PageData
-	let { product, alternativeProducts, components } = data
-	$: ({ product, alternativeProducts, components } = data)
+	let { product, alternativeProductsPromise, componentsPromise } = data
+	$: ({ product, alternativeProductsPromise, componentsPromise } = data)
 
-	let coverImagePath = product?.product_image.filter((i) => i.coverImage)[0].filePath
-	let otherImagePaths = product?.product_image.filter((i) => !i.coverImage).map((i) => i.filePath)
+	let coverImagePath = product?.product_image.filter((i) => i.coverImage)[0]?.filePath
+	let otherImgePaths = product?.product_image.filter((i) => !i.coverImage).map((i) => i.filePath)
 
+	console.log(coverImagePath)
 	const onInput = () => {
 		const form = document.getElementById('form') as HTMLFormElement
 		form.submit()
@@ -45,30 +46,43 @@
 			shortDescr: 'See product workflows'
 		}}
 	></Accordion>
-	{#if components}
-		<Accordion props={{ title: 'Components' }}>
-			{#each components as { component: { abbreviation, name } }}
-				<div>
-					{abbreviation} - {name}
-				</div>
-			{/each}
-		</Accordion>
-	{/if}
-	{#if alternativeProducts}
-		<Accordion props={{ title: 'Alternative Products' }}>
-			{#each alternativeProducts as { abbreviation, name }}
-				<div>
-					{abbreviation} - {name}
-				</div>
-			{/each}
-		</Accordion>
-	{/if}
+	{#await componentsPromise}
+		<LoadingS></LoadingS>
+	{:then components}
+		{#if components?.length != null}
+			<Accordion props={{ title: 'Components' }}>
+				{#each components as { component: { abbreviation, name } }}
+					<div>
+						{abbreviation} - {name}
+					</div>
+				{/each}
+			</Accordion>
+		{/if}
+	{/await}
+	{#await alternativeProductsPromise}
+		<LoadingS></LoadingS>
+	{:then alternativeProducts}
+		{#if alternativeProducts != null}
+			<Accordion props={{ title: 'Alternative Products' }}>
+				{#each alternativeProducts as { abbreviation, name }}
+					<div>
+						{abbreviation} - {name}
+					</div>
+				{/each}
+			</Accordion>
+		{/if}
+	{/await}
+
 	<Accordion
 		props={{
 			title: 'Images',
 			shortDescr: 'See product workflows'
 		}}
-	></Accordion>
+	>
+		{#each otherImgePaths as image}
+			<div></div>
+		{/each}
+	</Accordion>
 	<Accordion
 		props={{
 			title: 'Documents',

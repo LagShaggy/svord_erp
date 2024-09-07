@@ -14,7 +14,7 @@ export const load: PageLoad = () => {
 	// 	console.log(error)
 	// }
 	const products = browserSupabase
-		.from('Product')
+		.from('product')
 		.select(
 			`
 			id,

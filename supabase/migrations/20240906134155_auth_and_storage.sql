@@ -57,12 +57,4 @@ for all
 to authenticated
 using (true);
 
-
-
-alter table "auth"."flow_state" add column "auth_code_issued_at" timestamp with time zone;
-
-alter table "auth"."saml_providers" add column "name_id_format" text;
-
 CREATE TRIGGER on_auth_user_created AFTER INSERT ON auth.users FOR EACH ROW EXECUTE FUNCTION handle_new_user();
-
-
