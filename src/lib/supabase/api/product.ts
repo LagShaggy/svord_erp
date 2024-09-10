@@ -1,4 +1,4 @@
-import type { TypedSupabaseClient } from '../schema'
+import type { Product, TypedSupabaseClient } from '../schema'
 
 const PRODUCT_TABLE = 'product'
 
@@ -17,10 +17,11 @@ export const getProductById = async (supabase: TypedSupabaseClient, productId: n
 		)
 		.eq('id', productId)
 		.single()
-		.throwOnError()
-	if (error) {
-		throw error
-	}
+	
+		if(error){
+			throw error
+		}
+
 	return product
 }
 
@@ -29,7 +30,7 @@ export const getAlternativeProducts = async (
 	categoryId: number | null
 ) => {
 	if (!categoryId) {
-		return null
+		return []
 	}
 	const { data: alternativeProducts, error } = await supabase
 		.from('product')
@@ -43,16 +44,16 @@ export const getAlternativeProducts = async (
 
 export const getComponents = async (supabase: TypedSupabaseClient, productId: number | null) => {
 	if (!productId) {
-		return null
+		return []
 	}
-	const { data: components, error } = await await supabase
+	const { data: components, error } = await supabase
 		.from('product_component')
-		.select('component(*)')
+		.select('product_component(*)')
 		.eq('main', productId)
-		.single()
+		.single();
 
-	if (error) {
+	if(error){
 		throw error
 	}
-	return components?.component
+	return components?.product_component
 }

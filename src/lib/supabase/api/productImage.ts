@@ -20,7 +20,7 @@ export const insertProductImage = async (
 
 export const updateProductImage = async (
 	supabase: TypedSupabaseClient,
-	productImage: ProductImage
+	productImage: Partial<ProductImage> & {id: number}
 ) => {
 	const { id, ...productImageUpdate } = productImage
 

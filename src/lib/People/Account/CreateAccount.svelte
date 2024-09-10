@@ -34,7 +34,7 @@
 	{:then countries}
 		<select name="country">
 			{#each countries as country}
-				<CountryFlag country={country.iso} />
+				<CountryFlag countryISO={country.iso} />
 				<option value={country.id}>
 					{country.nicename}
 				</option>

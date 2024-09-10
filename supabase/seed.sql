@@ -232,7 +232,7 @@ INSERT INTO "public"."currency" ("id", "name", "iso", "symbol") VALUES
         (117, 'Rupees', 'INR', '₹');
 
 
-insert into "public"."country" (id, iso, name, nicename, iso3, numcode, phonecode) values
+INSERT INTO "public"."country" (id, iso, name, nicename, iso3, numcode, phonecode) VALUES
 	(1, 'AF', 'AFGHANISTAN', 'Afghanistan', 'AFG', 4, 93),
 	(2, 'AL', 'ALBANIA', 'Albania', 'ALB', 8, 355),
 	(3, 'DZ', 'ALGERIA', 'Algeria', 'DZA', 12, 213),

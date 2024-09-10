@@ -12,7 +12,7 @@
 	onMount(async () => {
 		pp = await getImage(browserSupabase, {
 			bucket: Bucket.Images,
-			fileName: profile.avatar_url
+			filePath: profile.avatar_url
 		})
 	})
 </script>

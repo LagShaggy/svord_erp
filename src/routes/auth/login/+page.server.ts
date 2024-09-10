@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit'
 import type { Actions } from './$types'
 import { ROUTES } from '$lib/routes'
-import type { Alert } from '$src/lib/Alert/alert'
+import type { Alert } from '$src/lib/UI/Alert/alert'
 
 export const actions: Actions = {
 	login: async ({ request, locals: { supabase } }) => {

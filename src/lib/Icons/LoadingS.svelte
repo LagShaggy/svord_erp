@@ -1,9 +1,11 @@
 <script lang="ts">
-	export let size: number = 200
+	import { blur } from 'svelte/transition'
+
+	export let size: number = 100
 </script>
 
-<div class="w-full flex justify-center items-center">
-	<svg width={size} height={size} viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+<div class="flex justify-center items-center absolute" transition:blur>
+	<svg width="{size}px" height="{size}px" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
 		<g id="logo">
 			<path
 				id="blade1"

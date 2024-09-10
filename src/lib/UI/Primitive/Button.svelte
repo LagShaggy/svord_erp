@@ -8,23 +8,11 @@
 <button
 	on:click={command}
 	type={submit ? 'submit' : null}
-	class="transition-all relative
+	class="transition-all flex justify-center items-center
 	focus:border-secondary-700 focus:border
 	{className}"
 	{formaction}
+	{...$$props}
 >
-	<!-- <div class="rounded-full outline-none">
-		<div
-			class="absolute w-1/2 h-max left-0 bg-gradient-to-l from-white to-secondary-700 from-70% rounded-l-full"
-		>
-			&nbsp
-		</div>
-
-		<div
-			class="absolute w-1/2 h-max right-0 bg-gradient-to-r from-white to-secondary-700 from-70% rounded-r-full"
-		>
-			&nbsp
-		</div>
-	</div> -->
 	<slot />
 </button>

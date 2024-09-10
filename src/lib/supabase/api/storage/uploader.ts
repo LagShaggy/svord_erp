@@ -50,18 +50,7 @@ export const uploadToBucket = async (
 		throw error
 	}
 
-	// const { data: objectData } = await supabase
-	// 	.schema('storage')
-	// 	.from('objects')
-	// 	.select()
-	// 	.eq('name', filePath.path)
-	// 	.eq('bucket_id', bucket)
-	// 	.single()
-	// 	.throwOnError()
-
-	// if (objectData == null) {
-	// 	throw 'objectNotFound'
-	// }
+	console.log(filePath)
 
 	return filePath.path
 }

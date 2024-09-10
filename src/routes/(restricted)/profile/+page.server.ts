@@ -1,5 +1,4 @@
 import type { Actions } from './$types'
-import { fail } from '@sveltejs/kit'
 import { uploadAvatar } from '$src/lib/supabase/api/storage/uploadAvatar'
 import type { Profile } from '$src/lib/supabase/schema'
 import { updateProfile } from '$src/lib/supabase/api/profile'
@@ -21,7 +20,6 @@ export const actions: Actions = {
 				await updateProfile(supabase, updatedProfile)
 			}
 		} catch (e) {
-			console.log(e)
 			fail(401, { error: e })
 		}
 	}

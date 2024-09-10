@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores'
-	import AlertBar from '$src/lib/Alert/AlertBar.svelte'
-	import { alertStore } from '$src/lib/Alert/alert'
+	import { alertStore } from '$src/lib/UI/Alert/alert'
+	import AlertBar from '$src/lib/UI/Alert/AlertBar.svelte'
 
 	$: alertStore.add($page.form?.alert)
 	$: alertStore.add($page.data?.message)

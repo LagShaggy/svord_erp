@@ -1,4 +1,4 @@
-import type { Alert } from '$src/lib/Alert/alert'
+import type { Alert } from '$src/lib/UI/Alert/alert'
 import type { PageLoad } from './$types'
 
 export const load: PageLoad = async (request) => {

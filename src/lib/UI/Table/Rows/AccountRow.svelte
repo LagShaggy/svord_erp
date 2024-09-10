@@ -5,12 +5,13 @@
 	import TableData from '../Molecules/TableData.svelte'
 	import { getColourForIndex } from '../Molecules/tableHelpers'
 	import TableRow from '../Molecules/TableRow.svelte'
+	import { goto } from '$app/navigation'
 	export let item: Account & { country: Country }
 	export let index: number
 
 	const colour = getColourForIndex(index)
 	const handleClick = (e: MouseEvent) => {
-		console.log('hello')
+		goto(`/account/${item.id}`)
 	}
 </script>
 
@@ -19,7 +20,7 @@
 		{item.id}
 	</TableData>
 	<TableData className="max-md:pl-5 max-md:flex max-md:flex-col max-md:justify-between">
-		<CountryFlag country={item.country.iso} />
+		<CountryFlag countryISO={item.country.iso} />
 		{item.country.iso3 ?? item.country.iso}
 	</TableData>
 	<TableData>
@@ -27,11 +28,6 @@
 			<WebsiteIcon url={item.website} />
 			{item.name}
 		</div>
-	</TableData>
-	<TableData>
-		<a href={'https://' + item.website} class="text-primary-600" target="_blank" rel="external">
-			{item.website}
-		</a>
 	</TableData>
 	<TableData className="max-w-[100px] truncate">
 		{item.description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo libero sapiente

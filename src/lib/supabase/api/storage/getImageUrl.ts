@@ -1,4 +1,5 @@
-import type { TypedSupabaseClient } from '../../schema'
+import type { ProductImage, TypedSupabaseClient } from '../../schema'
+import type { Database } from '../../supabase.types'
 import type { Bucket } from './uploader'
 
 export type TransformOptions = {
@@ -11,12 +12,12 @@ export const getImage = async (
 	supabase: TypedSupabaseClient,
 	options: {
 		bucket: Bucket
-		fileName: string | null
+		filePath: string | undefined
 		imageSize?: TransformOptions
 		duration?: number
 	}
 ): Promise<string> => {
-	const { bucket, fileName, imageSize } = options
+	const { bucket, filePath: fileName, imageSize } = options
 	let { duration } = options
 	if (!fileName) {
 		return ''
@@ -35,31 +36,59 @@ export const getImage = async (
 	return imgurl.signedUrl
 }
 
-//un-used
-export const getImageURL = async (
+export const deleteProductImage = async (
 	supabase: TypedSupabaseClient,
-	objectData: {
+	options: {
 		bucket: Bucket
-		fileName: string | null
-		imageSize?: TransformOptions
-		duration?: number
+		productImage: Partial<ProductImage> & {id: number} | undefined
 	}
-): Promise<string> => {
-	const { bucket, fileName, imageSize } = objectData
-	let { duration } = objectData
+) => {
 
-	if (!duration) {
-		duration = 60
+	const { bucket, productImage } = options
+	if (!productImage?.filePath) {
+		return
 	}
-	if (!fileName) {
-		return ''
-	}
-	const { data: imgurl, error } = await supabase.storage
+	await supabase.storage
 		.from(bucket)
-		.createSignedUrl(fileName, duration, { transform: { ...imageSize } })
+		.remove([productImage.filePath])
+
+	const { error } = await supabase.from("product_image")
+	.delete()
+	.eq('id', productImage?.id)
 
 	if (error) {
 		throw error
 	}
-	return imgurl.signedUrl
+}
+
+export const downloadImage = async (
+	supabase: TypedSupabaseClient,
+	options: {
+		bucket: Bucket
+		productImage: ProductImage | undefined
+	}) => {
+		const { bucket, productImage } = options
+		if(!productImage?.filePath) throw "no filepath found"
+		const { data: file, error } = await supabase.storage
+		.from(bucket)
+		.download(productImage.filePath)
+		if(error){
+			throw error
+		}
+		return file
+}
+
+
+//currently not working idk why.
+export const getImageData = async (
+	supabase: TypedSupabaseClient,
+	options: {
+		bucket: Bucket
+		filePath: string | undefined
+	}) => {
+		const { bucket, filePath } = options
+		if(!filePath) return undefined
+		const { data, error } = await supabase.storage
+		.from(bucket)
+		.info(filePath)
 }

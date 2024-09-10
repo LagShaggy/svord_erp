@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HTMLInputTypeAttribute } from 'svelte/elements'
 	import { v4 as uuidv4 } from 'uuid'
+	import type { HTMLInputTypeAttribute } from 'svelte/elements'
 
 	export let type: HTMLInputTypeAttribute
 	export let name: string

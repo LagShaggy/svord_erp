@@ -2,7 +2,7 @@ import { postAccount } from '$src/lib/supabase/api/account'
 import type { Account } from '$src/lib/supabase/schema'
 import { fail } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
-import type { Alert } from '$src/lib/Alert/alert'
+import type { Alert } from '$src/lib/UI/Alert/alert'
 
 export const load: PageServerLoad = async ({ locals: { supabase } }) => {
 	const { data: accounts, error } = await supabase

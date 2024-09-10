@@ -46,7 +46,7 @@
 					<X></X>
 				</RoundButton>
 
-				<slot />
+				<slot toggleControll={active} />
 			</div>
 		</div>
 	</div>

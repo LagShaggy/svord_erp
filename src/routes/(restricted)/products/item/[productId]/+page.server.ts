@@ -51,7 +51,7 @@ export const actions: Actions = {
 
 			return { productImage }
 		} catch (e) {
-			console.log(e)
+			return invalid()
 		}
 	}
 }

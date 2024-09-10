@@ -9,6 +9,8 @@
 	import CreateAccount from '$src/lib/People/Account/CreateAccount.svelte'
 	import type { ToggleControlType } from '$src/lib/UI/Behavior/toggleStore.js'
 	import CreateContact from '$src/lib/People/Contact/CreateContact.svelte'
+	import RoundButton from '$src/lib/UI/Primitive/RoundButton.svelte'
+	import X from '$src/lib/Icons/X.svelte'
 
 	export let data
 	let { accounts } = data
@@ -47,11 +49,23 @@
 	})
 </script>
 
-<ModalWindow bind:active={createAccount}>
+<ModalWindow bind:active={createAccount} let:toggleControll>
 	<CreateAccount account={null}></CreateAccount>
+	<RoundButton
+		command={toggleControll.close}
+		className="absolute -bottom-5 right-1/2 translate-x-1/2"
+	>
+		<X />
+	</RoundButton>
 </ModalWindow>
-<ModalWindow bind:active={createContact}>
+<ModalWindow bind:active={createContact} let:toggleControll>
 	<CreateContact contact={null}></CreateContact>
+	<RoundButton
+		command={toggleControll.close}
+		className="absolute -bottom-5 right-1/2 translate-x-1/2"
+	>
+		<X />
+	</RoundButton>
 </ModalWindow>
 
 <BasePage title="PEOPLE" className="-mx-5">

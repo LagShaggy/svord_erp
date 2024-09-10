@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit'
 import type { Actions } from './$types'
-import type { Alert } from '$src/lib/Alert/alert'
+import type { Alert } from '$src/lib/UI/Alert/alert'
 import { ROUTES } from '$src/lib/routes'
 import type { Product } from '$src/lib/supabase/schema'
 
