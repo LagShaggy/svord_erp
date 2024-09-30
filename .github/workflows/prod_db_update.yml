@@ -1,27 +1,29 @@
-name: Deploy Function
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Update LFT Prod Database
+run-name: ${{ github.actor }} is deploying to LFT-SVORD-PROD 🚀
 on:
   push:
     branches:
-      - dev
-
+      - master
 jobs:
   update-dev:
     runs-on: ubuntu-latest
 
     env:
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
-      PROJECT_ID: ${{ secrets.DEV_SUPABASE_PROJECT }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.PROD_DB_PASSWORD }}
+      SUPABASE_PROJECT_ID: ${{ secrets.PROD_SUPABASE_PROJECT }}
 
     steps:
       - uses: actions/checkout@v3
+
       - uses: supabase/setup-cli@v1
         with:
           version: latest
 
-      - run: echo "Job has started"
-      - run: supabase functions deploy --project-ref $PROJECT_ID
-      - run: echo "Job has concluded successfully"
+      - run: supabase link --project-ref $SUPABASE_PROJECT_ID
+      - run: supabase db push
+#_________________________________________________________________
+#
 # EXAMPLE:
 # name: GitHub Actions Demo
 # run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
