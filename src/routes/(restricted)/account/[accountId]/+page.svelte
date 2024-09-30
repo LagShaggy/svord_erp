@@ -8,14 +8,16 @@
 	$: ({ account } = data)
 </script>
 
-<BasePage title={account ? `${account.name}` : 'No Account Name found'}>
+<BasePage title={account ? `${account.id} - ${account.name}` : 'No Account Name found'}>
 	<div class="grid grid-cols-2">
-		<h3>ID</h3>
-		<p>{account?.id}</p>
 		<h3>Description</h3>
 		<p>{account?.description}</p>
 		<h3>Website</h3>
-		<p>{account?.id}</p>
+		<p>
+			<a href={`https://${account?.website}`} target="_blank" class="text-blue-500">
+				{account?.website}
+			</a>
+		</p>
 		<h3>Email</h3>
 		<p>{account?.email}</p>
 		<h3>Country</h3>

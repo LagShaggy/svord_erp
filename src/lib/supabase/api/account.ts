@@ -1,17 +1,14 @@
 import type { Account, TypedSupabaseClient } from '../schema'
 
-const ACCOUNT_TABLE = "account"
+const ACCOUNT_TABLE = 'account'
 
-export const getAccountById = async (
-	supabase: TypedSupabaseClient,
-	id: number
-) => {
+export const getAccountById = async (supabase: TypedSupabaseClient, id: number | string) => {
 	const { data: account, error } = await supabase
 		.from(ACCOUNT_TABLE)
-		.select("id, name, description, email, website, country(name, iso)")
+		.select('id, name, description, email, website, country(name, iso)')
 		.eq('id', id)
 		.single()
-	if(error){
+	if (error) {
 		throw error
 	}
 	return account
