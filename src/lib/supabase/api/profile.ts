@@ -1,6 +1,6 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import type { Profile } from '../schema'
-import type { Database } from '../supabase.types'
+import type { Database } from '../database.types'
 
 export const updateProfile = async (supabase: SupabaseClient<Database>, profile: Profile) => {
 	const { id, ...profileData } = profile

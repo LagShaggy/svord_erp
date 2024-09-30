@@ -1,5 +1,5 @@
 import type { ProductImage, TypedSupabaseClient } from '../../schema'
-import type { Database } from '../../supabase.types'
+import type { Database } from '../../database.types'
 import type { Bucket } from './uploader'
 
 export type TransformOptions = {
@@ -40,21 +40,16 @@ export const deleteProductImage = async (
 	supabase: TypedSupabaseClient,
 	options: {
 		bucket: Bucket
-		productImage: Partial<ProductImage> & {id: number} | undefined
+		productImage: (Partial<ProductImage> & { id: number }) | undefined
 	}
 ) => {
-
 	const { bucket, productImage } = options
 	if (!productImage?.filePath) {
 		return
 	}
-	await supabase.storage
-		.from(bucket)
-		.remove([productImage.filePath])
+	await supabase.storage.from(bucket).remove([productImage.filePath])
 
-	const { error } = await supabase.from("product_image")
-	.delete()
-	.eq('id', productImage?.id)
+	const { error } = await supabase.from('product_image').delete().eq('id', productImage?.id)
 
 	if (error) {
 		throw error
@@ -66,18 +61,16 @@ export const downloadImage = async (
 	options: {
 		bucket: Bucket
 		productImage: ProductImage | undefined
-	}) => {
-		const { bucket, productImage } = options
-		if(!productImage?.filePath) throw "no filepath found"
-		const { data: file, error } = await supabase.storage
-		.from(bucket)
-		.download(productImage.filePath)
-		if(error){
-			throw error
-		}
-		return file
+	}
+) => {
+	const { bucket, productImage } = options
+	if (!productImage?.filePath) throw 'no filepath found'
+	const { data: file, error } = await supabase.storage.from(bucket).download(productImage.filePath)
+	if (error) {
+		throw error
+	}
+	return file
 }
-
 
 //currently not working idk why.
 export const getImageData = async (
@@ -85,10 +78,9 @@ export const getImageData = async (
 	options: {
 		bucket: Bucket
 		filePath: string | undefined
-	}) => {
-		const { bucket, filePath } = options
-		if(!filePath) return undefined
-		const { data, error } = await supabase.storage
-		.from(bucket)
-		.info(filePath)
+	}
+) => {
+	const { bucket, filePath } = options
+	if (!filePath) return undefined
+	const { data, error } = await supabase.storage.from(bucket).info(filePath)
 }

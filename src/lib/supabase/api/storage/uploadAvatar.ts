@@ -1,7 +1,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { updateProfile } from '../profile'
 import { Bucket, uploadToBucket } from './uploader'
-import type { Database } from '../../supabase.types'
+import type { Database } from '../../database.types'
 import type { Profile } from '../../schema'
 
 export const uploadAvatar = async (
