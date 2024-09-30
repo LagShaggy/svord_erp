@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HTMLInputTypeAttribute } from 'svelte/elements'
 	import { v4 as uuidv4 } from 'uuid'
+	import type { HTMLInputTypeAttribute } from 'svelte/elements'
 
 	export let type: HTMLInputTypeAttribute
 	export let name: string
@@ -20,7 +20,7 @@
 		{...$$restProps}
 		class="user-input w-full text-left bg-inherit border-b border-gray-500 appearance-none
 		transition-all duration-400
-		focus:border-secondary-colour
+		focus:border-secondary-700
 		invalid:border-red-400
 		outline-none {className}"
 	/>

@@ -17,3 +17,5 @@ export const createToggleControl = (init: boolean) => {
 		}
 	}
 }
+
+export type ToggleControlType = ReturnType<typeof createToggleControl>

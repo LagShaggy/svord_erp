@@ -9,20 +9,34 @@ export const ROUTES = {
 	},
 	PRODUCT: {
 		SINGLE: '/products/item/'
+	},
+	PEOPLE: {
+		SINGLE: '/products/item/'
 	}
-}
-
-export const API = {
-	AUTH: {}
 }
 
 export const ACTIONS = {
 	AUTH: {
 		LOGIN: '/auth/login?/login',
 		LOGOUT: '/auth/logout?/logout'
+	},
+	ACCOUNT: {
+		CREATE: '/people?/createAccount'
+	},
+	CONTACT: {
+		CREATE: '/people?/createContact'
+	},
+	PRODUCT: {
+		UPLOADIMAGE: '/products/item?/uploadImage',
+		UPLOADDOC: '/products/item?/uploadDoc'
 	}
 }
 
 export const STORAGE = {
 	IMAGES: 'images'
+}
+
+export const TABLES = {
+	PRODUCT: 'Product',
+	PRODUCT_IMAGE: 'product_image'
 }

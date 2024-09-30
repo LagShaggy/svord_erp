@@ -2,15 +2,15 @@ import type { Session } from '@supabase/supabase-js'
 import type { LayoutServerLoad } from './$types'
 import type { Profile } from '$src/lib/supabase/schema'
 
-export const load: LayoutServerLoad = async ({ locals: { getSession, supabase } }) => {
-	const getProfile = async (session: Session | undefined) => {
+export const load: LayoutServerLoad = async ({ locals: { safeGetSession, supabase } }) => {
+	const getProfile = async (session: Session | null) => {
 		if (!session) {
 			return undefined
 		}
 		const { data: profileData, error: profileError } = await supabase
-			.from('Profile')
+			.from('profile')
 			.select()
-			.eq('id', session!.user.id)
+			.eq('id', session.user.id)
 			.single()
 		if (profileError) {
 			throw profileError
@@ -36,7 +36,7 @@ export const load: LayoutServerLoad = async ({ locals: { getSession, supabase } 
 	}
 
 	try {
-		const profile = await getProfile((await getSession()) ?? undefined)
+		const profile = await getProfile((await safeGetSession())?.session)
 		const profilePicture = await getProfilePicture(profile)
 		return { profile, profilePicture }
 	} catch (e) {

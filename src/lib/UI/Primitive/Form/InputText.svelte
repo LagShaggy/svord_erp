@@ -2,10 +2,10 @@
 	import Input from './Atoms/Input.svelte'
 
 	export let name: string = 'text'
-	export let value: string | undefined
+	export let value: string | undefined = ''
 	export let placeholder: string = 'Text'
 </script>
 
-<Input type="text" {name} {placeholder} value={value ?? ''} {...$$props}>
+<Input type="text" {name} {placeholder} {value} {...$$props}>
 	<slot />
 </Input>

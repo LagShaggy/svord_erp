@@ -4,7 +4,9 @@ interface Attributes {
 	'on:outside'?: (event: CustomEvent) => void
 }
 
-export const clickOutside: Action<HTMLElement, any, Attributes> = (element: HTMLElement) => {
+export const clickOutsideAction: Action<HTMLElement, undefined, Attributes> = (
+	element: HTMLElement
+) => {
 	const handleClick = (event: MouseEvent) => {
 		const targetEl = event.target as HTMLElement
 

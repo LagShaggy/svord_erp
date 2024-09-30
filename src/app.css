@@ -15,6 +15,9 @@
 
 	h3 {
 		@apply text-xl;
+	}
+	h4 {
+		@apply text-lg;
 		@apply font-popp;
 	}
 
@@ -35,6 +38,6 @@
 
 @layer utilities {
 	.clickable {
-		@apply border border-secondary-colour;
+		@apply border border-secondary-700;
 	}
 }

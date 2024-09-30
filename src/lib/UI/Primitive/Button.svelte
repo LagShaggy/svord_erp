@@ -8,10 +8,11 @@
 <button
 	on:click={command}
 	type={submit ? 'submit' : null}
-	class="clickable rounded-full outline-none transition-all
-	focus:border-secondary-colour focus:border-2
+	class="transition-all flex justify-center items-center
+	focus:border-secondary-700 focus:border
 	{className}"
 	{formaction}
+	{...$$props}
 >
 	<slot />
 </button>

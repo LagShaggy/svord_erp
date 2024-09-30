@@ -5,10 +5,12 @@
 	import InputFile from '$src/lib/UI/Primitive/Form/InputFile.svelte'
 	import SubmitButton from '$src/lib/UI/Primitive/Form/SubmitButton.svelte'
 	import { blur } from 'svelte/transition'
-	import { actionStore } from '$src/lib/UI/ActionButton/actionButtonStore'
+	import { actionStore } from '$src/lib/UI/ActionButton/actionButton'
 	import { onDestroy, onMount } from 'svelte'
 	import Profile from '$src/lib/Profile/Profile.svelte'
 	import type { PageData } from './$types'
+	import Edit from '$src/lib/Icons/Edit.svelte'
+	import type { ActionType } from '$src/lib/UI/ActionButton/types'
 
 	export let data: PageData
 	let { profile, profilePicture } = data
@@ -16,12 +18,12 @@
 
 	const edit = createToggleControl(false)
 
-	const editAction = {
+	const editAction: ActionType = {
 		command: () => {
 			edit.toggle()
 			actionStore.reset()
 		},
-		img: '/icons/edit.svg'
+		img: Edit
 	}
 
 	const goBack = () => {
@@ -44,14 +46,14 @@
 		<span transition:blur>
 			<Form enctype="multipart/form-data">
 				<InputFile>Profile Picture</InputFile>
-				<InputText name="firstName" value={profile?.firstname ?? ''}>First Name</InputText>
-				<InputText name="lastName" value={profile?.lastname ?? ''}>Last Name</InputText>
+				<InputText name="firstname" value={profile?.firstname ?? ''}>First Name</InputText>
+				<InputText name="lastname" value={profile?.lastname ?? ''}>Last Name</InputText>
 				<SubmitButton className="w-min self-center px-4 py-2">Update</SubmitButton>
 			</Form>
 		</span>
 	{:else}
 		<span transition:blur>
-			<Profile {profile} {profilePicture}></Profile>
+			<Profile {profile}></Profile>
 		</span>
 	{/if}
 </div>

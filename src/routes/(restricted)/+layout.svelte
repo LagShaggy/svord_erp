@@ -1,12 +1,11 @@
 <script lang="ts">
 	import '$src/app.css'
-	import AccountDropdown from '$lib/Account/AccountDropdown.svelte'
+	import ProfileDropdown from '$src/lib/Profile/ProfileDropdown.svelte'
 	import SvordxCompanyLogo from '$lib/Icons/SvordxCompanyLogo.svelte'
 	import HeadBar from '$lib/UI/TopBar/HeadBar.svelte'
 	import type { LayoutData } from './$types'
-	import AlertBar from '$src/lib/Alert/AlertBar.svelte'
 	import ActionButtonContainer from '$src/lib/UI/ActionButton/ActionButtonContainer.svelte'
-	import FootBar from '$src/lib/UI/FootBar/FootBar.svelte'
+	import NavigationBar from '$src/lib/UI/FootBar/NavigationBar.svelte'
 
 	export let data: LayoutData
 	const { session, profilePicture } = data
@@ -15,13 +14,13 @@
 <HeadBar>
 	<SvordxCompanyLogo />
 	{#if session}
-		<AccountDropdown userImage={profilePicture} />
+		<ProfileDropdown userImage={profilePicture} />
 	{/if}
 </HeadBar>
-<main class="flex flex-col flex-grow w-full min-h-full bg-slate-100">
-	<div class="h-min py-6 px-5 mb-8 lg:px-8 font-oswald shadow-xl">
+<main class="flex flex-col flex-grow w-full min-h-[90%] bg-white">
+	<div class="h-min py-6 mb-8 px-2 lg:px-8 font-oswald">
 		<slot />
 	</div>
 </main>
 <ActionButtonContainer />
-<FootBar />
+<NavigationBar />

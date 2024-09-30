@@ -1,6 +1,14 @@
-import type { Database } from './supabase'
+import type { SupabaseClient } from '@supabase/supabase-js'
+import type { Database } from './database.types'
 
-export type Profile = Database['public']['Tables']['Profile']['Row']
-export type Account = Database['public']['Tables']['Account']['Row']
-export type Product = Database['public']['Tables']['Product']['Row']
-export type ProductCategory = Database['public']['Tables']['Product_Category']['Row']
+export type TypedSupabaseClient = SupabaseClient<Database>
+
+export type Profile = Database['public']['Tables']['profile']['Row']
+export type Account = Database['public']['Tables']['account']['Row']
+export type Contact = Database['public']['Tables']['contact']['Row']
+
+export type Country = Database['public']['Tables']['country']['Row']
+
+export type Product = Database['public']['Tables']['product']['Row']
+export type ProductCategoryType = Database['public']['Tables']['product_category']['Row']
+export type ProductImage = Database['public']['Tables']['product_image']['Row']

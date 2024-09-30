@@ -1,7 +1,8 @@
 import { fail, redirect } from '@sveltejs/kit'
 import type { Actions } from './$types'
-import type { Alert } from '$src/lib/Alert/alert'
+import type { Alert } from '$src/lib/UI/Alert/alert'
 import { ROUTES } from '$src/lib/routes'
+import type { Product } from '$src/lib/supabase/schema'
 
 // export const load: PageServerLoad = async ({ locals: { supabase } }) => {
 // 	const { data, error } = await supabase.from('Product_Category').select()
@@ -18,18 +19,18 @@ export const actions: Actions = {
 
 		const name = formData.get('name') as string
 		const description = formData.get('description') as string
-		const category = formData.get('product_category') as string
+		const category = formData.get('product_category') as unknown as number
 
 		if (!category || !name || !description) {
 			fail(400, { name, category, description })
 		}
-		const product = {
+		const product: Partial<Product> = {
 			name,
 			description,
 			category
 		}
 		const { data, error } = await supabase
-			.from('Product')
+			.from('product')
 			.insert({ ...product })
 			.select()
 
@@ -53,7 +54,7 @@ export const actions: Actions = {
 			fail(400, { categoryName, error: { message: 'Category Name cant be an Empty String' } })
 		}
 		const { error } = await supabase
-			.from('Product_Category')
+			.from('product_category')
 			.insert([{ name: categoryName, colour_hex: '' }])
 			.select()
 
@@ -61,5 +62,12 @@ export const actions: Actions = {
 			console.log(error)
 			return fail(400, { category: categoryName, error })
 		}
+
+		const alert: Alert = {
+			title: 'Product Category Created',
+			message: ``,
+			type: 'OK'
+		}
+		return { alert }
 	}
 }

@@ -1,6 +1,5 @@
 <script lang="ts">
 	export let title: string
-	export let description: string = ''
 	export let className: string = ''
 </script>
 
@@ -9,9 +8,8 @@
 </svelte:head>
 
 <header>
-	<h1>{title}</h1>
+	<h1 class="max-lg:px-6">{title}</h1>
 </header>
-<div class="lg:px-4 {className}">
-	<p>{description}</p>
+<main>
 	<slot />
-</div>
+</main>
