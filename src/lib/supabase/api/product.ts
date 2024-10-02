@@ -17,10 +17,10 @@ export const getProductById = async (supabase: TypedSupabaseClient, productId: n
 		)
 		.eq('id', productId)
 		.single()
-	
-		if(error){
-			throw error
-		}
+
+	if (error) {
+		throw error
+	}
 
 	return product
 }
@@ -48,12 +48,17 @@ export const getComponents = async (supabase: TypedSupabaseClient, productId: nu
 	}
 	const { data: components, error } = await supabase
 		.from('product_component')
-		.select('product_component(*)')
+		.select(
+			`
+			id, 
+			component:product(*), 
+			quantity
+			`
+		)
 		.eq('main', productId)
-		.single();
 
-	if(error){
+	if (error) {
 		throw error
 	}
-	return components?.product_component
+	return components
 }
