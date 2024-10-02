@@ -1,5 +1,4 @@
 <script lang="ts">
-	import LoadingS from '$src/lib/Icons/LoadingS.svelte'
 	import Accordion from '$src/lib/UI/Accordion/Accordion.svelte'
 	import BasePage from '$src/lib/UI/BasePage.svelte'
 	import DisplayImage from '$src/lib/UI/Images/DisplayImage.svelte'
@@ -92,15 +91,13 @@
 	{:then components}
 		{#if components && components?.length !== 0}
 			<Accordion props={{ title: 'Components' }}>
-				{#each components as { abbreviation, name }}
+				{#each components as { component }}
 					<div>
-						{abbreviation} - {name}
+						{component?.abbreviation} - {component?.name}
 					</div>
 				{/each}
 			</Accordion>
 		{/if}
-	{:catch error}
-		No Components for this Product
 	{/await}
 
 	{#await alternativeProductsPromise}
