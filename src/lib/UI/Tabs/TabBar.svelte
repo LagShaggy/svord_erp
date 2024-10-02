@@ -2,7 +2,7 @@
 	import { derived, writable } from 'svelte/store'
 	import Tab from './Tab.svelte'
 	import { onDestroy, setContext } from 'svelte'
-	import { TabContext, getIndexDistributor } from './Atoms/tabHelpers'
+	import { TabContext, getIndexDistributor } from './atoms/tabHelpers'
 
 	const distributor = getIndexDistributor()
 	setContext(TabContext.INDEX, distributor)
