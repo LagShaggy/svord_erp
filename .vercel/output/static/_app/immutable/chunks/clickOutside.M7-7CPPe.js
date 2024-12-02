@@ -1,0 +1,1 @@
+const s=t=>{const c=e=>{const n=e.target;if(t&&!t.contains(n)){const i=new CustomEvent("outside");t.dispatchEvent(i)}};return document.addEventListener("click",c,!0),{destroy(){document.removeEventListener("click",c)}}};export{s as c};
