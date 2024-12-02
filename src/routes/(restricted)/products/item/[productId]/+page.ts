@@ -11,7 +11,6 @@ export const load: PageLoad = async ({ params: { productId } }) => {
 		const product = await getProductById(browserSupabase, productId)
 		const alternativeProductsPromise = getAlternativeProducts(browserSupabase, product.category)
 		const componentsPromise = getComponents(browserSupabase, product.id)
-
 		return { product, componentsPromise, alternativeProductsPromise }
 	} catch (e) {
 		console.log(e)

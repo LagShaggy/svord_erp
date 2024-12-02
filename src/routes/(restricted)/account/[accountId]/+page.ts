@@ -5,11 +5,8 @@ import type { PageLoad } from './$types'
 
 export const load: PageLoad = async ({ params: { accountId } }) => {
 	try {
-		console.log(accountId)
 		const account = await getAccountById(browserSupabase, accountId)
 		const accountContacts = await getAccountContactByAccountId(browserSupabase, accountId)
-		console.log(account)
-		console.log(accountContacts)
 		return { accountContacts, account }
 	} catch (error) {
 		console.log(error)

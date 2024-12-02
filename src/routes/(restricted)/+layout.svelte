@@ -17,10 +17,10 @@
 		<ProfileDropdown userImage={profilePicture} />
 	{/if}
 </HeadBar>
-<main class="flex flex-col flex-grow w-full min-h-[90%] bg-white">
-	<div class="h-min py-6 mb-8 px-2 lg:px-8 font-oswald">
+<div class="flex flex-col flex-grow w-full min-h-[90%] bg-white">
+	<div class="h-min py-6 mb-8 lg:px-8 font-oswald">
 		<slot />
 	</div>
-</main>
+</div>
 <ActionButtonContainer />
 <NavigationBar />

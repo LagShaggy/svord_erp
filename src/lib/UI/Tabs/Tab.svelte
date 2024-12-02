@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getContext, onMount } from 'svelte'
-	import type { Readable, Stores, Writable } from 'svelte/store'
+	import type { Writable } from 'svelte/store'
 	import { TabContext, type IndexDistributor } from './atoms/tabHelpers'
 
 	const selectedIndex: Writable<number> = getContext(TabContext.SELECTED)

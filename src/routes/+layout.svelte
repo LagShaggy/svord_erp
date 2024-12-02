@@ -1,12 +1,7 @@
 <script lang="ts">
 	import { invalidate } from '$app/navigation'
-	import { page } from '$app/stores'
-	import { alertStore } from '$src/lib/UI/Alert/alert'
 	import AlertBar from '$src/lib/UI/Alert/AlertBar.svelte'
 	import { onMount } from 'svelte'
-
-	$: alertStore.add($page.form?.alert)
-	$: alertStore.add($page.data?.message)
 
 	export let data
 	$: ({ session, supabase } = data)

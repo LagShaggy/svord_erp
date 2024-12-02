@@ -23,8 +23,7 @@
 
 	h1,
 	h2 {
-		@apply font-oswald;
-		@apply mb-4;
+		@apply font-oswald mb-3;
 	}
 
 	p {

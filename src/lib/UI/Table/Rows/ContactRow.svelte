@@ -1,17 +1,17 @@
 <script lang="ts">
 	import CountryFlag from '$src/lib/Icons/Flags/CountryFlag.svelte'
 	import WebsiteIcon from '$src/lib/Icons/WebsiteIcon.svelte'
-	import type { Account, Country } from '$src/lib/supabase/schema'
+	import type { Account, Contact, Country } from '$src/lib/supabase/schema'
 	import TableData from '../Molecules/TableData.svelte'
 	import { getColourForIndex } from '../Molecules/tableHelpers'
 	import TableRow from '../Molecules/TableRow.svelte'
 	import { goto } from '$app/navigation'
-	export let item: Account & { country: Country }
+	export let item: Contact
 	export let index: number
 
 	const colour = getColourForIndex(index)
 	const handleClick = (e: MouseEvent) => {
-		goto(`/account/${item.id}`)
+		goto(`/contact/${item.id}`)
 	}
 </script>
 
@@ -19,17 +19,13 @@
 	<TableData className="md:block">
 		{item.id}
 	</TableData>
-	<TableData className="max-md:pl-5 max-md:flex max-md:flex-col max-md:justify-between">
-		<CountryFlag countryISO={item.country.iso} />
-		{item.country.iso3 ?? item.country.iso}
-	</TableData>
-	<TableData>
-		<div class="flex md:flex-row gap-2 items-center">
-			<WebsiteIcon url={item.website} />
-			{item.name}
-		</div>
+	<TableData className="max-w-[100px] truncate">
+		{item.firstName}
 	</TableData>
 	<TableData className="max-w-[100px] truncate">
-		{item.description}
+		{item.lastName}
+	</TableData>
+	<TableData className="max-w-[100px] truncate">
+		{item.email}
 	</TableData>
 </TableRow>

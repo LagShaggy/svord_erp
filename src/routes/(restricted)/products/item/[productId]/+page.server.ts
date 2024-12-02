@@ -1,5 +1,5 @@
 import { getProductById } from '$src/lib/supabase/api/product'
-import { insertProductImage } from '$src/lib/supabase/api/productImage'
+import { insertProductImage } from '$src/lib/supabase/api/storage/productImage'
 import { Bucket, uploadToBucket, type SvordFile } from '$src/lib/supabase/api/storage/uploader'
 import type { ProductImage } from '$src/lib/supabase/schema'
 import type { Actions } from '@sveltejs/kit'
@@ -53,5 +53,25 @@ export const actions: Actions = {
 		} catch (e) {
 			return invalid()
 		}
-	}
+	},
+
+	uploadDocument: async ({ request, locals: { supabase }, params }) => {
+		const formData = Object.fromEntries(await request.formData())
+		const { file } = formData as unknown as SvordFile<ProductImage>
+
+		try {
+			const productId = params.productId;
+
+			const filePath = await uploadToBucket(supabase, {
+				bucket: Bucket.Documents,
+				file,
+				upsert: false,
+				folderPrefix: productId
+			})
+
+			return { item: 'hello' }
+		} catch (e) {
+			console.log(e)
+		}
+	},
 }

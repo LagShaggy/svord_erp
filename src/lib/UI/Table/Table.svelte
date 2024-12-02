@@ -1,8 +1,5 @@
-<script lang="ts">
-	import TableHeader from './Molecules/TableHeader.svelte'
-	import { getKeys } from './Molecules/tableHelpers'
-
-	export let items: any[] | null
+<script lang="ts" generics="T extends { id: number }">
+	export let items: T[] | null
 </script>
 
 <table class="w-full">

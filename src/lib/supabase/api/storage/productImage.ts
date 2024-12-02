@@ -1,4 +1,4 @@
-import type { ProductImage, TypedSupabaseClient } from '../schema'
+import type { ProductImage, TypedSupabaseClient } from "../../schema"
 
 const PRODUCT_IMAGE_TABLE = 'product_image'
 
@@ -14,13 +14,12 @@ export const insertProductImage = async (
 	if (error) {
 		throw error
 	}
-
 	return data
 }
 
 export const updateProductImage = async (
 	supabase: TypedSupabaseClient,
-	productImage: Partial<ProductImage> & {id: number}
+	productImage: Partial<ProductImage> & { id: number }
 ) => {
 	const { id, ...productImageUpdate } = productImage
 

@@ -8,8 +8,8 @@
 </svelte:head>
 
 <header>
-	<h1 class="max-lg:px-6">{title}</h1>
+	<h1 class="px-4">{title}</h1>
 </header>
-<main>
+<main class="px-5 {className}">
 	<slot />
 </main>

@@ -2,6 +2,13 @@
 	import { fly } from 'svelte/transition'
 	import { alertStore } from './alert'
 	import Alert from './Alert.svelte'
+	import { page } from '$app/stores'
+
+	page.subscribe((p) => {
+		if (p.form?.alert) {
+			alertStore.add(p.form.alert)
+		}
+	})
 </script>
 
 <span class="fixed top-2 z-20 left-1/2 -translate-x-1/2">

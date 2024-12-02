@@ -3,6 +3,7 @@
 	import BasePage from '$src/lib/UI/BasePage.svelte'
 	import DisplayImage from '$src/lib/UI/Images/DisplayImage.svelte'
 	import UploadImage from '$src/lib/UI/Images/UploadImage.svelte'
+	import UploadDocument from '$src/lib/UI/Pagination/Documents/UploadDocument.svelte'
 	import type { PageData } from './$types'
 
 	export let data: PageData
@@ -69,23 +70,19 @@
 		props={{
 			title: 'Warehouse'
 		}}
-	>
-		<h2>Documents</h2>
-	</Accordion>
+	></Accordion>
 	<Accordion
 		props={{
 			title: 'Documents'
 		}}
 	>
-		<h2>Documents</h2>
+		<UploadDocument />
 	</Accordion>
 	<Accordion
 		props={{
-			title: 'People of Interest'
+			title: 'People'
 		}}
-	>
-		<h2>People</h2>
-	</Accordion>
+	></Accordion>
 	{#await componentsPromise}
 		<!-- <LoadingS></LoadingS> -->
 	{:then components}

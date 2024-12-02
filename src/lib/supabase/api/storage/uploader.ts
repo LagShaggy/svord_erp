@@ -3,7 +3,8 @@ import type { TypedSupabaseClient } from '../../schema'
 
 export enum Bucket {
 	Images = 'images',
-	ProductImages = 'productImages'
+	ProductImages = 'productImages',
+	Documents = 'documents'
 }
 
 export type SvordFile<T> = {
@@ -24,7 +25,7 @@ const imageNameGenerator = (): string => {
 export const uploadToBucket = async (
 	supabase: TypedSupabaseClient,
 	options: {
-		bucket: Bucket
+		bucket: Bucket | string
 		file: File
 		upsert: boolean
 		folderPrefix?: string | number

@@ -76,7 +76,7 @@ export type Database = {
           id: number
           relationship: number
           since: string
-          until: string | null
+          untill: string | null
         }
         Insert: {
           account_id: number
@@ -84,7 +84,7 @@ export type Database = {
           id?: number
           relationship: number
           since?: string
-          until?: string | null
+          untill?: string | null
         }
         Update: {
           account_id?: number
@@ -92,7 +92,7 @@ export type Database = {
           id?: number
           relationship?: number
           since?: string
-          until?: string | null
+          untill?: string | null
         }
         Relationships: [
           {
@@ -123,21 +123,21 @@ export type Database = {
           email: string
           firstName: string | null
           id: number
-          lastname: string
+          lastName: string
           personality: string | null
         }
         Insert: {
           email: string
           firstName?: string | null
           id?: number
-          lastname: string
+          lastName: string
           personality?: string | null
         }
         Update: {
           email?: string
           firstName?: string | null
           id?: number
-          lastname?: string
+          lastName?: string
           personality?: string | null
         }
         Relationships: []
@@ -193,6 +193,27 @@ export type Database = {
         }
         Relationships: []
       }
+      incoterms: {
+        Row: {
+          descr: string | null
+          id: number
+          name: string
+          term: string
+        }
+        Insert: {
+          descr?: string | null
+          id?: number
+          name: string
+          term: string
+        }
+        Update: {
+          descr?: string | null
+          id?: number
+          name?: string
+          term?: string
+        }
+        Relationships: []
+      }
       lead: {
         Row: {
           contact: number
@@ -218,18 +239,18 @@ export type Database = {
       }
       opportunity: {
         Row: {
-          buyer: number
-          contact: number
+          buyer: number | null
+          contact: number | null
           id: number
         }
         Insert: {
-          buyer: number
-          contact: number
+          buyer?: number | null
+          contact?: number | null
           id?: number
         }
         Update: {
-          buyer?: number
-          contact?: number
+          buyer?: number | null
+          contact?: number | null
           id?: number
         }
         Relationships: [
@@ -381,6 +402,21 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      product_document: {
+        Row: {
+          created_at: string
+          id: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
+        }
+        Relationships: []
       }
       product_image: {
         Row: {
@@ -557,17 +593,17 @@ export type Database = {
       }
       relationship: {
         Row: {
-          description: string | null
+          description: string
           id: number
           name: string
         }
         Insert: {
-          description?: string | null
+          description: string
           id?: number
           name: string
         }
         Update: {
-          description?: string | null
+          description?: string
           id?: number
           name?: string
         }
@@ -661,6 +697,7 @@ export type Database = {
           owner_id: string | null
           path_tokens: string[] | null
           updated_at: string | null
+          user_metadata: Json | null
           version: string | null
         }
         Insert: {
@@ -674,6 +711,7 @@ export type Database = {
           owner_id?: string | null
           path_tokens?: string[] | null
           updated_at?: string | null
+          user_metadata?: Json | null
           version?: string | null
         }
         Update: {
@@ -687,6 +725,7 @@ export type Database = {
           owner_id?: string | null
           path_tokens?: string[] | null
           updated_at?: string | null
+          user_metadata?: Json | null
           version?: string | null
         }
         Relationships: [
@@ -695,6 +734,104 @@ export type Database = {
             columns: ["bucket_id"]
             isOneToOne: false
             referencedRelation: "buckets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      s3_multipart_uploads: {
+        Row: {
+          bucket_id: string
+          created_at: string
+          id: string
+          in_progress_size: number
+          key: string
+          owner_id: string | null
+          upload_signature: string
+          user_metadata: Json | null
+          version: string
+        }
+        Insert: {
+          bucket_id: string
+          created_at?: string
+          id: string
+          in_progress_size?: number
+          key: string
+          owner_id?: string | null
+          upload_signature: string
+          user_metadata?: Json | null
+          version: string
+        }
+        Update: {
+          bucket_id?: string
+          created_at?: string
+          id?: string
+          in_progress_size?: number
+          key?: string
+          owner_id?: string | null
+          upload_signature?: string
+          user_metadata?: Json | null
+          version?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "s3_multipart_uploads_bucket_id_fkey"
+            columns: ["bucket_id"]
+            isOneToOne: false
+            referencedRelation: "buckets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      s3_multipart_uploads_parts: {
+        Row: {
+          bucket_id: string
+          created_at: string
+          etag: string
+          id: string
+          key: string
+          owner_id: string | null
+          part_number: number
+          size: number
+          upload_id: string
+          version: string
+        }
+        Insert: {
+          bucket_id: string
+          created_at?: string
+          etag: string
+          id?: string
+          key: string
+          owner_id?: string | null
+          part_number: number
+          size?: number
+          upload_id: string
+          version: string
+        }
+        Update: {
+          bucket_id?: string
+          created_at?: string
+          etag?: string
+          id?: string
+          key?: string
+          owner_id?: string | null
+          part_number?: number
+          size?: number
+          upload_id?: string
+          version?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "s3_multipart_uploads_parts_bucket_id_fkey"
+            columns: ["bucket_id"]
+            isOneToOne: false
+            referencedRelation: "buckets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "s3_multipart_uploads_parts_upload_id_fkey"
+            columns: ["upload_id"]
+            isOneToOne: false
+            referencedRelation: "s3_multipart_uploads"
             referencedColumns: ["id"]
           },
         ]
@@ -737,6 +874,41 @@ export type Database = {
           size: number
           bucket_id: string
         }[]
+      }
+      list_multipart_uploads_with_delimiter: {
+        Args: {
+          bucket_id: string
+          prefix_param: string
+          delimiter_param: string
+          max_keys?: number
+          next_key_token?: string
+          next_upload_token?: string
+        }
+        Returns: {
+          key: string
+          id: string
+          created_at: string
+        }[]
+      }
+      list_objects_with_delimiter: {
+        Args: {
+          bucket_id: string
+          prefix_param: string
+          delimiter_param: string
+          max_keys?: number
+          start_after?: string
+          next_token?: string
+        }
+        Returns: {
+          name: string
+          id: string
+          metadata: Json
+          updated_at: string
+        }[]
+      }
+      operation: {
+        Args: Record<PropertyKey, never>
+        Returns: string
       }
       search: {
         Args: {
